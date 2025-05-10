@@ -20,7 +20,14 @@ class FileorImageUploadController extends BaseController
             $allowedTypes = ['jpg', 'jpeg', 'png', 'webp'];
         } elseif ($fileType === 'document') {
             $allowedTypes = ['pdf', 'xls', 'xlsx'];
-        } else {
+        } elseif ($fileType === 'video'){
+            $allowedTypes = [
+                'mp4', 'avi', 'mov', 'wmv', 'flv',
+                'mkv', 'webm', 'mpeg', 'mpg', '3gp',
+                'ogg', 'm4v'
+            ];
+        }
+        else {
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Invalid file type provided.',
@@ -41,7 +48,7 @@ class FileorImageUploadController extends BaseController
             ], ResponseInterface::HTTP_BAD_REQUEST);
         }
         if ($file->isValid() && !$file->hasMoved()) {
-            $uploadPath = WRITEPATH . 'uploads/' . $fileType;
+            $uploadPath = FCPATH . 'uploads/' . $fileType;
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
             }
@@ -91,7 +98,7 @@ class FileorImageUploadController extends BaseController
                     continue; 
                 }
 
-                $uploadPath = WRITEPATH . 'uploads/' . $fileType;
+                $uploadPath = FCPATH . 'uploads/' . $fileType;
                 if (!is_dir($uploadPath)) {
                     mkdir($uploadPath, 0777, true);
                 }

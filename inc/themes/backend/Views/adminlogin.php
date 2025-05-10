@@ -1,7 +1,7 @@
 <div class="d-flex flex-column h-100 p-3">
     <div class="d-flex flex-column flex-grow-1">
         <div class="row h-100">
-            <div class="col-xxl-7">
+            <div class="col-xxl-12">
                 <div class="row justify-content-center h-100">
                     <div class="col-lg-6 py-lg-5">
                         <div class="d-flex flex-column h-100 justify-content-center">
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-xxl-5 d-none d-xxl-flex">
+            <div class="col-xxl-5 d-none d-xxl-flex d-xxl-none">
                 <div class="card h-100 mb-0 overflow-hidden">
                     <div class="d-flex flex-column h-100">
                         <img src="<?= base_url('assets/images/small/img-10.jpg') ?> " alt="" class="w-100 h-100">

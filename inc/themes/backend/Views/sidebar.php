@@ -1,14 +1,29 @@
+<style>
+    .logo-box .logo-lg {
+    width: 160px;
+    height: 100px;
+    }
+    .logo-box .logo-sm {
+    width: 50px;
+    height: 50px;
+}
+</style>
+
+<?php 
+$settingdb = \Config\Database::connect();
+$setting = $settingdb->table('setting')->where('id', 3)->get()->getRow();
+?>
 <div class="main-nav">
     <!-- Sidebar Logo -->
     <div class="logo-box">
-          <a href="<?= base_url() ?>" class="logo-dark">
-               <img src="<?php echo base_url(!empty($setting->logo) ? $setting->logo : 'assets/images/logo-sm.png') ?>" class="logo-sm" alt="logo sm">
-               <img src="<?php echo base_url(!empty($setting->logo) ? $setting->logo : 'assets/images/logo-dark.png') ?>" class="logo-lg" alt="logo dark">
+        <a href="<?= base_url() ?>" class="logo-dark">
+               <img src="<?php echo base_url(!empty($setting->favicon_img) ? '/writable/'.$setting->favicon_img : 'assets/images/logo-sm.png') ?>" class="logo-sm" alt="logo sm">
+               <img src="<?php echo base_url(!empty($setting->dashboard_logo_img) ? '/writable/'.$setting->dashboard_logo_img : 'assets/images/logo-dark.png') ?>" class="logo-lg" alt="logo dark">
           </a>
 
           <a href="<?= base_url() ?>" class="logo-light">
-               <img src="<?php echo base_url(!empty($setting->logo) ? $setting->logo : 'assets/images/logo-sm.png') ?>" class="logo-sm" alt="logo sm">
-               <img src="<?php echo base_url(!empty($setting->logo) ? $setting->logo : 'assets/images/logo-light.png') ?>" class="logo-lg" alt="logo light">
+               <img src="<?php echo base_url(!empty($setting->dashboard_logo_img) ? '/writable/'.$setting->dashboard_logo_img  : 'assets/images/logo-sm.png') ?>" class="logo-sm" alt="logo sm">
+               <img src="<?php echo base_url(!empty($setting->dashboard_logo_img) ? '/writable/'.$setting->dashboard_logo_img  : 'assets/images/logo-light.png') ?>" class="logo-lg" alt="logo light">
           </a>
      </div>
 
@@ -18,7 +33,7 @@
      </button>
 
 
-    <div class="scrollbar col-xxl-3" data-simplebar>
+    <div class="scrollbar col-xxl-12" data-simplebar>
         <ul class="navbar-nav" id="navbar-nav">
             <?php
                 $request = \Config\Services::request();

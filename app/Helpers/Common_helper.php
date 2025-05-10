@@ -19,7 +19,7 @@ if (!function_exists('getInfoById')) {
 if (!function_exists('getInfoByUid')) {
     function getInfoByUid($table,$uid,$value) {
         $db = Database::connect();
-        $query = $db->table($table)->where('admin_uid',$uid)->get();
+        $query = $db->table($table)->get();
         $row = $query->getRow();
         if($row){
             return $row->$value;

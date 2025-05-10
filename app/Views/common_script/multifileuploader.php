@@ -29,9 +29,9 @@
                 processData: false,
                 contentType: false,
                 success: function (response) {
-                    $('#<?=$imageids?>').val(JSON.stringify(response.file));
                     imagearray.push(...response.files);  // not nested
                     joinfiles(imagearray, divids);
+                    $('#<?=$imageids?>').val(JSON.stringify(imagearray));
                 },
                 error: function (xhr) {
                     toastr.error(xhr.responseText);
@@ -44,9 +44,10 @@
                 $('#<?=$imageids?>').val(JSON.stringify(arrayhere));
                 let result = arrayhere.map((details, index) => {
                     return `
-                            <div class="image-preview-wrapper" data-id="${details.id}" >
-                                <button type="button" class="remove-image-btn deleteimg" data-delimg-id="${details.id}" >×</button>
-                                <img src="${URL}/${details.file}" alt="Preview">
+                            <div class="col-lg-2 d-flex" data-id="${details.id}" >
+                                <img src="${URL}/${details.file}"
+                                    alt="" srcset="" width="50px">
+                                <a href="javascript:void(0)" data-delimg-id="${details.id}" class="close_btn"><span class="close-icon deleteimg">×</span></a>
                             </div>
                         `;
                 });

@@ -2,6 +2,8 @@
 <!-- <input type="hidden" name="<?=$imageids?>" id="<?=$imageids?>"> -->
 <script>
     $(document).ready(function () {
+        console.log("<?= $filetype ?>");
+        
         const getURL = '<?= base_url('singleuploader') ?>';
         $('#<?= $input ?>').change(function () {
             const formData = new FormData();

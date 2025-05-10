@@ -13,15 +13,5 @@ return [
         'type' => 'top',
         'position' => 3000,
         'name' => 'Customer',
-        'sub_menu' => [
-            [
-                'id' => 'product',
-                'name' => 'Product',
-                'position' => 1000,
-                'icon' => 'typcn typcn-shopping-cart',
-                'color' => '#28abf5',
-                'require' => true,
-            ]
-        ]
     ]
 ];

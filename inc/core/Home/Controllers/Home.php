@@ -357,9 +357,19 @@ class Home extends \CodeIgniter\Controller
         $allowedTypes = [];
         if ($fileType === 'image') {
             $allowedTypes = ['jpg', 'jpeg', 'png', 'webp'];
+            $maxFileSize = 5 * 1024 * 1024; 
         } elseif ($fileType === 'document') {
             $allowedTypes = ['pdf', 'xls', 'xlsx'];
-        } else {
+            $maxFileSize = 5 * 1024 * 1024; 
+        } elseif ($fileType === 'video'){
+            $allowedTypes = [
+                'mp4', 'avi', 'mov', 'wmv', 'flv',
+                'mkv', 'webm', 'mpeg', 'mpg', '3gp',
+                'ogg', 'm4v'
+            ];
+            $maxFileSize = 25 * 1024 * 1024; 
+        }
+        else {
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Invalid file type provided.',
@@ -372,7 +382,7 @@ class Home extends \CodeIgniter\Controller
                 'message' => "Invalid file format. Allowed formats: " . implode(', ', $allowedTypes),
             ]);
         }
-        $maxFileSize = 5 * 1024 * 1024; 
+        
         if ($file->getSize() > $maxFileSize) {
             return $this->response->setJSON([
                 'status' => 'error',
