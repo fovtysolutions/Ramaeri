@@ -1,0 +1,1121 @@
+@media (min-width: 1200px) {
+    .choose-us-section::after {
+        background-image: url(https://www.ramaeri.com/public/frontend/default/assets/img/no-data-found.png);
+    }
+
+    .on-sale-banner {
+        background-image: url(https://www.ramaeri.com/public/frontend/default/assets/img/no-data-found.png);
+    }
+}
+
+.click-effectssss {
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease;
+}
+
+.click-effectssss:active {
+    transform: scale(0.95);
+    /* Creates a click effect by scaling down */
+    background-color: #f0f0f0;
+    /* Temporary background color change */
+    border-radius: 5px;
+}
+
+.click-effectssss:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+/* Navbar Styles */
+.navbar_top {
+    padding: 0px 50px  !important;
+    background-color: #f8fff3;
+    width: 100%;
+    padding-top: 33px !important;
+    padding-bottom: 20px !important;
+    position: fixed ;
+    z-index: 100 !important;
+}
+
+/* .gshop-navmenu ul li a{
+    font-family: Poppins !important;
+} */
+.home-menu {
+    font-size: 23.46px !important;
+    font-weight: 300 !important;
+    color: #4A6437 !important;
+    line-height: 35.19px;
+}
+
+.container {
+    padding: 0rem !important;
+}
+
+.underlinemenu {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.9px;
+    text-underline-offset: 13.4px;
+    text-decoration-color: #4A6437;
+}
+
+.nav-link123 {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    /* Default color */
+}
+
+.nav-link123::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    width: 67.1px;
+    height: 1.34px;
+    background-color: #4A6437;
+    transition: background-color 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.text-lg-left {
+    text-align: left !important;
+}
+
+.gheader {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+    height: 51px;
+
+}
+
+@media (max-width: 991.98px) {
+    .gheader {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .logo-img {
+        max-width: 90% !important;
+        height: 27px !important;
+
+    }
+
+    .icon-size {
+        width: 25px !important;
+        height: 25px !important;
+    }
+    .img-bar {
+        width: 25px;
+        height: 25px;
+    }
+
+    .text-md-center {
+        text-align: center !important;
+    }
+
+    .gshop-header-user:hover .user-menu-wrapper {
+        top: 18px !important;
+    }
+
+    .gshop-header-user .user-menu-wrapper {
+        width: 150px !important;
+        left: -70px !important;
+    }
+}
+
+.offcanvas_menu {
+    background: #F8FFF3;
+    width: 65%;
+    left: -425px !important;
+    right: 0 !important;
+}
+
+.offcanvas_menu.active {
+    left: 0 !important;
+}
+
+.fa-solid {
+    color: #4A6437;
+}
+
+.mobile-menu ul li a {
+    color: #4A6437;
+    font-weight: 300;
+    border-bottom: 1px solid #4a643730;
+}
+
+.gshop-header-user:hover .user-menu-wrapper {
+    z-index: 999;
+    top: 53px;
+}
+
+.user-menu li a:hover {
+    padding-left: 20px;
+    color: #4A6437;
+}
+
+.user-menu li a {
+    color: #4A6437;
+}
+
+.gshop-header-user .user-menu-wrapper {
+
+    width: 150px;
+    left: -70px
+}
+
+img .icon-size {
+    width: 28px;
+}
+
+/* Basic styling for the cart button */
+.header-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Off-canvas container */
+.cart-offcanvas {
+    position: fixed;
+    right: -100%;
+    /* Initially hidden off the screen */
+    top: 0;
+    width: 416px;
+    height: 100%;
+    background-color: #F8FFF3;
+    transition: right 0.3s ease;
+    z-index: 9999;
+}
+
+/* Content inside the off-canvas */
+.cart-offcanvas-content {
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+/* Cart items section */
+.cart-items {
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+    /* Adjust based on layout */
+    margin-bottom: 20px;
+}
+
+
+.cart-offcanvas.open {
+    right: 0;
+    /* Bring it into view */
+}
+
+
+.off-canva-heading {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 300;
+    line-height: 27px;
+    text-align: center;
+    text-decoration: underline;
+
+}
+.price-total {
+    font-size: 18px;
+    color: #4A6437;
+    font-weight: 400;
+    line-height: 27px;
+
+}
+
+.sub-total-price {
+
+    color: #4A6437;
+    font-size: 23px;
+    line-height: 35px;
+    font-weight: 500;
+}
+
+.hand-button {
+    background-color: #476947;
+    color: #fff;
+    width: 276px;
+    height: 46px;
+    border-radius: 6.26px;
+    font-size: 23.13px;
+    line-height: 34px;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .cart-offcanvas {
+        width: 80%;
+        /* Make the cart take 80% of the screen on smaller devices */
+    }
+}
+
+    @media (max-width: 768px) {
+    .navbar_top{
+        flex-direction: column !important;
+        padding: 25px !important;
+        position: relative !important;
+        top: 0;
+        flex-direction: row !important;
+        position: fixed !important;
+        z-index: 100 !important;
+    }
+}
+/* Even smaller screens (less than 480px) */
+@media (max-width: 480px) {
+    .cart-offcanvas {
+        width: 80%;
+        /* Take full width on small screens like phones */
+    }
+}
+
+.gshop-header-icons {
+    gap: 24px;
+}
+/* Open state for the cart */
+.cart-offcanvas.open {
+    right: 0;
+    /* Bring it into view */
+}
+
+@media (max-width: 992px) {
+    .modal input[type="email"] {
+        width: 100%;
+    }
+}
+
+/* Background image for the entire modal container */
+.modal-dialog {
+    background: url('https://i.ibb.co/Tt5TvNx/green-leaf-texture-leaf-texture-background.jpg') no-repeat center center;
+    background-size: cover;
+    /* Cover the entire modal */
+    border-radius: 0px;
+    padding: 0;
+}
+
+.modal-content {
+    border-radius: 0px;
+    background-color: #ffffff;
+    /* Slight transparency for the modal content */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    width: 471px;
+    /*height:453px;*/
+    margin: 0 auto;
+    border-radius: 5.14px;
+    padding: 10px 40px;
+}
+
+/* Style the button at the bottom */
+.continue-button {
+    background-color: #4a6342;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: #354b30;
+}
+
+.head {
+    color: #4A6437;
+    font-size: 20.46px;
+    font-weight: 600;
+    line-height: 30.69px;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.theme-input {
+    height: 38px;
+    padding: 5px;
+    */ border-radius: 4px;
+    border: 1px solid rgba(74, 100, 55, 1);
+    width: 100%;
+}
+
+.modal-dialog {
+    max-width: 1024px;
+    height: 617px;
+}
+
+input::placeholder {
+    font-weight: 300;
+    line-height: 10.16px;
+    font-size: 12.77px;
+    color: #878F7F !important;
+}
+
+.end-0 {
+    right: 5px !important;
+}
+
+.forget {
+    color: rgba(65, 100, 55, 1);
+    font-size: 12.77px;
+    line-height: 10.16px;
+    font-weight: 400
+}
+
+/*.submit-button{*/
+/*  width:201.93px;*/
+/*  height:35.51px;*/
+/*  border-radius: 4.78px;*/
+/*  background-color:rgba(74, 100, 55, 1);*/
+/*  color:rgba(248, 255, 243, 1);*/
+/*  font-size:17.67px;*/
+/*  line-height:26.51px;*/
+/*  font-weight:400;*/
+/* margin-top:40px;*/
+/* margin-bottom:9px*/
+/*}*/
+.submitAuth-button {
+    width: 150.38px;
+    /* height: 21.7px; */
+    background-color: #4A6437;
+    color: #ffffff;
+    border: none;
+    padding: 5.53px 0px;
+    border-radius: 3.45px;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin-top: 6.22px;
+    font-size: 13px;
+    /* position: relative; */
+    /* overflow: hidden; */
+    margin-bottom: 9px gap: 4px;
+}
+
+.submitAuth-button {
+    width: 50% !important;
+    height: 10% !important;
+    font-size: 1.3rem !important;
+    border-radius: 0.3rem !important;
+
+}
+
+.user-span {
+    color: rgba(128, 146, 115, 1);
+    font-size: 15px;
+    line-height: 17.16px;
+    font-weight: 300
+}
+
+.regis-span {
+    color: rgba(74, 100, 55, 1);
+    font-size: 14px;
+    line-height: 17.16px;
+    font-weight: 500
+}
+
+.wlc {
+    color: #ffffff;
+    width: 173.79;
+    height: 29.79;
+    letter-spacing: 5px;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.blog-image {
+    width: 182.95px;
+    height: 183.66px;
+    margin-bottom: 20px;
+}
+
+.para {
+    width: 418px;
+    height: 23px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+
+}
+
+.g5 {
+    width: 40.92px;
+    height: 40.92px;
+    margin-top: 20px;
+}
+
+
+.feature {
+    font-size: 9.10px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+    line-height: 12px;
+
+}
+
+.forms {
+    margin-top: 2rem;
+}
+
+
+
+@media (max-width: 576px) {
+    .modal-content {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .continue-button {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+
+.tt-login-img {
+    background-color: transparent;
+    /* Ensure the image is visible */
+}
+
+@media (max-width: 991.98px) {
+    .img-bar {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.temp {
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3f5931;
+    position: relative;
+}
+
+.temp::before {
+    content: ">";
+    font-size: 1.5rem;
+    color: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* font-family: 'Arial', sans-serif; */
+    background-color: #f8fff3 !important;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.about-section {
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 10px;
+    padding-top: 50px;
+}
+
+h1 {
+    text-align: left;
+    color: #4a4a4a;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.about-content {
+    text-align: center;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.image-box {
+    text-align: center;
+}
+
+.image-box img {
+    width: 405px;
+    height: 357px;
+    object-fit: cover;
+}
+
+.image-boxxes {
+    width: 405px;
+    height: 357px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.icon img {
+    width: 110px;
+    height: 165px;
+}
+
+.about-text {
+    margin: 30px 0;
+    line-height: 1.8;
+    color: #000000;
+    width: 1173px;
+    /* height: 189px; */
+    /* font-family: poppins; */
+    font-size: 18px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.logo-section {
+    margin: 40px 0;
+    text-align: center;
+    background-image: url("https://www.ramaeri.com/storage/app/public/images/lbg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-section img {
+    width: 300px;
+    height: auto;
+}
+
+.footer-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #000000;
+
+}
+
+.footer-text {
+    width: 1172px;
+    height: 242px;
+    /* font-family: poppins; */
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 27px;
+}
+
+/*mycode*/
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.icon img {
+    max-width: 100%;
+    height: auto;
+}
+
+.icon span {
+    margin-top: 8px;
+    /* Adjust the space between the image and text */
+    font-size: 29px;
+    /* Adjust the font size if needed */
+    color: #3f5931;
+    /* Change color as per your design */
+}
+
+
+.storyheading {
+    color: #4a6437;
+    width: 593px;
+    height: 70px;
+    /* font-family: poppins; */
+    font-size: 46px;
+    padding-left: 2.2rem;
+}
+@media (max-width: 991.98px) {
+    .icon-size {
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
+/*endmycode*/
+
+.pl-3 {
+    padding-left: 8px;
+}
+
+.pl-0 {
+    padding-left: 0px;
+}
+
+.pr-3 {
+    padding-right: 8px;
+}
+
+.pr-0 {
+    padding-right: 0px;
+}
+
+.bg-image {
+    background-image: url("https://res.cloudinary.com/dqpdqmupu/image/upload/v1729490295/mv7etblzifsyboffvmvm.png");
+    /* background-image: url("https://www.ramaeri.com/storage/app/public/images/FooterN.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.copyright-text {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+    color: #fff
+}
+
+.footer-bottom {
+    padding-top: 50px;
+    /*padding-bottom: 50px;*/
+    border-top: 0.5px solid #5f5f5f;
+}
+
+.social-icon {
+    width: 36px;
+    height: 38px;
+    background-color: #DAE5D3;
+    color: #4A6437;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.g-9 {
+    gap: 9px;
+}
+
+.g-90 {
+    padding-top: 93px;
+
+}
+
+.footer-heading {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24.15px;
+    color: #FFFFFF;
+}
+
+.footer-sub-heading {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28.8px;
+    color: rgba(255, 255, 255, 0.76);
+}
+
+
+.submit-button {
+    width: 78.38px;
+    height: 21.7px;
+    background-color: #ffffff;
+    color: #4A6437;
+    border: none;
+    padding: 5.53px 0px;
+    border-radius: 3.45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6.22px;
+    font-size: 13px;
+    position: relative;
+    overflow: hidden;
+    gap: 4px;
+}
+
+button#submit-btn:hover .submit-txt {
+    opacity: 0.5;
+}
+
+button#submit-btn:hover .icon-gap {
+    opacity: 0.5;
+}
+
+/* Spinner Styles */
+.spinner {
+    content: '';
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    position: absolute;
+    left: calc(50% - 0.75em);
+    top: calc(50% - 0.55em);
+    border: 0.15em solid #4A6437;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-anim 1.2s linear infinite;
+    opacity: 0;
+    /* Hidden by default */
+}
+
+@keyframes spinner-anim {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hide spinner and SVG icon when loading is active */
+.submit-button.loading .spinner {
+    opacity: 1;
+    /* Show spinner when loading */
+    padding: 5px 0;
+}
+
+.submit-button.loading #submit-text {
+    opacity: 0;
+    /* Hide button text when loading */
+}
+
+.submit-button.loading .icon-gap {
+    display: none;
+    /* Hide SVG icon when loading */
+}
+
+.action-btn-s {
+    background-color: #FF7F00;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.5em 1.25em;
+    color: white;
+    border-radius: 0.15em;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    display: block;
+}
+
+.action-btn-s:hover {
+    background-color: #ff6600;
+}
+
+.action-btn-s:focus {
+    outline: 0.05em dashed #ff6600;
+    outline-offset: 0.05em;
+}
+
+.action-btn-s::after {
+    content: '';
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    position: absolute;
+    left: calc(50% - 0.75em);
+    top: calc(50% - 0.75em);
+    border: 0.15em solid #ffffffbb;
+    border-right-color: white;
+    border-radius: 50%;
+    animation: button-anim 1.2s linear infinite;
+    opacity: 0;
+}
+
+@keyframes button-anim {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.action-btn-s.loading {
+    color: transparent;
+}
+
+.action-btn-s.loading::after {
+    opacity: 1;
+}
+
+.gshop-footer .form-floating input {
+    color: #738b69 !important;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    padding: 10px 40px 10px 0px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #738b69;
+    border-radius: 0;
+}
+
+.gshop-footer .form-floating label {
+    color: #738b69 !important;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    border-radius: 0;
+    padding: 0px;
+}
+
+.form-floating>.form-control:focus~label::after,
+.form-floating>.form-control:not(:placeholder-shown)~label::after,
+.form-floating>.form-control-plaintext~label::after,
+.form-floating>.form-select~label::after {
+    position: absolute;
+    inset: 1rem 7.5px;
+    z-index: -1;
+    height: 1.5em;
+    content: "";
+    background-color: transparent;
+    border-radius: var(--bs-border-radius);
+}
+
+.pb-lg-0 {
+    padding-bottom: 0px
+}
+
+.form-group {
+    --pad: .9rem;
+    position: relative;
+}
+
+.float-inputt {
+
+    background-color: transparent;
+    outline: none;
+    padding: 10px 40px 10px 0px;
+    border: none;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #738b69;
+    border-radius: 0;
+
+}
+
+.float-labell {
+    position: absolute;
+    left: 0rem;
+    top: var(--pad);
+    background: transparent;
+    padding-inline: .3em;
+    transition: transform 200ms;
+    pointer-events: none;
+    transform-origin: left;
+    translate: -.3em;
+    font-weight: 400;
+    font-size: 16px;
+    color: #878F7F;
+    line-height: 24.28px;
+}
+
+.float-inputt::placeholder {
+    opacity: 0;
+}
+
+.float-inputt:focus+.float-labell,
+.float-inputt:not(:placeholder-shown)+.float-labell {
+    transform: translateY(calc(-50% - var(--pad))) scale(.8);
+    color: #878F7F;
+}
+
+.float-inputt:focus {
+    border-bottom: 1px solid #738b69;
+}
+
+.float-labell::after {
+    content: url("https://www.ramaeri.com/storage/app/public/images/Vector 3.png");
+    /* Add the image URL */
+    display: inline-block;
+    margin-left: 7px;
+    vertical-align: middle;
+    width: 4.6px;
+    /* Adjust width if necessary */
+    height: 9.55px;
+    position: absolute;
+}
+@media (max-width: 992px) {
+    .footer-widget {
+        padding-left: 28.5px;
+        padding-right: 28.5px;
+    }
+
+    input[type="email"] {
+        width: 263px;
+    }
+
+    .pb-5 {
+        padding-bottom: 25px !important;
+    }
+}
+/* Responsive Design */
+@media (max-width: 992px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    .about-text {
+        font-size: 0.95rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .logo-section img {
+        width: 300px;
+    }
+
+    .about-section {
+        padding-bottom: 10px;
+        padding-top: 50px;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .about-text {
+        font-size: 0.9rem;
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .logo-section img {
+        width: 200px;
+    }
+
+    .image-box img {
+        border-radius: 4px;
+    }
+
+    .image-boxxes {
+        padding: 15px;
+    }
+
+    .storyheading {
+        color: #4a6437;
+        width: 100%;
+        height: 70px;
+        /* font-family: poppins; */
+        font-size: 30px;
+
+    }
+
+    .about-section {
+        padding-bottom: 10px;
+        padding-top: 50px;
+
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .about-text {
+
+        max-width: 365px;
+        margin: 0 auto;
+        padding: 20px;
+        overflow-wrap: break-word;
+        line-height: 1.6;
+        font-size: 0.85rem;
+        text-align: justify;
+
+
+
+    }
+
+
+
+
+    .image-box img {
+        width: 100%;
+    }
+
+    .logo-section img {
+        width: 300px;
+    }
+
+    .image-boxxes {
+        width: 100%;
+        height: 357px;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .about-section {
+        padding-bottom: 10px;
+
+    }
+}
+
+@media (min-width:577px) and (max-width:1024px) {
+    .about-text {
+
+        max-width: 784px;
+        margin: 0 auto;
+        padding: 20px;
+        overflow-wrap: break-word;
+        line-height: 1.6;
+        font-size: 0.85rem;
+        text-align: justify;
+
+
+
+    }
+}
+
+@media (min-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 991.98px) {
+    .gshop-header-icons {
+        gap: 15px !important ;
+        margin-right: -14px;
+    }
+    .content-wrapper{
+        padding-top: 100px;
+    }
+}

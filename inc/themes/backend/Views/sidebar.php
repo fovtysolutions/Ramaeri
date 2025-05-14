@@ -22,7 +22,7 @@ $setting = $settingdb->table('setting')->where('id', 3)->get()->getRow();
           </a>
 
           <a href="<?= base_url() ?>" class="logo-light">
-               <img src="<?php echo base_url(!empty($setting->dashboard_logo_img) ? '/writable/'.$setting->dashboard_logo_img  : 'assets/images/logo-sm.png') ?>" class="logo-sm" alt="logo sm">
+               <img src="<?php echo base_url(!empty($setting->favicon_img) ? '/writable/'.$setting->favicon_img  : 'assets/images/logo-sm.png') ?>" class="logo-sm" alt="logo sm">
                <img src="<?php echo base_url(!empty($setting->dashboard_logo_img) ? '/writable/'.$setting->dashboard_logo_img  : 'assets/images/logo-light.png') ?>" class="logo-lg" alt="logo light">
           </a>
      </div>

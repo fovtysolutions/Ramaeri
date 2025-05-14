@@ -11,7 +11,6 @@ class Home extends \CodeIgniter\Controller
         // }else{
         //     $this->template = get_option("frontend_template", "Stackblue");
         // }
-        $this->template = "Stackblue";
         $this->model = new \Core\Home\Models\HomeModel();
         $this->db = \Config\Database::connect();
         $this->email = \Config\Services::email();
@@ -29,10 +28,10 @@ class Home extends \CodeIgniter\Controller
         $data = [
             "title" => $this->config['name'],
             "desc" => $this->config['desc'],
-            "content" => view("Frontend\\".$this->template."\Views\\$pagename")
+            "content" => view("Frontend\\Views\\$pagename")
         ];
     
-        echo view("Frontend\\".$this->template."\Views\\index", $data);
+        echo view("Frontend\\Views\\index", $data);
     }
 
     public function login() {
@@ -247,10 +246,10 @@ class Home extends \CodeIgniter\Controller
         $data = [
             "title" => $this->config['name'],
             "desc" => $this->config['desc'],
-            "content" => view("Frontend\\".$this->template."\Views\\$pagename")
+            "content" => view("Frontend\\Views\\$pagename")
         ];
     
-        echo view("Frontend\\".$this->template."\Views\\index", $data);
+        echo view("Frontend\\Views\\index", $data);
     }
 
     public function forgot_check()

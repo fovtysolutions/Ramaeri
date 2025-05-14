@@ -23,7 +23,7 @@ class Products extends \CodeIgniter\Controller
             'searching'=> '',
             'filterinput'=> '',
             'filterids'=>json_encode([]),
-            'th'=>["Products name", "Categories", "	Price", "Published", "Themes"],
+            'th'=>["products name", "Categories", "	Price", "Published", "Themes"],
             'mainid'=> "get$master",
             'addbtnroute'=> "$master/add",
             'routeURL'=> "$master/get",
@@ -74,7 +74,7 @@ class Products extends \CodeIgniter\Controller
         ]);
     }
 
-    public function Productssearch()
+    public function Adminproductssearch()
     {
         $searchMain = $this->request->getVar('allData');
         if (str_contains($searchMain, 'CUS001')) {

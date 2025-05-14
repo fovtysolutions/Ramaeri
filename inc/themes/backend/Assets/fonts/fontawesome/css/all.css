@@ -18484,7 +18484,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Font Awesome 5 Pro';
   font-style: normal;
   font-weight: 900;
@@ -19052,7 +19052,7 @@ readers do not read off random characters that represent icons */
   src: url("../webfonts/pro-fa-solid-900-5.15.3.eot");
   src: url("../webfonts/pro-fa-solid-900-5.15.3.eot?#iefix") format("embedded-opentype"), url("../webfonts/pro-fa-solid-900-5.15.3.woff2") format("woff2"), url("../webfonts/pro-fa-solid-900-5.15.3.woff") format("woff"), url("../webfonts/pro-fa-solid-900-5.15.3.ttf") format("truetype"), url("../webfonts/pro-fa-solid-900-5.15.3.svg#fontawesome") format("svg");
   unicode-range: U+F5D0;
-}
+} */
 
 .fa,
 .fas {

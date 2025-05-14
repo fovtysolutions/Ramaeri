@@ -33,7 +33,6 @@ $session = session();
 $checkadmin = $session->get('isAdmin');
 
 
-$routes->get('/', 'Home::index');
 $routes->set404Override('\Core\Home\Controllers\Home::show404');
 $routes->get('adminlogin/', 'Home::adminlogin');
 $routes->get('login/', 'Home::login');
@@ -47,6 +46,18 @@ $routes->get('register', 'Home::register');
 $routes->post('register', 'Home::submitregister');
 $routes->post('singleuploader', 'Home::singleuploader');
 $routes->post('multiuploader', 'Home::multiuploader');
+
+$routes->get('/', 'Fronthome::index');
+$routes->get('pages/about-us', 'Fronthome::aboutus');
+$routes->get('all-products', 'Fronthome::productView');
+$routes->get('carts', 'Fronthome::productCartView');
+$routes->get('care', 'Fronthome::blogView');
+$routes->get('pages/contact-us', 'Fronthome::contactView');
+$routes->get('product-details', 'Fronthome::productDetailsView');
+$routes->get('personal-info', 'Fronthome::informationView');
+$routes->get('deshboard', 'Fronthome::deshboardView');
+
+
 
 $routes->group('', ['namespace' => 'Core\Auth\Controllers'], static function ($routes) {
     $routes->get('login/(:any)', 'Auth::social_login/$1');

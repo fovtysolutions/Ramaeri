@@ -1,0 +1,277 @@
+/* Reset CSS for better cross-browser consistency */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        /* font-family: 'Arial', sans-serif; */
+        background-color: #f8fff3 !important;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .about-section {
+        max-width: 1200px;
+        margin: auto;
+        padding-bottom: 10px;
+        padding-top: 50px;
+    }
+
+    h1 {
+        text-align: left;
+        color: #4a4a4a;
+        margin-bottom: 40px;
+        font-size: 2.5rem;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .image-box {
+        text-align: center;
+    }
+
+    .image-box img {
+        width: 405px;
+        height: 357px;
+        object-fit: cover;
+    }
+
+    .image-boxxes {
+        width: 405px;
+        height: 357px;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .icon img {
+        width: 110px;
+        height: 165px;
+    }
+
+    .about-text {
+        margin: 30px 0;
+        line-height: 1.8;
+        color: #000000;
+        width: 1173px;
+        /* height: 189px; */
+        /* font-family: poppins; */
+        font-size: 18px;
+    }
+
+    .about-text p {
+        margin-bottom: 20px;
+    }
+
+    .logo-section {
+        margin: 40px 0;
+        text-align: center;
+        background-image: url("https://www.ramaeri.com/storage/app/public/images/lbg.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 20px;
+        height: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-section img {
+        width: 300px;
+        height: auto;
+    }
+
+    .footer-text p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        color: #000000;
+
+    }
+
+    .footer-text {
+        width: 1172px;
+        height: 242px;
+        /* font-family: poppins; */
+        font-size: 18px;
+        font-weight: 100;
+        line-height: 27px;
+    }
+
+    /*mycode*/
+    .icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .icon img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .icon span {
+        margin-top: 8px;
+        /* Adjust the space between the image and text */
+        font-size: 29px;
+        /* Adjust the font size if needed */
+        color: #3f5931;
+        /* Change color as per your design */
+    }
+
+
+    .storyheading {
+        color: #4a6437;
+        width: 593px;
+        height: 70px;
+        /* font-family: poppins; */
+        font-size: 46px;
+        padding-left:2.2rem;
+    }
+
+    /*endmycode*/
+
+
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .image-grid {
+            grid-template-columns: repeat(3, 1fr);
+
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .logo-section img {
+            width: 300px;
+        }
+        .about-section {
+    padding-bottom: 10px;
+    padding-top: 50px;
+
+}
+    }
+
+    @media (max-width: 768px) {
+        .image-grid {
+            grid-template-columns: 1fr;
+          
+        }
+    
+
+        .about-text {
+            font-size: 0.9rem;
+            padding: 0 15px;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        .logo-section img {
+            width: 200px;
+        }
+
+        .image-box img {
+            border-radius: 4px;
+        }
+
+        .image-boxxes {
+            padding: 15px;
+        }
+
+        .storyheading {
+            color: #4a6437;
+            width: 100%;
+            height: 70px;
+            /* font-family: poppins; */
+            font-size: 30px;
+            
+        }
+        .about-section {
+    padding-bottom: 10px;
+    padding-top: 100px;
+
+}
+    }
+
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .about-text {
+           
+           max-width: 365px;      
+           margin: 0 auto;           
+           padding: 20px;             
+           overflow-wrap: break-word; 
+           line-height: 1.6;     
+           font-size: 0.85rem;
+           text-align: justify;
+          
+           
+             
+       }
+        .image-box img {
+            width: 100%;
+        }
+
+        .logo-section img {
+            width: 300px;
+        }
+
+        .image-boxxes {
+        width: 100%;
+        height: 357px;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+        .about-section {
+    padding-bottom: 10px;
+
+}
+    }
+    @media (min-width:577px) and (max-width:1024px){
+        .about-text {
+           
+           max-width: 784px;      
+           margin: 0 auto;           
+           padding: 20px;             
+           overflow-wrap: break-word; 
+           line-height: 1.6;     
+           font-size: 0.85rem;
+           text-align: justify;
+          
+           
+             
+       }
+    }
+    @media (min-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -6132,7 +6132,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
   font-weight: 900;
@@ -6148,7 +6148,7 @@ readers do not read off random characters that represent icons */
   font-display: block;
   src: url("../webfonts/free-fa-solid-900.eot");
   src: url("../webfonts/free-fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/free-fa-solid-900.woff2") format("woff2"), url("../webfonts/free-fa-solid-900.woff") format("woff"), url("../webfonts/free-fa-solid-900.ttf") format("truetype"), url("../webfonts/free-fa-solid-900.svg#fontawesome") format("svg");
-}
+} */
 
 .fa,
 .fas {

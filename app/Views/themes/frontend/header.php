@@ -3086,7 +3086,6 @@
     <script src="themes/frontend/js/vendor/jquery-ui.min.js"></script>
     <script src="themes/frontend/js/vendor/jquery.barrating.min.js"></script>
     <script src="themes/frontend/js/vendor/jquery.countdown.min.js"></script>
-    <script src="themes/frontend/js/vendor/jquery.counterup.min.js"></script>
     <script src="themes/frontend/js/vendor/jquery.easing1.3.js"></script>
     <script src="themes/frontend/js/vendor/owl.carousel.min.js"></script>
     <script src="themes/frontend/js/vendor/slick.min.js"></script>

@@ -202,14 +202,13 @@
                     </div>
 
                     <!-- App Search-->
-                    <div class="search-input-wrapper d-flex align-items-center"
+                    <div class="topbar-item ">
+                         <div class="search-input-wrapper d-flex align-items-center"
                          style="width: 250px; position: relative;">
-                         <iconify-icon icon="solar:magnifer-linear" style="   position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%); color: #6c757d;pointer-events: none;"></iconify-icon>
+                         <iconify-icon icon="solar:magnifer-linear" style="position: absolute; top: 50%; left: 10px;transform: translateY(-50%); color: #6c757d;pointer-events: none;"></iconify-icon>
                          <input type="text" class="form-control" placeholder="Search"
                               style=" padding-left: 2rem; border-radius: 10px;">
+                    </div>
                     </div>
                </div>
           </div>
