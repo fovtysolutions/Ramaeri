@@ -10,7 +10,8 @@
             </div>
             <div class="image-boxxes">
                 <div class="icon">
-                    <img src="https://www.ramaeri.com/storage/app/public/images/self-love.png" alt="Self Love" />
+                 <img src="https://www.ramaeri.com/storage/app/public/images/self-loveee.png" alt="Icon" />
+                    <span>Self Love</span>
                 </div>
             </div>
             <div class="image-box">
@@ -60,7 +61,7 @@
             </p>
         </div>
     </div>
-    <section>
+    <section class="container-fluid">
         <div class="container" style="max-width: 100%;">
             <div class="logo-section">
                 <img src="https://www.ramaeri.com/public/images/ramaeri-log-unscreen.gif" alt="Brand Logo"

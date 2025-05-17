@@ -48,5 +48,5 @@
 </div>
 <?php echo $this->section('script') ?>
 <?php echo view('common_script/imageorfileupload', ['imageids'=>'imagename','input'=>'product-name','filetype'=>'image']); ?>
-<?php _ec($this->include('Core\Products\Views\submitit'), false) ?>
+<?php _ec($this->include('Core\Banners\Views\submitit'), false) ?>
 <?php echo $this->endSection() ?>

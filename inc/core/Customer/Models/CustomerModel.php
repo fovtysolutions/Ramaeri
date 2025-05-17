@@ -19,7 +19,7 @@ class CustomerModel extends Model
 
     public function getSearchAll($searchMain = null)
     {
-        $builder = $this->db->table('hotel_booking_clients')->where('admin_uid', $this->session->get('uid'));
+        $builder = $this->db->table('customers');
 
         if (is_array($searchMain)) {
             $builder->groupStart(); 
@@ -37,21 +37,22 @@ class CustomerModel extends Model
         if (!empty($searchMain)) {
             $builder->groupStart()
                 ->like('id', $searchMain)
-                ->orlike('c_name', $searchMain)
-                ->orlike('c_email', $searchMain)
-                ->orlike('c_phone', $searchMain)
-                ->orLike('c_email', $searchMain)
-                ->orLike('c_address', $searchMain)
-                ->orLike('c_country', $searchMain)
-                ->orLike('c_state', $searchMain)
-                ->orLike('c_city', $searchMain)
+                ->orlike('name', $searchMain)
+                ->orlike('price', $searchMain)
+                ->orLike('short_description', $searchMain)
+                ->orLike('description', $searchMain)
+                ->orLike('weight', $searchMain)
+                ->orLike('brand', $searchMain)
+                ->orLike('discount', $searchMain)
+                ->orLike('sub_price', $searchMain)
+                ->orLike('image', $searchMain)
                 ->groupEnd();
         }
         return $builder;
     }
 
     public function getById($id){
-        $query = $this->db->table('hotel_booking_clients')->where('id', $id)->get();
+        $query = $this->db->table('customers')->where('id', $id)->get();
         return $query->getRow(); 
     }
 
@@ -60,16 +61,16 @@ class CustomerModel extends Model
         if (!is_numeric($id)) {
             return $id; 
         }
-        return $this->db->table('hotel_booking_clients')->where('id', $id)->update($data);
+        return $this->db->table('customers')->where('id', $id)->update($data);
     }
 
     public function insertit($data)
     {
-        return $this->db->table('hotel_booking_clients')->insert($data);
+        return $this->db->table('customers')->insert($data);
     }
 
     public function deleteit($id)
     {
-        return $this->db->table('hotel_booking_clients')->where('id', $id)->delete();
+        return $this->db->table('customers')->where('id', $id)->delete();
     }
 }

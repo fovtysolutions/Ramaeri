@@ -23,13 +23,13 @@ class Customer extends \CodeIgniter\Controller
             'searching'=> '',
             'filterinput'=> '',
             'filterids'=>json_encode([]),
-            'th'=>["Customer name", "Email", "Phone", "State", "City", "Country"],
+            'th'=>["Name", "Email"],
             'mainid'=> "get$master",
             'addbtnroute'=> "$master/add",
             'routeURL'=> "$master/get",
             'editroute'=> "/$master/edit/",
             'deleteURL'=> "$master/deleteit",
-            'td'=>json_encode(["c_name","c_email","c_phone","c_state","c_city","c_country"]),
+            'td'=>json_encode(["customer_name","email"]),
         ];
         $data = [
             "title" => $this->config['name'],
@@ -47,16 +47,16 @@ class Customer extends \CodeIgniter\Controller
         $searchMain = $this->request->getVar('allData');
         $offset = $this->request->getVar('page'); 
 
-        $builder = $this->model->getSearchAll($searchMain);
         
-        $totalRows = $builder->countAllResults(false); 
-        $builder->orderBy('id', 'ASC')->offset($offset)->limit($limit);
-        
-        $data = $builder->get()->getResultArray();
+      $builder = $this->model->getSearchAll($searchMain);
 
+        $totalRows = $builder->countAllResults(false);
+        $builder->orderBy('id', 'ASC')->offset($offset)->limit($limit);
+
+        $data = $builder->get()->getResultArray();
         $pagination = new PeginationController([
            'baseURL' => base_url('assets/include/getPeginationData.php'),
-           'totalRows' => $totalRows,
+        //    'totalRows' => $totalRows,
            'perPage' => $limit,
            'currentPage' => $offset,
            'contentDiv' => 'normal',

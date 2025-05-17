@@ -31,6 +31,8 @@
         <?php _ec($this->include('Frontend\Views\login'), false) ?>
         <?php _ec($this->include('Frontend\Views\register'), false) ?>
         <?php _ec($this->include('Frontend\Views\forgot'), false) ?>
+        <?php _ec($this->include('Frontend\Views\login'), false) ?>
+        <?php _ec($this->include('Frontend\Views\thanks'), false) ?>
         <?= $content ?>
         <?php _ec($this->include('Frontend\Views\footer'), false) ?>
     </div>

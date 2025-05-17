@@ -63,14 +63,14 @@
                          -->
                             <li><a class="footer-sub-heading click-effectssss" href="./Deshboard.html">Track your
                                     order</a></li>
-                            <li><a class="footer-sub-heading click-effectssss" href="./About.html">About Us</a></li>
-                            <li><a class="footer-sub-heading click-effectssss" href="./Contact.html">Contact Us</a></li>
-                            <li><a class="footer-sub-heading click-effectssss" href="./Privacy.html">Privacy &amp;
+                            <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/about-us') ?>">About Us</a></li>
+                            <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/contact-us') ?>">Contact Us</a></li>
+                            <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/privacy-policy') ?>">Privacy &amp;
                                     Policy</a></li>
-                            <li><a class="footer-sub-heading click-effectssss" href="./Terms.html">Terms &amp;
+                            <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/terms-condition') ?>">Terms &amp;
                                     Condition</a></li>
 
-                            <li><a class="footer-sub-heading click-effectssss" href="./Refund.html">Return Policy</a>
+                            <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/return-policy') ?>">Return Policy</a>
                             </li>
 
                         </ul>
@@ -80,75 +80,18 @@
                     <div class="footer-widget">
                         <h5 class="footer-heading mb-4">Shop</h5>
 
-                        <ul class="">
-
-                            <form action="https://www.ramaeri.com/products/form/submission" method='POST'
-                                id="category_itm3">
+                        < class="">
                                 <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
                                     autocomplete="off"> <input type="hidden" id="cat_i3" name="catId" value="3">
                                 <input type="hidden" id="slug3" name="slug" value="Face-Wash">
-                            </form>
-                            <li>
-                                <!--<a class="footer-sub-heading"-->
-                                <!--    onclick="location.href = 'https://www.ramaeri.com/products/face-wash-6vgqn'"-->
-                                <!--    style=" cursor:pointer;">Face Wash</a>-->
-
-
+                                <?php foreach ($productdata['category_details'] as $key => $value) { ?>
+                                     <li>
                                 <a class="footer-sub-heading click-effectssss" target="_blank"
-                                    href="./productDetails.html" onclick="onClickCategory3(event)"
-                                    style=" cursor:pointer;" data-category="3" data-slug="Face Wash">Face Wash</a>
+                                    href="<?php echo base_url('./category'). '/' ?>" onclick="onClickCategory3(event)"
+                                    style=" cursor:pointer;" data-category="3" data-slug="Face Wash"><?php echo $value->name ?></a>
                             </li>
-                            <form action="https://www.ramaeri.com/products/form/submission" method='POST'
-                                id="category_itm4">
-                                <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                                    autocomplete="off"> <input type="hidden" id="cat_i4" name="catId" value="4">
-                                <input type="hidden" id="slug4" name="slug" value="Face-Serum">
-                            </form>
-                            <li>
-                                <!--<a class="footer-sub-heading"-->
-                                <!--    onclick="location.href = 'https://www.ramaeri.com/products/face-serum-ju4fy'"-->
-                                <!--    style=" cursor:pointer;">Face Serum</a>-->
-
-
-                                <a class="footer-sub-heading click-effectssss" target="_blank" href="./Products.html"
-                                    onclick="onClickCategory3(event)" style=" cursor:pointer;" data-category="4"
-                                    data-slug="Face Serum">Face Serum</a>
-                            </li>
-                            <form action="https://www.ramaeri.com/products/form/submission" method='POST'
-                                id="category_itm5">
-                                <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                                    autocomplete="off"> <input type="hidden" id="cat_i5" name="catId" value="5">
-                                <input type="hidden" id="slug5" name="slug" value="Face-Moisturizer">
-                            </form>
-                            <li>
-                                <!--<a class="footer-sub-heading"-->
-                                <!--    onclick="location.href = 'https://www.ramaeri.com/products/face-moisturizer-pqcg0'"-->
-                                <!--    style=" cursor:pointer;">Face Moisturizer</a>-->
-
-
-                                <a class="footer-sub-heading click-effectssss" target="_blank" href="./Products.html"
-                                    onclick="onClickCategory3(event)" style=" cursor:pointer;" data-category="5"
-                                    data-slug="Face Moisturizer">Face Moisturizer</a>
-                            </li>
-                            <form action="https://www.ramaeri.com/products/form/submission" method='POST'
-                                id="category_itm6">
-                                <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                                    autocomplete="off"> <input type="hidden" id="cat_i6" name="catId" value="6">
-                                <input type="hidden" id="slug6" name="slug" value="Face-Mist">
-                            </form>
-                            <li>
-                                <!--<a class="footer-sub-heading"-->
-                                <!--    onclick="location.href = 'https://www.ramaeri.com/products/face-mist-cmksi'"-->
-                                <!--    style=" cursor:pointer;">Face Mist</a>-->
-
-
-                                <a class="footer-sub-heading click-effectssss" target="_blank" href="./Products.html"
-                                    onclick="onClickCategory3(event)" style=" cursor:pointer;" data-category="6"
-                                    data-slug="Face Mist">Face Mist</a>
-                            </li>
-
-
-                            <!-- <li><a class="footer-sub-heading" href="https://www.ramaeri.com/customer-profile">Update Profile</a></li> -->
+                               <?php  } ?>
+                           
                         </ul>
                     </div>
                 </div>
@@ -195,7 +138,7 @@
                     <div class="col-lg-7 pr-0 pl-0 order-2 order-lg-1 pb-5 pb-lg-0">
                         <div class="logo-wrapper text-center d-flex align-items-center">
                             <div>
-                                <a href="./Home.html" class="logo"><img
+                                <a href="<?php echo base_url() ?>" class="logo"><img
                                         src="https://www.ramaeri.com/storage/app/public/images/Ramaerifooterlogo-svg"
                                         alt="footer logo" class="img-fluid" style="width: 124px;"></a>
                             </div>

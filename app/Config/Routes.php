@@ -49,13 +49,24 @@ $routes->post('multiuploader', 'Home::multiuploader');
 
 $routes->get('/', 'Fronthome::index');
 $routes->get('pages/about-us', 'Fronthome::aboutus');
-$routes->get('all-products', 'Fronthome::productView');
+$routes->get('products', 'Fronthome::productView');
 $routes->get('carts', 'Fronthome::productCartView');
 $routes->get('care', 'Fronthome::blogView');
+$routes->get('care/(:any)', 'Fronthome::recentView/$1');
 $routes->get('pages/contact-us', 'Fronthome::contactView');
-$routes->get('product-details', 'Fronthome::productDetailsView');
+$routes->get('products/(:any)', 'Fronthome::productDetailsView/$1');
 $routes->get('personal-info', 'Fronthome::informationView');
 $routes->get('deshboard', 'Fronthome::deshboardView');
+$routes->get('order', 'Fronthome::orderView');
+$routes->get('offer', 'Fronthome::offerView');
+$routes->get('pages/privacy-policy', 'Fronthome::privacyView');
+$routes->get('pages/return-policy', 'Fronthome::refundView');
+$routes->get('pages/terms-condition', 'Fronthome::termView');
+$routes->get('category/(:any)', 'Fronthome::categoryView/$1');
+
+// $routes->get('recent', 'Fronthome::recentView');
+$routes->get('notfound', 'Fronthome::nofoundpageView');
+$routes->get('thank', 'Fronthome::thankView');
 
 
 

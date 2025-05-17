@@ -104,5 +104,5 @@
 
 </div>
 <?php echo $this->section('script') ?>
-<?php _ec($this->include('Core\Products\Views\frontjavascript'), false) ?>
+<?php _ec($this->include('Core\AllProducts\Views\frontjavascript'), false) ?>
 <?php echo $this->endSection() ?>

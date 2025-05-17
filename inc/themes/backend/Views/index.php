@@ -22,7 +22,6 @@ $useradmin = $session->get();
 
     <!-- Icons css (Require in all Page) -->
     <link href="<?php echo base_url('assets/css/icons.min.css'); ?>" rel="stylesheet" type="text/css" />
-
     <!-- App css (Require in all Page) -->
     <link href="<?php echo base_url('assets/css/app.min.css'); ?>" rel="stylesheet" type="text/css" />
     <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
@@ -78,56 +77,7 @@ $useradmin = $session->get();
     <?php _ec($this->renderSection('script'), false) ?>
     <?php _ec($this->include('Backend\Views\toster'), false) ?>
     <?php _ec($this->include('Backend\Views\script'), false) ?>
-    <script>
-        $("#editor").each(function (el) {
-            var $this = $(this);
-            var buttons = $this.data("buttons");
-            var minHeight = $this.data("min-height");
-            var placeholder = $this.attr("placeholder");
-            var format = $this.data("format");
-
-            buttons = !buttons ? [
-                ["font", ["bold", "underline", "italic", "clear"]],
-                ['fontname', ['fontname']],
-                ["para", ["ul", "ol", "paragraph"]],
-                ["style", ["style"]],
-                ['fontsize', ['fontsize']],
-                ["color", ["color"]],
-                ["insert", ["link", "picture", "video"]],
-                ["view", ["undo", "redo"]],
-            ] :
-                buttons;
-            placeholder = !placeholder ? "" : placeholder;
-            minHeight = !minHeight ? 150 : minHeight;
-            format = typeof format == "undefined" ? false : format;
-
-            $this.summernote({
-                toolbar: buttons,
-                placeholder: placeholder,
-                height: minHeight,
-                codeviewFilter: false,
-                codeviewIframeFilter: true,
-                disableDragAndDrop: true,
-                callbacks: {
-
-                },
-            });
-
-            var nativeHtmlBuilderFunc = $this.summernote(
-                "module",
-                "videoDialog"
-            ).createVideoNode;
-
-            $this.summernote("module", "videoDialog").createVideoNode = function (url) {
-                var wrap = $(
-                    '<div class="embed-responsive embed-responsive-16by9"></div>'
-                );
-                var html = nativeHtmlBuilderFunc(url);
-                html = $(html).addClass("embed-responsive-item");
-                return wrap.append(html)[0];
-            };
-        });
-    </script>
+   
     <script src="<?=base_url("source/js/pages/ecommerce-product-details.js")?>"></script>
 </body>
 

@@ -18,6 +18,14 @@
     </div>
 </div>
 
+
+<?php // print_r($productdata['banner']) ?>
+<?php // foreach ($productdata['banner'] as $key => $value) { ?>
+<!-- <img src="<?php // echo base_url('./writable'). '/' .$value->home_image ?>" alt="fire icon" >-->
+           
+<?php // } ?>
+
+
 <section class="categories-section pt-5 pb-lg-5 pb-5" id="featured-products-customs">
     <div class="tab-section1">
         <img src="https://www.ramaeri.com/storage/app/public/images/newleaf.png" alt="fire icon"
@@ -27,534 +35,61 @@
     <div class="container p-container">
         <div class="slider" data-slider>
             <ul class="slider__track" data-slider-track>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Grape Glow Facewash" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
+                <?php foreach ($productdata['product_details'] as $key => $value) { ?>
+                    <li id="slide_truck_list">
+                        <div>
+                            <a href="<?php echo base_url('products').'/'.$value->id ?>" class="slide"
+                                style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
+                                <div class="rating-wrapper  text_overlay_content">
+                                    <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
+                                        alt="Grape Glow Facewash" class="desktop-star">
+                                    <span class="mobile-star2"></span>(<?php echo $value->rating ?>)</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
+                                        class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                    </svg>
+                                    <span class="mobile-star">(4.5)</span>
+                                </div>
+                            </a>
+
+
+                            <a href="./Products.html" style="all: unset;">
+                                <h4 class="slide-heading"
+                                    style="cursor:pointer; text-align:left;font-size: 20px !important;"><?php echo $value->name ?>
+                                </h4>
+                            </a>
+
+                            <div class="slide-sub-heading">
+                                <div class="col-9 discription_update">
+                                    <span class="font-for-mobile"
+                                        stye="font-weight:400;line-height:19.5px;color:#666666"><?php echo $value->short_description ?></span>
+                                </div>
+                                <div class="price_argest col-3" style="text-align:right">
+                                    <span class="rupee-icon">₹</span>
+                                    <span class="priceings"></span><?php echo $value->price ?></span>
+
+                                </div>
                             </div>
-                        </a>
 
+                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
+                                autocomplete="off">
+                            <form action="https://www.ramaeri.com/add-to-cart" method="POST"
+                                class="direct-add-to-cart-form">
+                                <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
+                                <input type="hidden" name="product_variation_id" value="33">
+                                <input type="hidden" value="1" name="quantity">
 
-                        <a href="./Products.html" style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Grape Glow Facewash
-                            </h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
+                                <button href="javascript:void(0);" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"
+                                    class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
+                                    Add to Cart &nbsp;
+                                    <!--<img src="https://www.ramaeri.com/storage/app/public/images/Component1.png" alt="Arrow Icon" class="btn-arrow">-->
+                                </button>
+                            </form>
                         </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="33">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                                <!--<img src="https://www.ramaeri.com/storage/app/public/images/Component1.png" alt="Arrow Icon" class="btn-arrow">-->
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Vital Glow Face Mist" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/vital-glow-face-mist" style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Vital Glow Face Mist
-                            </h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="46">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Pore Refine Face Serum" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/pore-refine-face-serum" style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Pore Refine Face
-                                Serum</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="45">
-                            <input type="hidden" value="1"  name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Lumina Face Retinol Oil" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/lumina-face-retinol-oil" style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Lumina Face Retinol
-                                Oil</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="48">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Butter Block Sunscreen SPF 50" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/butter-block-sunscreen-spf-50" style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Butter Block
-                                Sunscreen SPF 50</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="47">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Sea Hydration Face Moisturiser" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/ramaeri-sea-hydration-face-moisturiser"
-                            style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Sea Hydration Face
-                                Moisturiser</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="35">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="./Products.html" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Blue Tea Antiox Foaming Facewash" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/ramaeri-blue-tea-antiox-foaming-facewash"
-                            style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Blue Tea Antiox
-                                Foaming Facewash</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="34">
-                            <input type="hidden" value="1"  name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="https://www.ramaeri.com/products/ramaeri-sun-coco-spf-50-sunscreen" class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Ramaeri Sun Coco SPF 50 Sunscreen" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/ramaeri-sun-coco-spf-50-sunscreen"
-                            style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Ramaeri Sun Coco SPF
-                                50 Sunscreen</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="36">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="https://www.ramaeri.com/products/combo-offer-blue-tea-antiof-foaming-facewash"
-                            class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Combo Offer Blue Tea Antiof Foaming Facewash" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/combo-offer-blue-tea-antiof-foaming-facewash"
-                            style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Combo Offer Blue Tea
-                                Antiof Foaming Facewash</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS.</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="50">
-                            <input type="hidden" value="1" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
-                <li id="slide_truck_list">
-                    <div>
-                        <a href="https://www.ramaeri.com/products/combo-offer-blue-tea-antiox-foaming-facewash"
-                            class="slide"
-                            style="position:relative; cursor:pointer; background-image: url('https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png')">
-                            <div class="rating-wrapper  text_overlay_content">
-                                <img src="https://www.ramaeri.com/storage/app/public/images/rating4.5.png"
-                                    alt="Combo offer - Blue Tea Antiox Foaming Facewash" class="desktop-star">
-                                <span class="mobile-star2">(4.5)</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EBA633"
-                                    class="bi bi-star-half mobile-star" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
-                                </svg>
-                                <span class="mobile-star">(4.5)</span>
-                            </div>
-                        </a>
-
-
-                        <a href="https://www.ramaeri.com/products/combo-offer-blue-tea-antiox-foaming-facewash"
-                            style="all: unset;">
-                            <h4 class="slide-heading"
-                                style="cursor:pointer; text-align:left;font-size: 20px !important;">Combo offer - Blue
-                                Tea Antiox Foaming Facewash</h4>
-                        </a>
-
-                        <div class="slide-sub-heading">
-                            <div class="col-9 discription_update">
-                                <span class="font-for-mobile"
-                                    stye="font-weight:400;line-height:19.5px;color:#666666">57% BRIGHTER SKIN IN 2
-                                    WEEKS</span>
-                            </div>
-                            <div class="price_argest col-3" style="text-align:right">
-                                <span class="rupee-icon">₹</span>
-                                <span class="priceings">1,300.00</span>
-
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
-                            autocomplete="off">
-                        <form action="https://www.ramaeri.com/add-to-cart" method="POST"
-                            class="direct-add-to-cart-form">
-                            <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed">
-                            <input type="hidden" name="product_variation_id" value="49">
-                            <input type="hidden" value="1" id="hiddenInput" name="quantity">
-
-                            <button href="javascript:void(0);" type="submit" onclick="directAddToCartFormSubmit(this)"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
-                            </button>
-                        </form>
-                    </div>
-                </li>
+                    </li>
+                <?php } ?>
             </ul>
             <div class="slider__buttons text-center">
                 <button class="slider__button left" data-slider-prev disabled> </button>
@@ -595,12 +130,10 @@
     <div class="container">
         <div class="row gap-mobile">
 
-            <div class="col-lg-6 col-12 d-lg-none d-sm-inline-block">
-                <a style="all:unset;cursor:pointer" href="./Products.html">
-                    <form action="https://www.ramaeri.com/category/Face-Wash/products" method='POST' id="categorymain3">
+         <div class="col-lg-6 col-12 d-lg-none d-sm-inline-block">
+                <a style="all:unset;cursor:pointer" href="<?php echo base_url('products') ?>">
                         <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
                             autocomplete="off"> <input type="hidden" id="cats" name="catId" value="3">
-                    </form>
                     <div onclick="onClickCategory(event)" class="box1" data-category="3" data-slug="Face Wash"
                         style="position:relative;">
                         <figure> <img
@@ -612,21 +145,21 @@
                                     alt="Face Wash" class="d-block d-lg-none  img_hee " style="width: 100%;"></figure>
                         </div>
                         <div class="content-lg mob_c" style="position:absolute;">
+                            <a style="all:unset;cursor:pointer" href="<?php echo base_url('products') ?>">
                             <h2 class="face-wash-heading mb-5">All Product</h2>
                             <span class="play-btn2"></span>
+                            </a>
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> 
             <div class="col-lg-6 col-12 d-lg-flex d-none">
-                <form action="https://www.ramaeri.com/category/Face-Wash/products" method='POST' id="">
                     <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
                         autocomplete="off"> <input type="hidden" id="cat" name="catId" value="3">
-                </form>
-                <div onclick="onClickCategory(event)" class="box1" data-category="3" data-slug="Face Wash"
+                <div class="box1" data-category="3" data-slug="Face Wash"
                     style="position:relative;">
                     <figure> <img
-                            src="https://www.ramaeri.com/public/uploads/media/BbYIC2kJyJJ6hD3CptZuDwWOOKSz8Sk6FGirymfl.png"
+                            src="<?php echo base_url('/writable'). '/',$productdata['category_first_details']->image ?>"
                             alt="" class="d-none d-lg-block f-img-1 "></figure>
                     <div style="padding-left:5px">
                         <figure class="mob_fig"> <img
@@ -634,8 +167,8 @@
                                 alt="" class="d-block d-lg-none  img_hee " style="width: 100%;"></figure>
                     </div>
                     <div class="content-lg mob_c" style="position:absolute;">
-                        <a style="all:unset;cursor:pointer" href="./Products.html">
-                            <h2 class="face-wash-heading mb-5">Face Wash</h2>
+                        <a style="all:unset;cursor:pointer" href="<?php echo base_url('./category/'.$productdata['category_first_details']->id)?>">
+                            <h2 class="face-wash-heading mb-5"><?php echo $productdata['category_first_details']->name ?></h2>
                             <span class="play-btn2"></span>
                         </a>
                     </div>
@@ -643,192 +176,46 @@
             </div>
             <div class="col-lg-6">
                 <div class="row serum-gap">
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="6"
+                    <?php foreach ($productdata['category_details']  as $key => $value) { ?>
+                    <div class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="6"
                         data-slug="Face Mist" style="position:relative;">
-                        <!--<form action="https://www.ramaeri.com/category/Face-Mist/products" method='POST' id="categorymain6"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="6">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/face-mist-cmksi'" class="col-6 col-lg-6 box1">-->
                         <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png"
+                                src="<?php echo base_url('./writable'). '/' .$value->image ?>"
                                 alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png" alt="" class="d-none d-lg-block"></figure>-->
                         <figure><img
                                 src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png"
                                 alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
                         <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer" href="./Products.html">
-                                <h2 class="face-wash-heading mb-5">Face Mist</h2>
+                            <a style="all:unset;cursor:pointer" href="<?php echo base_url('./category/'.$value->id)?>">
+                                <h2 class="face-wash-heading mb-5"><?php echo $value->name ?></h2>
                                 <button class="play-btn"></button>
                             </a>
                         </div>
                     </div>
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="5"
-                        data-slug="Face Moisturizer" style="position:relative;">
-                        <!--<form action="https://www.ramaeri.com/category/Face-Moisturizer/products" method='POST' id="categorymain5"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="5">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/face-moisturizer-pqcg0'" class="col-6 col-lg-6 box1">-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/fkaWW7GzRes33V9opMCgbx0rHXo3VhPVmZi5DBfP.png"
-                                alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/fkaWW7GzRes33V9opMCgbx0rHXo3VhPVmZi5DBfP.png" alt="" class="d-none d-lg-block"></figure>-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/fkaWW7GzRes33V9opMCgbx0rHXo3VhPVmZi5DBfP.png"
-                                alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
-                        <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer"
-                                href="https://www.ramaeri.com/category/Face-Moisturizer/products">
-                                <h2 class="face-wash-heading mb-5">Face Moisturizer</h2>
-                                <button class="play-btn"></button>
-                            </a>
-                        </div>
-                    </div>
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="4"
-                        data-slug="Face Serum" style="position:relative;">
-                        <!--<form action="https://www.ramaeri.com/category/Face-Serum/products" method='POST' id="categorymain4"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="4">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/face-serum-ju4fy'" class="col-6 col-lg-6 box1">-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/w6AzW27IObcMiXUXK2KOF3kO00QaPyacIIOK5oUk.png"
-                                alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/w6AzW27IObcMiXUXK2KOF3kO00QaPyacIIOK5oUk.png" alt="" class="d-none d-lg-block"></figure>-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/w6AzW27IObcMiXUXK2KOF3kO00QaPyacIIOK5oUk.png"
-                                alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
-                        <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer"
-                                href="https://www.ramaeri.com/category/Face-Serum/products">
-                                <h2 class="face-wash-heading mb-5">Face Serum</h2>
-                                <button class="play-btn"></button>
-                            </a>
-                        </div>
-                    </div>
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-none d-sm-inline-block"
-                        data-category="6" data-slug="Face Mist" style="position:relative;">
-                        <!--<form action="https://www.ramaeri.com/category/Face-Mist/products" method='POST' id="categorymain6"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="6">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/face-mist-cmksi'" class="col-6 col-lg-6 box1">-->
+                    <?php } ?>
+                    <div class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="6"
+                        data-slug="Face Mist" style="position:relative;">
                         <figure><img
                                 src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png"
                                 alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png" alt="" class="d-none d-lg-block"></figure>-->
                         <figure><img
                                 src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png"
                                 alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
                         <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer"
-                                href="https://www.ramaeri.com/category/Face-Mist/products">
-                                <h2 class="face-wash-heading mb-5">Face Mist</h2>
-                                <button class="play-btn"></button>
-                            </a>
-                        </div>
-                    </div>
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-none d-sm-inline-block"
-                        data-category="5" data-slug="Face Moisturizer" style="position:relative;">
-                        <!--<form action="https://www.ramaeri.com/category/Face-Moisturizer/products" method='POST' id="categorymain5"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="5">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/face-moisturizer-pqcg0'" class="col-6 col-lg-6 box1">-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/fkaWW7GzRes33V9opMCgbx0rHXo3VhPVmZi5DBfP.png"
-                                alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/fkaWW7GzRes33V9opMCgbx0rHXo3VhPVmZi5DBfP.png" alt="" class="d-none d-lg-block"></figure>-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/fkaWW7GzRes33V9opMCgbx0rHXo3VhPVmZi5DBfP.png"
-                                alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
-                        <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer"
-                                href="https://www.ramaeri.com/category/Face-Moisturizer/products">
-                                <h2 class="face-wash-heading mb-5">Face Moisturizer</h2>
-                                <button class="play-btn"></button>
-                            </a>
-                        </div>
-                    </div>
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-none d-sm-inline-block"
-                        data-category="4" data-slug="Face Serum" style="position:relative;">
-                        <!--<form action="https://www.ramaeri.com/category/Face-Serum/products" method='POST' id="categorymain4"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="4">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/face-serum-ju4fy'" class="col-6 col-lg-6 box1">-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/w6AzW27IObcMiXUXK2KOF3kO00QaPyacIIOK5oUk.png"
-                                alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/w6AzW27IObcMiXUXK2KOF3kO00QaPyacIIOK5oUk.png" alt="" class="d-none d-lg-block"></figure>-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/w6AzW27IObcMiXUXK2KOF3kO00QaPyacIIOK5oUk.png"
-                                alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
-                        <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer"
-                                href="https://www.ramaeri.com/category/Face-Serum/products">
-                                <h2 class="face-wash-heading mb-5">Face Serum</h2>
-                                <button class="play-btn"></button>
-                            </a>
-                        </div>
-                    </div>
-                    <div onclick="onClickCategory(event)" class="col-6 col-lg-6 box1 d-lg-none d-sm-inline-block"
-                        data-category="3" data-slug="Face Wash" style="position:relative;">
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/BbYIC2kJyJJ6hD3CptZuDwWOOKSz8Sk6FGirymfl.png"
-                                alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/BbYIC2kJyJJ6hD3CptZuDwWOOKSz8Sk6FGirymfl.png"
-                                alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
-                        <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer"
-                                href="https://www.ramaeri.com/category/Face-Wash/products">
-                                <h2 class="face-wash-heading mb-5">Face Wash</h2>
-                                <button class="play-btn"></button>
-                            </a>
-                        </div>
-                    </div>
-                    <!--added code-->
-                    <div class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="7" data-slug="All Products"
-                        style="position:relative;">
-                        <!--<form action="#" method='POST' id="categorymain7"> -->
-                        <!--    <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">-->
-                        <!--    <input type="hidden" id="cat" name="catId" value="7">-->
-                        <!--</form>-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products'" class="col-6 col-lg-6 box1">-->
-                        <!--<div onclick="location.href = 'https://www.ramaeri.com/products/all-products-7KDsP'" class="col-6 col-lg-6 box1">-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png"
-                                alt="" class="d-none d-lg-block f-img-2"></figure>
-                        <!--<figure><img src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png" alt="" class="d-none d-lg-block"></figure>-->
-                        <figure><img
-                                src="https://www.ramaeri.com/public/uploads/media/Y3tOFqjyA3iXJQ1ZO5dwykYWVI5sw5zIwjMfzhLc.png"
-                                alt="" class="d-block d-lg-none" style="width: 100%;"></figure>
-                        <div class="content-sm" style="position:absolute;">
-                            <a style="all:unset;cursor:pointer" href="https://www.ramaeri.com/products">
+                            <a style="all:unset;cursor:pointer" href="<?php echo base_url('products') ?>">
                                 <h2 class="face-wash-heading mb-5">All Products</h2>
                                 <button class="play-btn"></button>
                             </a>
                         </div>
                     </div>
-
-                    <!--addedcodeend-->
                 </div>
             </div>
         </div>
     </div>
 </section>
+</div>
 
-<?php //_ec($this->include('Frontend\Views\video'), false) ?>
-
+<?php // _ec($this->include('Frontend\Views\video'), false) ?>
 <section class="categories-section pb-10">
 
     <div class="tab-section1" style="padding-bottom:15px">
@@ -945,36 +332,28 @@
     </div>
 
     <div class="blog-container">
+            <?php  foreach ($productdata['blog']  as $key => $value) { ?>
         <a href="#">
+
             <div class="column image-columns">
-                <img src="https://www.ramaeri.com/public/extcontent/images/blog/1746277336skin protection.webp"
-                    alt="Hydration vs Moisturization What&#039;s the Difference and Why Does It Matter"
-                    class="blog-image">
-                <span class="text_overlay_contents">Life Style</span>
-                <h3 class="blog-image-heading">Hydration vs Moisturization What&#039;s the Difference and Why Does It
-                    Matter</h3>
+                    <img src="<?php echo base_url('./writable').'/'.$value->banner_image?>" alt="Image 1"  class="blog-image"/>
+                <span class="text_overlay_contents"><?php echo $value->categoryname ?></span>
+                <h3 class="blog-image-heading"><?php echo $value->name ?></h3>
             </div>
         </a>
-        <a href="#">
-            <div class="column image-columns">
-                <img src="https://www.ramaeri.com/public/extcontent/images/blog/1746176622How Diet Impacts Your Skin.webp"
-                    alt="How Diet Impacts Your Skin: Foods for a Glowing Complexion" class="blog-image">
-                <span class="text_overlay_contents">Glowing Skin</span>
-                <h3 class="blog-image-heading">How Diet Impacts Your Skin: Foods for a Glowing Complexion</h3>
-            </div>
-        </a>
+        <?php } ?>
 
 
 
         <div class="view-all-column">
             <div class="text-column">
-                <a href="./Blog.html">
+                <a href="<?php echo base_url('care') ?>">
                     <h3 class="view-all-heading">View All</h3>
                 </a>
                 <p class="view-all-paragraph">Rediscover natural glow</p>
             </div>
             <div class="button-column">
-                <a href="./Blog.html"><button class="blog-right" style="margin-left:0px;"></button></a>
+                <a href="<?php echo base_url('care') ?>"><button class="blog-right" style="margin-left:0px;"></button></a>
             </div>
         </div>
 
@@ -985,247 +364,39 @@
         <img src="https://www.ramaeri.com/storage/app/public/images/newleaf.png" alt="fire icon" class="leaf-img"
             style="width:58px;height:47px">
         <span>Testimonials</span>
-        <!-- <img src="https://www.ramaeri.com/storage/app/public/images/logo-f.png" alt="fire icon" class="feedback-title"> -->
-        <!-- <div class="testimonial-title-cnt">
-                        <p class="">Testimonials</p>
-                        <div class="testimonial-title">
-                            <img src="https://www.ramaeri.com/storage/app/public/images/logo-t.png" alt="title">
-                        </div>
-            
-                    </div> -->
     </div>
     <div class="swiper testimonial-slider">
         <div class="swiper-wrapper padding-wrapper">
-
-            <!--code commented form here-->
-
-
-
-            <!--code commentation end-->
-
-
-
+            <?php foreach ($productdata['review_details']  as $key => $value) { ?>
             <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
                 <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
                     <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/SiTMRdbredgqpaZrCWgoVKqg2QcVEVxaxfmbWtYp.jpg"
+                        <img src="<?php echo base_url('./writable').'/'.$value->image?>"
                             alt="Image 1" style="margin-right: 20px;" class="circular-image" />
                         <div class="text-content">
-                            <h3>Sneha R., Chief Marketing Officer</h3>
-                            <p>Recomonded this product</p>
+                            <h3><?php echo $value->user_name ?></h3>
+                            <p><?php echo $value->short_title ?></p>
                         </div>
                     </div>
 
                     <div onclick="" class="testimonial-columns" style="cursor:pointer;">
 
 
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
+                        <img src="<?php echo base_url('./writable').'/'.$value->product_image?>"
                             alt="Image 2" style="    height: 109px; width: 90px; " />
                         <div class="text-contents">
-                            <p class="serum-head">Between city pollution and intense screen-exposure, my skin felt like
-                                it had given up. But Ramaeri changed everything. The products are light and
-                                natural, and they really work. My skin feels smooth and shiny, and I do not suffer from
-                                my weekend makeup woes again!</p>
+                            <p class="serum-head"><?php echo $value->short_description	 ?></p>
 
 
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
+                            <a href="<?php echo base_url('products'.'/'.$value->product) ?> "class="testimonial-shop-now">Shop Now >></a>
 
                         </div>
 
                     </div>
                 </div>
             </div>
-
-
-            <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
-                <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
-                    <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/Fmf2w3od7EwNWtxbZEWi6Z2jlKCJNc5PCSwSljq8.jpg"
-                            alt="Image 1" style="margin-right: 20px;" class="circular-image" />
-                        <div class="text-content">
-                            <h3>Arjun M., IT Consultant</h3>
-                            <p>Recomonded this product</p>
-                        </div>
-                    </div>
-
-                    <div onclick="" class="testimonial-columns" style="cursor:pointer;">
-
-
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Image 2" style="    height: 109px; width: 90px; " />
-                        <div class="text-contents">
-                            <p class="serum-head">&quot;Sitting in air-conditioned rooms and staring at screens all day
-                                really hurt my skin—it was dry, dull, and lifeless. A friend told me about Ramaeri, and
-                                it made such a big difference. I&#039;m in love with it.</p>
-
-
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
-                <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
-                    <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/xCYygUBBC4Uyhqv6BCeMpjWttEHxacnLsZERVfYv.jpg"
-                            alt="Image 1" style="margin-right: 20px;" class="circular-image" />
-                        <div class="text-content">
-                            <h3>Priya, HR Manager</h3>
-                            <p>Recomonded this product</p>
-                        </div>
-                    </div>
-
-                    <div onclick="" class="testimonial-columns" style="cursor:pointer;">
-
-
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Image 2" style="    height: 109px; width: 90px; " />
-                        <div class="text-contents">
-                            <p class="serum-head">I work in HR, and my days consist of meetings and long hours in harsh
-                                office lighting. My skin was always dry and nothing seemed to help. Then I
-                                tried Ramaeri — my skin really seemed to get its glow back! Now I don’t just look
-                                comfortable; I feel it too, even after a full day of work.</p>
-
-
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
-                <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
-                    <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/egno7MV7uQn298mnazwhogJf3646rVIrz4Oe4pqV.jpg"
-                            alt="Image 1" style="margin-right: 20px;" class="circular-image" />
-                        <div class="text-content">
-                            <h3>Karan T., Financial Analyst</h3>
-                            <p>Recomonded this product</p>
-                        </div>
-                    </div>
-
-                    <div onclick="" class="testimonial-columns" style="cursor:pointer;">
-
-
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Image 2" style="    height: 109px; width: 90px; " />
-                        <div class="text-contents">
-                            <p class="serum-head">I&#039;m on the finances, so my job comes with endless hours at a desk
-                                and a lot of stress. And my skin pays the price—it looked as tired, dry, and old as it
-                                did. Ramaeri has been like a reset for me. My skin feels refreshed and alive again.</p>
-
-
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
-                <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
-                    <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/Lzvl0nHEdJoNlkJ6GuDoComQEBYQb1UJOxI1QbaV.jpg"
-                            alt="Image 1" style="margin-right: 20px;" class="circular-image" />
-                        <div class="text-content">
-                            <h3>Richa M., Team Leader</h3>
-                            <p>Recomonded this product</p>
-                        </div>
-                    </div>
-
-                    <div onclick="" class="testimonial-columns" style="cursor:pointer;">
-
-
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Image 2" style="    height: 109px; width: 90px; " />
-                        <div class="text-contents">
-                            <p class="serum-head">A team leading corporate strategy means stress and screen time are
-                                constant partners. Ramaeri has been a game-changer. It&#039;s easy to use and the
-                                results are self-evident.&quot; I get compliments that my skin is soft and glowing even
-                                after a hard week!</p>
-
-
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
-                <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
-                    <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/3YQi7oe0TCrXbA4b8Z0yo9nsBj6ydwCsyR8LMQUJ.jpg"
-                            alt="Image 1" style="margin-right: 20px;" class="circular-image" />
-                        <div class="text-content">
-                            <h3>Ronika Kale</h3>
-                            <p>Recomonded this product</p>
-                        </div>
-                    </div>
-
-                    <div onclick="" class="testimonial-columns" style="cursor:pointer;">
-
-
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Image 2" style="    height: 109px; width: 90px; " />
-                        <div class="text-contents">
-                            <p class="serum-head">Explore authentic health product reviews from real users. Gain
-                                insights on effectiveness and quality to make informed wellness choices. Join our
-                                community and share your experience!</p>
-
-
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
-                <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
-                    <div class="testimonial-column">
-                        <img src="https://www.ramaeri.com/public/public/reviews/MfXaunXtkk8A6HsoepHDLBaJzumCDe0QBjpXaxH7.jpg"
-                            alt="Image 1" style="margin-right: 20px;" class="circular-image" />
-                        <div class="text-content">
-                            <h3>Kalpna chawala</h3>
-                            <p>Recomonded this product</p>
-                        </div>
-                    </div>
-
-                    <div onclick="" class="testimonial-columns" style="cursor:pointer;">
-
-
-                        <img src="https://www.ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Image 2" style="    height: 109px; width: 90px; " />
-                        <div class="text-contents">
-                            <p class="serum-head">Explore authentic health product reviews from real users. Gain
-                                insights on effectiveness and quality to make informed wellness choices. Join our
-                                community and share your experience!</p>
-
-
-                            <a href="./recent.html" class="testimonial-shop-now">Shop Now >></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+            <?php } ?>
+         </div>
     </div>
 
 
@@ -1471,6 +642,54 @@
         customCurrentIndex++;
         customShowSlide(customCurrentIndex);
     }, 3000);
+
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var cart_nav = document.getElementById('cartOffcanvas');
+        var modalOverlay = document.getElementById('modalOverlay');
+        var body = document.body;
+        var button = document.getElementById('hidescroll');
+
+        function disableScroll() {
+            body.style.overflow = "hidden";
+            cart_nav.style.boxShadow = "-20px 3px 9px 5000px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1)";
+        }
+
+        function enableScroll() {
+            body.style.overflow = "";
+            cart_nav.style.boxShadow = "";
+        }
+
+        button.addEventListener('click', function () {
+            if (cart_nav.classList.contains('open')) {
+                disableScroll();
+            } else {
+                enableScroll();
+            }
+        });
+
+        body.addEventListener('click', function (event) {
+            if (!cart_nav.contains(event.target) && cart_nav.classList.contains('open')) {
+                cart_nav.classList.remove('open');
+                enableScroll();
+            }
+        });
+    });
+</script>
+<script>
+    function togglePassword(inputId) {
+        var passwordInput = document.getElementById(inputId);
+
+        // Toggle between password and text types
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+
 
 
 </script>

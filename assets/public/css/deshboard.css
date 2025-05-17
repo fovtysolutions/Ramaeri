@@ -1,369 +1,421 @@
    #newaddressadd .modal-body {
-                max-height: 400px; /* Set max height for the body */
-                overflow-y: auto;  /* Enable vertical scrolling */
-                padding-right: 15px;
-            }
-            #newaddressadd .form-group {
-                margin-bottom: 15px; /* Add margin between form groups */
-            }
-            @media (max-width: 576px) {
-            .modal-content {
-                width: 91%;
-                padding: 2rem;
-                top: 15%;
-               
-            }
-        }
-          .profile-sec {
-                    /* margin-bottom: 25px; */
-                    padding: 160px 0px;
-                }
-                
-                .hrline {
-                    border: 1px !important;
-                    border-bottom: 1px solid #4A6437 !important;
-                    width: 100%;
-                    margin-top: -2rem;
-                    opacity: 0.75;
-                }
-            
-                .profile-sec .m-title {
-                    font-size: 30px;
-                    font-weight: 500;
-                    color: #4A6437;
-                    /*border-bottom: 2px solid #4A64373b;*/
-                    padding-bottom: 10px;
-                    margin-bottom: 25px;
-                }
-            
-                .profile-sec .nav {
-                    height: 99vh;
-                    gap: 40px;
-                    justify-content: center;
-                    flex-wrap: nowrap;
-                    /*float: inline-end;*/
-                }
-            
-                /* .p-txt-cnt .row {
+       max-height: 400px;
+       /* Set max height for the body */
+       overflow-y: auto;
+       /* Enable vertical scrolling */
+       padding-right: 15px;
+   }
+
+   #newaddressadd .form-group {
+       margin-bottom: 15px;
+       /* Add margin between form groups */
+   }
+
+   @media (max-width: 576px) {
+       .modal-content {
+           width: 91%;
+           padding: 2rem;
+           top: 15%;
+
+       }
+   }
+
+   .profile-sec {
+       /* margin-bottom: 25px; */
+       padding: 48px 0px;
+   }
+
+   .hrline {
+       border: 1px !important;
+       border-bottom: 1px solid #4A6437 !important;
+       width: 100%;
+       margin-top: -2rem;
+       opacity: 0.75;
+   }
+
+   .profile-sec .m-title {
+       font-size: 30px;
+       font-weight: 500;
+       color: #4A6437;
+       /*border-bottom: 2px solid #4A64373b;*/
+       padding-bottom: 10px;
+       margin-bottom: 25px;
+   }
+
+   .profile-sec .nav {
+       height: 99vh;
+       gap: 40px;
+       justify-content: center;
+       flex-wrap: nowrap;
+       /*float: inline-end;*/
+   }
+
+   /* .p-txt-cnt .row {
                     margin-bottom: 20px;
                 } */
-            
-                .p-txt-cnt {
-                    font-size: x-large;
-                    background-color: #eff7e9;
-                    height: 80vh;
-                    position: relative;
-                    padding: 25px 0 50px 50px;;
-                    opacity:0.8;
-                }
-                .p-txt-cnt .container {
-                height: 65vh; /* Default height for larger screens */
-                overflow-y: scroll; /* Enable vertical scroll */
-                overflow-x: hidden; /* Hide horizontal scroll */
-                scrollbar-width: thin; /* Firefox: thin scrollbar */
-                scrollbar-color: #4A6437 #eff7e9; /* Firefox: scrollbar color */
-            }
-            
-            .p-txt-cnt .container::-webkit-scrollbar {
-                width: 8px; /* Default scrollbar width */
-            }
-            
-            .p-txt-cnt .container::-webkit-scrollbar-track {
-                background-color: #eff7e9; /* Scroll track background */
-                border-radius: 10px; /* Round scroll track edges */
-            }
-            
-            .p-txt-cnt .container::-webkit-scrollbar-thumb {
-                background-color: #4A6437; /* Scrollbar handle color */
-                border-radius: 10px; /* Round scrollbar edges */
-                border: 2px solid #eff7e9; /* Space between handle and track */
-            }
-            
-            .p-txt-cnt .container::-webkit-scrollbar-thumb:hover {
-                background-color: #5a7650; /* Darken handle on hover */
-            }
-                .p-txt-cnt::after {
-                    content: '';
-                    background-image: url("https://www.ramaeri.com/storage/app/public/images/profile-bg2.png");
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: bottom center;
-                    opacity: 0.3;
-                    /* 30% opacity for the image */
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: 200px;
-                    /* Adjust the height of the image at the bottom */
-                    z-index: -10;
-                }
-            
-                .nav-link::before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 10px;
-                    height: 10px;
-                    background-color: #C4D0BB;
-                    /* Green circle when inactive */
-                    border-radius: 50%;
-                    display:none;
-                    /* Makes the shape a circle */
-                }
-            
-                .nav-link:hover,
-                .nav-link:focus {
-                    /*color: #C4D0BB !important;*/
-                    /*padding-right: 20px;*/
-                }
-            
-                .nav-link::after {
-                    display: none !important;
-                }
-            
-                .nav-link.active::before {
-                    background-color: #4A6437;
-                    /* Black circle when active */
-                }
-            
-                .nav-pills .nav-link.active,
-                .nav-pills .show>.nav-link {
-                    background-color: transparent !important;
-                    color: #22261F !important;
-                }
-            
-                .profile-sec .nav button {
-                    text-align: left;
-                    padding: 24px 0px;
-                    color: #000;
-                    font-weight: 500;
-                }
-            
-                .profile-sec .txt-cnt-main p {
-                    color: #000000;
-                    font-weight: 400;
-                    text-decoration: underline;
-                    font-size:22px;
-                }
-            
-                .txt-cnt-main {
-                    padding: 0px 70px 20px 0px;
-                }
-            
-                .address-l {
-                    position: relative;
-                    padding-left: 40px;
-                }
-            
-              
-            
-            
-                .address-l.active::before {
-                    background-color: #4A6437;
-                }
-            
-                .edit-btn {
-                    cursor: pointer;
-                    padding: 5px 30px 5px 10px;
-                    font-size: x-large;
-                    margin-left: 0px;
-                }
-            
-                .profile-add-btn {
-                    position: absolute;
-                    bottom: 50px;
-                    right: 50px;
-                    background-color: #4A6437B2;
-                    color: white;
-                    border: none;
-                    border-radius: 50%;
-                    width: 30px;
-                    height: 30px;
-                    font-size: 20px;
-                    line-height: 5px;
-                    cursor: pointer;
-                    z-index: 2;
-                }
-            
-                .profile-add-btn:hover {
-                    background-color: #5a7650;
-                    transform: scale(1.1);
-                }
-            
-                .profile-add-btn:focus {
-                    outline: none;
-                }
-            
-                .profile-p img {
-                    height: 90px;
-                }
-            
-                .profile-p h5 {
-                    font-size: 18px;
-                }
-            
-                .p-txt-cnt .status-btn {
-                    text-align: center;
-                    position: relative;
-                }
-            
-                .p-txt-cnt .row {
-                    padding-bottom: 30px;
-                }
-            
-                .p-txt-cnt .status-btn a {
-                    color: #000000;
-                }
-            
-                .p-txt-cnt .status-btn .btn-dly::before {
-                    content: '';
-                    position: absolute;
-                    right: 85px;
-                    text-align: right;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 10px;
-                    height: 10px;
-                    background-color: #91CF87;
-                    border-radius: 50%;
-            
-                }
-            
-                .p-txt-cnt .status-btn .btn-pro::before {
-                
-                    position: absolute;
-                    right: 108px;
-                    text-align: right;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 10px;
-                    height: 10px;
-                    background-color: #CECF87;
-                    border-radius: 50%;
-                }
-            
-                .p-txt-cnt .status-btn .btn-cnl::before {
-                    position: absolute;
-                    right: 75px;
-                    text-align: right;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 10px;
-                    height: 10px;
-                    background-color: #CFA187;
-                    border-radius: 50%;
-                }
-                
-                .brhide{
-                    display:none;
-                }
-               
-                @media screen and (max-width:767px) {
-                    .profile-sec{
-                        flex-direction: column !important;
-                        padding: 60px 0px;
-                    }
-                    .profile-sec .mob-v{
-                        flex-direction: column !important;
-                        padding: 0 30px;
-                    }
-                    .profile-sec .mob-v .nav{
-                        flex-direction: row !important;
-                        height: auto !important;
-                        justify-content: space-between;
-                        gap: 0px;
-                    }
-                    .profile-sec .nav button {
-                text-align: left;
-                padding: 10px 10px;
-            }
-            .p-txt-cnt {
-                   
-                    height: auto !important;
-                    padding: 50px 20px;
-                }
-                .nav-link::before {
-                width: 5px;
-                height: 5px;
-            }
-            .profile-p img {
-                height: auto;
-                }
-                .profile-sec .txt-cnt-main p {
-                font-size: 12px;
-            }
-            .profile-sec .m-title {
-                font-size: 18px;
-                padding-bottom: 2px;
-            }
-            .edit-btn {
-                font-size: 12px;
-            }
-                .txt-cnt-main {
-                padding: 0px 15px 15px 0px;
-            }
-            .address-l {
-                padding-left: 30px;
-                margin-top: 30px;
-            }
-            .profile-p h5 {
-                font-size: 16px;
-            }
-            .p-txt-cnt .container {
-                    height: 80vh; /* Reduce height for tablets and smaller devices */
-                }
-                
-                .p-txt-cnt .container::-webkit-scrollbar {
-                    width: 6px; /* Reduce scrollbar width */
-                }
-                
-                .p-txt-cnt .container::-webkit-scrollbar-thumb {
-                    border-radius: 5px; /* Adjust rounding for smaller screens */
-                    border: 1px solid #eff7e9; /* Smaller border around handle */
-                }
-                .brhide{
-                    display:block;
-                }
-            }
-                 @media screen and (max-width:400px) {
-                    .profile-p h5 {
-                    font-size: 12px;
-                }
-                .p-txt-cnt .status-btn a {
-                font-size: 12px;
-            }
-            .p-txt-cnt .status-btn .btn-dly::before {
-                right: 55px;
-                width: 6px;
-                height: 6px;
-            }
-            .p-txt-cnt .status-btn .btn-pro::before {
-                width: 6px;
-                height: 6px;
-                right: 68px;
-                  
-                 }
-                 .p-txt-cnt .status-btn .btn-cnl::before {
-              width: 6px;
-              height: 6px;
-                right: 50px;
-                 }
-                 .p-txt-cnt .status-btn a {
-                    font-size: 10px;
-                }
-                .p-txt-cnt .container {
-                    height: 80vh; /* Further reduce height for very small devices */
-                }
-                
-                .p-txt-cnt .container::-webkit-scrollbar {
-                    width: 4px; /* Thin scrollbar for mobile */
-                }
-                
-                .p-txt-cnt .container::-webkit-scrollbar-thumb {
-                    border-radius: 4px; /* Smaller rounding for tiny devices */
-                    border: none; /* No border on small screens */
-                }
-                }
+
+   .p-txt-cnt {
+       font-size: x-large;
+       background-color: #eff7e9;
+       height: 80vh;
+       position: relative;
+       padding: 25px 0 50px 50px;
+       ;
+       opacity: 0.8;
+   }
+
+   .p-txt-cnt .container {
+       height: 65vh;
+       /* Default height for larger screens */
+       overflow-y: scroll;
+       /* Enable vertical scroll */
+       overflow-x: hidden;
+       /* Hide horizontal scroll */
+       scrollbar-width: thin;
+       /* Firefox: thin scrollbar */
+       scrollbar-color: #4A6437 #eff7e9;
+       /* Firefox: scrollbar color */
+   }
+
+   .p-txt-cnt .container::-webkit-scrollbar {
+       width: 8px;
+       /* Default scrollbar width */
+   }
+
+   .p-txt-cnt .container::-webkit-scrollbar-track {
+       background-color: #eff7e9;
+       /* Scroll track background */
+       border-radius: 10px;
+       /* Round scroll track edges */
+   }
+
+   .p-txt-cnt .container::-webkit-scrollbar-thumb {
+       background-color: #4A6437;
+       /* Scrollbar handle color */
+       border-radius: 10px;
+       /* Round scrollbar edges */
+       border: 2px solid #eff7e9;
+       /* Space between handle and track */
+   }
+
+   .p-txt-cnt .container::-webkit-scrollbar-thumb:hover {
+       background-color: #5a7650;
+       /* Darken handle on hover */
+   }
+
+   .p-txt-cnt::after {
+       content: '';
+       background-image: url("https://www.ramaeri.com/storage/app/public/images/profile-bg2.png");
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position: bottom center;
+       opacity: 0.3;
+       /* 30% opacity for the image */
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       height: 200px;
+       /* Adjust the height of the image at the bottom */
+       z-index: -10;
+   }
+
+   .nav-link::before {
+       content: '';
+       position: absolute;
+       left: 0;
+       top: 50%;
+       transform: translateY(-50%);
+       width: 10px;
+       height: 10px;
+       background-color: #C4D0BB;
+       /* Green circle when inactive */
+       border-radius: 50%;
+       display: none;
+       /* Makes the shape a circle */
+   }
+
+   .nav-link:hover,
+   .nav-link:focus {
+       /*color: #C4D0BB !important;*/
+       /*padding-right: 20px;*/
+   }
+
+   .nav-link::after {
+       display: none !important;
+   }
+
+   .nav-link.active::before {
+       background-color: #4A6437;
+       /* Black circle when active */
+   }
+
+   .nav-pills .nav-link.active,
+   .nav-pills .show>.nav-link {
+       background-color: transparent !important;
+       color: #22261F !important;
+   }
+
+   .profile-sec .nav button {
+       text-align: left;
+       padding: 24px 0px;
+       color: #000;
+       font-weight: 500;
+   }
+
+   .profile-sec .txt-cnt-main p {
+       color: #000000;
+       font-weight: 400;
+       text-decoration: underline;
+       font-size: 22px;
+   }
+
+   .txt-cnt-main {
+       padding: 0px 70px 20px 0px;
+   }
+
+   .address-l {
+       position: relative;
+       padding-left: 40px;
+   }
+
+
+
+
+   .address-l.active::before {
+       background-color: #4A6437;
+   }
+
+   .edit-btn {
+       cursor: pointer;
+       padding: 5px 30px 5px 10px;
+       font-size: x-large;
+       margin-left: 0px;
+   }
+
+   .profile-add-btn {
+       position: absolute;
+       bottom: 50px;
+       right: 50px;
+       background-color: #4A6437B2;
+       color: white;
+       border: none;
+       border-radius: 50%;
+       width: 30px;
+       height: 30px;
+       font-size: 20px;
+       line-height: 5px;
+       cursor: pointer;
+       z-index: 2;
+   }
+
+   .profile-add-btn:hover {
+       background-color: #5a7650;
+       transform: scale(1.1);
+   }
+
+   .profile-add-btn:focus {
+       outline: none;
+   }
+
+   .profile-p img {
+       height: 90px;
+   }
+
+   .profile-p h5 {
+       font-size: 18px;
+   }
+
+   .p-txt-cnt .status-btn {
+       text-align: center;
+       position: relative;
+   }
+
+   .p-txt-cnt .row {
+       padding-bottom: 30px;
+   }
+
+   .p-txt-cnt .status-btn a {
+       color: #000000;
+   }
+
+   .p-txt-cnt .status-btn .btn-dly::before {
+       content: '';
+       position: absolute;
+       right: 85px;
+       text-align: right;
+       top: 50%;
+       transform: translateY(-50%);
+       width: 10px;
+       height: 10px;
+       background-color: #91CF87;
+       border-radius: 50%;
+
+   }
+
+   .p-txt-cnt .status-btn .btn-pro::before {
+
+       position: absolute;
+       right: 108px;
+       text-align: right;
+       top: 50%;
+       transform: translateY(-50%);
+       width: 10px;
+       height: 10px;
+       background-color: #CECF87;
+       border-radius: 50%;
+   }
+
+   .p-txt-cnt .status-btn .btn-cnl::before {
+       position: absolute;
+       right: 75px;
+       text-align: right;
+       top: 50%;
+       transform: translateY(-50%);
+       width: 10px;
+       height: 10px;
+       background-color: #CFA187;
+       border-radius: 50%;
+   }
+
+   .brhide {
+       display: none;
+   }
+
+   @media screen and (max-width:767px) {
+       .profile-sec {
+           flex-direction: column !important;
+           padding: 60px 0px;
+       }
+
+       .profile-sec .mob-v {
+           flex-direction: column !important;
+           padding: 35px 30px;
+       }
+
+       .profile-sec .mob-v .nav {
+           flex-direction: row !important;
+           height: auto !important;
+           justify-content: space-between;
+           gap: 0px;
+       }
+
+       .profile-sec .nav button {
+           text-align: left;
+           padding: 10px 10px;
+       }
+
+       .p-txt-cnt {
+
+           height: auto !important;
+           padding: 50px 20px;
+       }
+
+       .nav-link::before {
+           width: 5px;
+           height: 5px;
+       }
+
+       .profile-p img {
+           height: auto;
+       }
+
+       .profile-sec .txt-cnt-main p {
+           font-size: 12px;
+       }
+
+       .profile-sec .m-title {
+           font-size: 18px;
+           padding-bottom: 3px !important;
+       }
+
+       .edit-btn {
+           font-size: 12px;
+       }
+
+       .txt-cnt-main {
+           padding: 0px 15px 15px 0px;
+       }
+
+       .address-l {
+           padding-left: 30px;
+           margin-top: 30px;
+       }
+
+       .profile-p h5 {
+           font-size: 16px;
+       }
+
+       .p-txt-cnt .container {
+           height: 80vh;
+           /* Reduce height for tablets and smaller devices */
+       }
+
+       .p-txt-cnt .container::-webkit-scrollbar {
+           width: 6px;
+           /* Reduce scrollbar width */
+       }
+
+       .p-txt-cnt .container::-webkit-scrollbar-thumb {
+           border-radius: 5px;
+           /* Adjust rounding for smaller screens */
+           border: 1px solid #eff7e9;
+           /* Smaller border around handle */
+       }
+
+       .brhide {
+           display: block;
+       }
+   }
+
+   @media screen and (max-width:400px) {
+       .profile-p h5 {
+           font-size: 12px;
+       }
+
+       .p-txt-cnt .status-btn a {
+           font-size: 12px;
+       }
+
+       .p-txt-cnt .status-btn .btn-dly::before {
+           right: 55px;
+           width: 6px;
+           height: 6px;
+       }
+
+       .p-txt-cnt .status-btn .btn-pro::before {
+           width: 6px;
+           height: 6px;
+           right: 68px;
+
+       }
+
+       .p-txt-cnt .status-btn .btn-cnl::before {
+           width: 6px;
+           height: 6px;
+           right: 50px;
+       }
+
+       .p-txt-cnt .status-btn a {
+           font-size: 10px;
+       }
+
+       .p-txt-cnt .container {
+           height: 80vh;
+       }
+
+       .p-txt-cnt .container::-webkit-scrollbar {
+           width: 4px;
+       }
+
+       .p-txt-cnt .container::-webkit-scrollbar-thumb {
+           border-radius: 4px;
+           border: none;
+       }
+   }
+
+   .form-control {
+       background-color: #d9d9d9 !important;
+       padding: 10px 15px !important;
+       margin-bottom: 10px !important;
+   }

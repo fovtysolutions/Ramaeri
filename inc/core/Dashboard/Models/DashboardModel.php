@@ -1,8 +1,8 @@
 <?php
-namespace Core\Products\Models;
+namespace Core\Dashboard\Models;
 use CodeIgniter\Model;
 
-class ProductsModel extends Model
+class DashboardModel extends Model
 {
 	public function __construct(){
         $this->config = include realpath( __DIR__."/../Config.php" );
@@ -17,14 +17,9 @@ class ProductsModel extends Model
         return $query->getRow(); 
     }
 
-    public function getCategory(){
-        $query = $this->db->table('ramaeri_categories')->get();
-        return $query->getResultArray(); 
-    }
-
     public function getSearchAll($searchMain = null)
     {
-        $builder = $this->db->table('ramaeri_products');
+        $builder = $this->db->table('hotel_booking_clients')->where('admin_uid', $this->session->get('uid'));
 
         if (is_array($searchMain)) {
             $builder->groupStart(); 
@@ -42,22 +37,21 @@ class ProductsModel extends Model
         if (!empty($searchMain)) {
             $builder->groupStart()
                 ->like('id', $searchMain)
-                ->orlike('name', $searchMain)
-                ->orlike('price', $searchMain)
-                ->orLike('short_description', $searchMain)
-                ->orLike('description', $searchMain)
-                ->orLike('weight', $searchMain)
-                ->orLike('brand', $searchMain)
-                ->orLike('discount', $searchMain)
-                ->orLike('sub_price', $searchMain)
-                ->orLike('image', $searchMain)
+                ->orlike('c_name', $searchMain)
+                ->orlike('c_email', $searchMain)
+                ->orlike('c_phone', $searchMain)
+                ->orLike('c_email', $searchMain)
+                ->orLike('c_address', $searchMain)
+                ->orLike('c_country', $searchMain)
+                ->orLike('c_state', $searchMain)
+                ->orLike('c_city', $searchMain)
                 ->groupEnd();
         }
         return $builder;
     }
 
     public function getById($id){
-        $query = $this->db->table('ramaeri_products')->where('id', $id)->get();
+        $query = $this->db->table('hotel_booking_clients')->where('id', $id)->get();
         return $query->getRow(); 
     }
 
@@ -66,16 +60,16 @@ class ProductsModel extends Model
         if (!is_numeric($id)) {
             return $id; 
         }
-        return $this->db->table('ramaeri_products')->where('id', $id)->update($data);
+        return $this->db->table('hotel_booking_clients')->where('id', $id)->update($data);
     }
 
     public function insertit($data)
     {
-        return $this->db->table('ramaeri_products')->insert($data);
+        return $this->db->table('hotel_booking_clients')->insert($data);
     }
 
     public function deleteit($id)
     {
-        return $this->db->table('ramaeri_products')->where('id', $id)->delete();
+        return $this->db->table('hotel_booking_clients')->where('id', $id)->delete();
     }
 }

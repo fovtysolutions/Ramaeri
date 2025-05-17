@@ -1,0 +1,625 @@
+.containerssss {
+    max-width: 100% !important;
+    padding: 0px 0 0px 56px;
+  }
+
+  .categories-section {
+      /* padding-top: 140px; */
+      overflow: hidden;
+  }
+
+
+  @media (max-width:426px){
+      .categories-section{
+      padding-top: 30px;
+    }
+  }
+
+  .contact-section {
+    padding:0px 300px 200px 0px;
+  }
+
+  .cart-heading {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 1);
+    text-decoration: underline;
+  }
+
+  .section-title {
+    font-size: 17.38px;
+    font-weight: 600;
+    color: rgba(74, 100, 55, 1);
+    margin-bottom: 20px;
+    line-height: 21.04px;
+  }
+
+
+
+  /* Info Block (Contact, Shipping) */
+  .info-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+  }
+
+  .hand-heading {
+    color: rgba(74, 100, 55, 0.5);
+    font-size: 18.07px;
+    line-height: 27px;
+    font-weight: 400;
+  }
+
+  .hand-button {
+    width: 145px;
+    height: 46px;
+    background-color: rgba(74, 100, 55, 1);
+    color: rgba(248, 255, 243, 1);
+    border-radius: 6.26px;
+    font-size: 20.13px;
+    line-height: 34px;
+    font-weight: 400;
+  }
+
+  .info-block {
+    color: #31342e;
+  }
+
+  .info-block .c-title-form {
+    font-weight: 600;
+    color: #4a6437a6;
+  }
+
+  .payment-method .b-bottom {
+    border-bottom: 1px solid #4a64371a;
+    padding-bottom: 5px;
+  }
+
+  .detail-b {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  .payment-sec {
+    margin-top: 22px;
+    font-size: 12px;
+  }
+
+  .payment-sec h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5px;
+    color: #31342e;
+  }
+
+  .payment-sec p {
+    color: #52554e;
+  }
+
+  .pay-later {
+    border-top: 1px solid #ccc;
+  }
+
+  .billing-title {
+    margin-top: 20px;
+  }
+
+  .billing-title h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5px;
+    color: #31342e;
+  }
+
+  .billing-title p {
+    font-size: 12px;
+    color: #52554e;
+  }
+
+  /* .razorpay{
+  border: 1px solid #ccc;
+} */
+  /* .info-block p {
+    margin: 0;
+    font-size: 12px;
+    color: #4a6437b0;
+    font-weight: 500;
+  }
+  .info-block p span{
+    color: #000000;
+
+  } */
+
+
+  @media (max-width: 991px) {
+    .contact-section {
+      padding: 30px !important;
+    }
+  }
+
+  .info-block a {
+    font-size: 14px;
+    color: #476947;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* Payment Method Section */
+  .payment-method {
+    padding: 14px;
+    font-size: 11px;
+  }
+
+  @media (max-width: 991px) {
+    .containerssss {
+      padding: 0px !important;
+    }
+  }
+
+  .payment-method h4 {
+    font-size: 20px;
+    color: #333;
+  }
+
+  .small-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .payment-sec-txt {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  .payment-option {
+    padding: 14px;
+    border-bottom: 1px solid #ccc;
+
+    /* display: flex;
+    align-items: flex-start; */
+    /* Added margin for spacing */
+  }
+
+  .payment-option input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  .payment-label {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+
+  .payment-icons img {
+    margin-right: 5px;
+    height: 25px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .payment-icons span {
+    font-size: 12px;
+    color: #888;
+  }
+
+  /* .payment-icon {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+  } */
+
+  /* Billing Address Section */
+  .billing-address h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .address-option {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    font-weight: 700;
+  }
+
+  .address-option label {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Option Header */
+  .option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .option-title {
+    font-weight: bold;
+    font-size: 11px;
+  }
+
+  /* Option Description */
+  .option-description {
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+    padding-left: 30px;
+  }
+
+  .option-description img {
+
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .option-description p {
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 22px;
+    }
+
+    .info-block p,
+    .payment-label,
+    .address-option label {
+      font-size: 15px;
+    }
+
+    .payment-icon {
+      width: 35px;
+    }
+  }
+
+  /* Styling for the modal content */
+  .modal-content {
+    border-radius: none !important;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    width: 500px;
+    padding: 50px !important;
+    margin: 0 auto;
+    /* Center on all screen sizes */
+  }
+
+  /* Style the button at the bottom */
+  .continue-button {
+    background-color: #4a6342;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .continue-button:hover {
+    background-color: #354b30;
+    /* Darker shade on hover */
+  }
+
+  @media (max-width: 576px) {
+    .modal-content {
+      width: 90%;
+      /* Shrink width on smaller screens */
+      padding: 2rem;
+      /* Adjust padding for smaller screens */
+    }
+
+    /* Adjust button for smaller screens */
+    .continue-button {
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+  }
+
+  .btn-arrow {
+    width: 16px;
+    /* Adjust the width as per your requirement */
+    height: auto;
+    margin-left: 8px;
+    /* Optional: Adds some space between the text and the image */
+    vertical-align: middle;
+    /* Aligns the image with the text */
+  }
+
+  .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* or the desired width */
+  }
+
+  .price-container p {
+    margin: 0;
+  }
+
+  .price-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  body {
+    background-color: #f8fff3;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .discount-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* space between input and button */
+  }
+
+  .form-control {
+    flex: 1;
+    /* input takes up remaining space */
+  }
+
+  .btn-outline-secondary {
+    white-space: nowrap;
+    /* prevents button text from wrapping */
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+
+
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cart-item img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .quantity-input {
+    width: 50px;
+    text-align: center;
+  }
+
+  .pricing-info {
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .add-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* space between elements */
+  }
+
+  .add-item button {
+    width: 18px;
+    height: 19px;
+    border: 1px solid rgba(74, 100, 55, 1);
+    text-align: center;
+    font-size: 15px;
+    line-height: 18px;
+    cursor: pointer;
+    padding: 0;
+    color: rgba(74, 100, 55, 1);
+  }
+
+  .add-item .item-quantity {
+    width: 42px;
+    height: 19px;
+    display: inline-block;
+    border: 1px solid rgba(74, 100, 55, 1);
+    text-align: center;
+    line-height: 18.44px;
+    /* Vertically center the quantity */
+    font-size: 15px;
+    /* Adjust font size as needed */
+    color: rgba(74, 100, 55, 1);
+  }
+
+  .price {
+    color: rgba(74, 100, 55, 1);
+    font-size: 23px;
+    line-height: 35px;
+    font-weight: 500;
+  }
+
+  .subtotal {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: rgba(74, 100, 55, 0.5);
+  }
+
+  .subtotals {
+    font-size: 17.07px;
+    line-height: 25.61px;
+    font-weight: 500;
+    color: rgba(74, 100, 55, 1);
+  }
+
+  .subtotalss {
+    font-size: 24px;
+    line-height: 36.89px;
+    font-weight: 400;
+    color: rgba(74, 100, 55, 1);
+  }
+
+
+  @media (max-width: 768px) {
+    .cart-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+
+  }
+
+  .cart-item-inner {
+    display: flex;
+    border-bottom: 0.5px solid #4A643780;
+    gap: 30px;
+  }
+
+  .cart-item-inner-heading {
+    color: rgba(0, 0, 0, 1);
+    font-size: 15.98px;
+    line-height: 18.44px;
+    font-weight: 600;
+    text-align:left;
+  }
+
+  .breadcrumbss {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0 50px 0;
+    margin: 0;
+  }
+
+  .breadcrumbss li {
+    margin-right: 10px;
+  }
+
+  .breadcrumbss li+li:before {
+    content: "";
+    display: inline-block;
+    width: 7.78px;
+    /* Adjust according to image size */
+    height: 7.78px;
+    /* Adjust according to image size */
+    background-image: url('https://ramaeri.com/storage/app/public/images/next-button.png');
+    background-size: cover;
+    margin-right: 15px;
+  }
+
+  .breadcrumbss .cart {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13.33px;
+    line-height: 20px;
+    font-weight: 300;
+  }
+
+  .breadcrumbss a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    font-size: 13.33px;
+    line-height: 20px;
+    font-weight: 300;
+  }
+  .cart-checkout{
+    padding: 6rem 4rem;
+  }
+  @media (max-width:500px){
+    .cart-checkout{
+      padding: 6rem 2rem!important;
+    }
+  }
+  .dividernew{
+  margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: var(--bs-border-width) solid;
+    opacity: .25;
+}
+
+/* Targeting only thankYouModal1 */
+#thankYouModal1 .modal-content {
+  border-radius: 5rem;
+  height: 60%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  border-radius:5.14px;
+   
+}
+
+#thankYouModal1 .modal-title {
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 54px;
+  text-align: center;
+  color: #4A6437;
+}
+
+#thankYouModal1 .underlined-text {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.8rem;
+}
+
+#thankYouModal1 .additional-text {
+  color: #809273;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 34.5px;
+  text-align: center;
+}
+
+#thankYouModal1 .company-signature {
+  font-size: 12.11px;
+  font-weight: 400;
+  line-height: 21.16px;
+  text-align: center;
+  color: #000000;
+  margin-top: 2rem;
+   margin-bottom: -8px;
+}
+
+#thankYouModal1 .company-logo img {
+  width: 167.11px;
+height: auto;
+  
+}
+#thankYouModal1 .company-logo {
+    display: flex;
+    justify-content: center; /* Centers the logo horizontally */
+    align-items: center; /* Vertically centers the logo */
+    margin-top: 0; /* Remove any unwanted margin */
+}
+
+#thankYouModal1 .continue-link {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 39px;
+  text-align: left;
+  color: white;
+  margin-top: -25%;
+}
+.cart-item-inner:last-child {
+    border-bottom: none;
+}
+#thankYouModal1 .continue-link a {
+  color: white;
+  text-decoration: none;
+  font-size: 26px;
+}
+#thankYouModal1 .modal-dialog {
+    background: none; /* This ensures no background image */
+    height: 0px;
+    margin-bottom: 0px;
+    margin-top: 0rem;
+}

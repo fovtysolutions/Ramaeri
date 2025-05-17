@@ -80,8 +80,15 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-3">
+                                    <label for="description" class="form-label">Excerpt</label>
+                                    <textarea class="form-control bg-light-subtle" id="description" rows="4"
+                                        placeholder="Type description" name="excerpt"><?= isset($detailsdata->excerpt) ? $detailsdata->excerpt : '' ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-3">
                                     <label for="description" class="form-label">Meta Description</label>
-                                    <textarea name="meta_description	" id="editor"
+                                    <textarea name="meta_description" id="editor"
                                         rows="7"><?= isset($detailsdata->meta_description) ? $detailsdata->meta_description : '' ?></textarea>
                                 </div>
                             </div>
@@ -122,6 +129,56 @@
 </div>
 </div>
 <?php echo $this->section('script') ?>
+<script>
+    $("#editor").each(function (el) {
+        var $this = $(this);
+        var buttons = $this.data("buttons");
+        var minHeight = $this.data("min-height");
+        var placeholder = $this.attr("placeholder");
+        var format = $this.data("format");
+
+        buttons = !buttons ? [
+            ["font", ["bold", "underline", "italic", "clear"]],
+            ['fontname', ['fontname']],
+            ["para", ["ul", "ol", "paragraph"]],
+            ["style", ["style"]],
+            ['fontsize', ['fontsize']],
+            ["color", ["color"]],
+            ["insert", ["link", "picture", "video"]],
+            ["view", ["undo", "redo"]],
+        ] :
+            buttons;
+        placeholder = !placeholder ? "" : placeholder;
+        minHeight = !minHeight ? 150 : minHeight;
+        format = typeof format == "undefined" ? false : format;
+
+        $this.summernote({
+            toolbar: buttons,
+            placeholder: placeholder,
+            height: minHeight,
+            codeviewFilter: false,
+            codeviewIframeFilter: true,
+            disableDragAndDrop: true,
+            callbacks: {
+
+            },
+        });
+
+        var nativeHtmlBuilderFunc = $this.summernote(
+            "module",
+            "videoDialog"
+        ).createVideoNode;
+
+        $this.summernote("module", "videoDialog").createVideoNode = function (url) {
+            var wrap = $(
+                '<div class="embed-responsive embed-responsive-16by9"></div>'
+            );
+            var html = nativeHtmlBuilderFunc(url);
+            html = $(html).addClass("embed-responsive-item");
+            return wrap.append(html)[0];
+        };
+    });
+</script>
 <?php echo view('common_script/imageorfileupload', ['imageids' => 'imagename', 'input' => 'blog-img', 'filetype' => 'image']); ?>
 <?php _ec($this->include('Core\Blogs\Views\submitit'), false) ?>
 <?php echo $this->endSection() ?>

@@ -637,7 +637,9 @@ button:hover.slider__button.left:after {
     .add-to-cart-button-mobile {
         font-size: 7px;
     }
-
+.navbar_top{
+    padding: 30px !important;
+}
     .slider {
 
         --slide-width: 100%;
@@ -2170,7 +2172,7 @@ button#submit-btn:hover .icon-gap {
         flex-direction: row;
         justify-content: space-between;
         max-width: 100%;
-        margin-top: -105px;
+        margin-top: -65px;
         border-radius: 15px;
 
     }
@@ -2321,7 +2323,7 @@ button#submit-btn:hover .icon-gap {
     }
 
     .heading-section p {
-        font-size: 14px;
+        font-size: 17px;
         color: #8f9f8c;
         margin-top: 10px;
     }
@@ -2335,7 +2337,7 @@ button#submit-btn:hover .icon-gap {
     }
 
     .heading-col {
-        min-height: 70vh
+        min-height: 45vh
     }
 
     .heading-section {
@@ -2424,7 +2426,7 @@ button#submit-btn:hover .icon-gap {
         }
 
         .heading-col {
-            min-height: 40vh;
+            min-height: 47vh;
             padding: 50px 0px 75px 0px;
         }
 
@@ -2454,7 +2456,9 @@ button#submit-btn:hover .icon-gap {
     }
 
     @media (max-width: 480px) {
-
+.heading-section{
+    margin-top: 30px !important;
+}
         .form-section,
         .contact-info {
             padding: 15px;

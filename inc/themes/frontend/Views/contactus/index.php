@@ -3,7 +3,7 @@
 <?php echo $this->endSection(); ?>
 <section class="heading-section">
     <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center heading-col"
-        style="padding-top:50px;">
+        >
         <div>
             <h1 style="text-align:left; display: flex; align-items: center;" class="mb-0 contact-heading">
                 <span style="display: flex; align-items: center;">

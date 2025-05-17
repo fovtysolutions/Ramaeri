@@ -1,14 +1,14 @@
 <?php
-namespace Core\Products\Controllers;
+namespace Core\AllProducts\Controllers;
 use App\Controllers\PeginationController;
 
-class Products extends \CodeIgniter\Controller
+class AllProducts extends \CodeIgniter\Controller
 {
     public function __construct(){
         $this->config = include realpath( __DIR__."/../Config.php" );
-        $this->model = new \Core\Products\Models\ProductsModel();
+        $this->model = new \Core\AllProducts\Models\AllProductsModel();
         $this->db = \Config\Database::connect();
-        $this->master = "products";
+        $this->master = "allProducts";
     }
     
     public function index()
@@ -23,20 +23,20 @@ class Products extends \CodeIgniter\Controller
             'searching'=> '',
             'filterinput'=> '',
             'filterids'=>json_encode([]),
-            'th'=>["products name", "Categories", "	Price", "Published", "Themes"],
+            'th'=>["Name", "Categories", "	Price", "Published"],
             'mainid'=> "get$master",
             'addbtnroute'=> "$master/add",
             'routeURL'=> "$master/get",
             'editroute'=> "/$master/edit/",
             'deleteURL'=> "$master/deleteit",
-            'td'=>json_encode(["name","category_name","price","published","themes"]),
+            'td'=>json_encode(["name","category_name","price","published"]),
         ];
         $data = [
             "title" => $this->config['name'],
             "desc" => $this->config['desc'],
-            "content" => view('Core\Products\Views\Productslist', $mainDetails)
+            "content" => view('Core\AllProducts\Views\AllProductslist', $mainDetails)
         ];
-        return view('Core\Products\Views\index', $data);
+        return view('Core\AllProducts\Views\index', $data);
     }
 
     public function get()
@@ -109,9 +109,9 @@ class Products extends \CodeIgniter\Controller
         $data = [
             "title" => $this->config['name'],
             "desc" => $this->config['desc'],
-            "content" => view('Core\Products\Views\content', $addDatas)
+            "content" => view('Core\AllProducts\Views\content', $addDatas)
         ];
-        return view('Core\Products\Views\index', $data);
+        return view('Core\AllProducts\Views\index', $data);
     }
 
     public function add()
@@ -133,9 +133,9 @@ class Products extends \CodeIgniter\Controller
         $data = [
             "title" => $this->config['name'],
             "desc" => $this->config['desc'],
-            "content" => view('Core\Products\Views\content', $addDatas)
+            "content" => view('Core\AllProducts\Views\content', $addDatas)
         ];
-        return view('Core\Products\Views\index', $data);
+        return view('Core\AllProducts\Views\index', $data);
     }
 
     public function datasetup()
