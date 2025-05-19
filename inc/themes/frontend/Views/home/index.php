@@ -54,7 +54,7 @@
                             </a>
 
 
-                            <a href="./Products.html" style="all: unset;">
+                            <a href="<?php echo base_url('products').'/'.$value->id ?>" style="all: unset;">
                                 <h4 class="slide-heading"
                                     style="cursor:pointer; text-align:left;font-size: 20px !important;"><?php echo $value->name ?>
                                 </h4>
@@ -176,7 +176,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="row serum-gap">
-                    <?php foreach ($productdata['category_details']  as $key => $value) { ?>
+                    <?php foreach ($productdata['categorydata']  as $key => $value) { ?>
                     <div class="col-6 col-lg-6 box1 d-lg-flex d-none" data-category="6"
                         data-slug="Face Mist" style="position:relative;">
                         <figure><img
@@ -693,4 +693,25 @@
 
 
 </script>
+
+<script>
+  const decreaseBtn = document.getElementById("decrease");
+  const increaseBtn = document.getElementById("increase");
+  const quantityInput = document.getElementById("qnt");
+
+  let quantity = parseInt(quantityInput.value);
+
+  increaseBtn.addEventListener("click", () => {
+    quantity++;
+    quantityInput.value = quantity;
+  });
+
+  decreaseBtn.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityInput.value = quantity;
+    }
+  });
+</script>
+
 <?php echo $this->endSection(); ?>

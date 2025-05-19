@@ -3,7 +3,7 @@
 <?php echo $this->endSection(); ?>
 <div class="content-wrapper">
             <div class="section-banner">
-                <img src="<?php echo base_url('./writable'). '/' .$productdetails['blog']->banner_image ?>"
+                <img src="<?php echo base_url('./writable'). '/' .$productdata['blog']->banner_image ?>"
                     alt="Skin Protection">
             </div>
             <div class="container olverlay-headse"
@@ -17,7 +17,7 @@
                                     d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z">
                                 </path>
                             </svg>
-                            <span style="color:#4A6437;"><?php echo date("d/m/Y", strtotime($productdetails['blog']->created_at)); ?></span>
+                            <span style="color:#4A6437;"><?php echo date("d/m/Y", strtotime($productdata['blog']->created_at)); ?></span>
                         </div>
                         <div class="share-container">
                             <i class="fa fa-share-alt" style="font-size:24px;color:#4A6437;" id="share-btn"></i>
@@ -43,9 +43,9 @@
                             </div>
                         </div>
                     </div>
-                    <h1 style="color:#4A6437;margin-top:10px"><?php  print_r($productdetails['blog']->name) ; ?></h1>
+                    <h1 style="color:#4A6437;margin-top:10px"><?php  print_r($productdata['blog']->name) ; ?></h1>
 
-                    <p><?php  print_r($productdetails['blog']->excerpt) ; ?></p>
+                    <p><?php  print_r($productdata['blog']->excerpt) ; ?></p>
 
 
                 </div>
@@ -55,16 +55,16 @@
                     <img src="https://www.ramaeri.com/NestedProject/assets-2/images/Group.png">
                 </div>
                 <div class="container blogsingle mt-5" style="padding:5px!important">
-                      <?php  print_r($productdetails['blog']->meta_description) ; ?>
+                      <?php  print_r($productdata['blog']->meta_description) ; ?>
                     <hr style="margin:50px 0 50px 0;">
-                    <?php // print_r($productdetails['bloglast_1']) ; ?> <br>
+                    <?php // print_r($productdata['bloglast_1']) ; ?> <br>
                     
                     <div class="recent_post">
                         <h1 style="color:#4A6437;margin-top:10px;font-size:25px;font-family:Poppins;font-weight:500">
                             Recent Post</h1>
                         <div class="row">
                             <div class="col-md-7">
-                                <?php  foreach ($productdetails['secondlast_2'] as $key => $value) { ?>
+                                <?php  foreach ($productdata['secondlast_2'] as $key => $value) { ?>
                                 <div class="row mb-3">
                                     <div class="col-md-3">
                                         <div class="myclass">
@@ -129,7 +129,7 @@
                                     <a href="<?php echo base_url('./care').'/'.$value->slug?>"
                                         style="text-decoration:none;">
                                         <h5 style="color:#4A6437;margin-top:9px;font-size:20px;line-height:27.54px">
-                                            <?php  print_r($productdetails['bloglast_1']->name) ; ?></h5>
+                                            <?php  print_r($productdata['bloglast_1']->name) ; ?></h5>
                                     </a>
                                     <div class="icon-calenderss">
                                         <div class="date-container">

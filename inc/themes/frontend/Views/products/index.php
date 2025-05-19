@@ -459,4 +459,24 @@
         });
     });
 </script>
+<script>
+  const decreaseBtn = document.getElementById("decrease");
+  const increaseBtn = document.getElementById("increase");
+  const quantityInput = document.getElementById("qnt");
+
+  let quantity = parseInt(quantityInput.value);
+
+  increaseBtn.addEventListener("click", () => {
+    quantity++;
+    quantityInput.value = quantity;
+  });
+
+  decreaseBtn.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityInput.value = quantity;
+    }
+  });
+</script>
+
 <?php echo $this->endSection(); ?>

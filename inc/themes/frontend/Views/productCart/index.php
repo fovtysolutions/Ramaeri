@@ -4,6 +4,18 @@
 <!--cart List Items and total payment-->
 <section class="categories-section">
 
+   <?php if ($this->session->flashdata('succMsg')) { ?>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <?php echo $this->session->flashdata('succMsg') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php } ?>
+    <?php if ($this->session->flashdata('errMsg')) { ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo $this->session->flashdata('errMsg') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php } ?>  
     <div class="cart-section">
         <div aria-label="breadcrumbss">
             <ul class="breadcrumbss">
@@ -39,9 +51,10 @@
                     </td>
                     <td class="quantity-control">
                         <div class="d-flex justify-content-center" style="gap: 8px;">
-                            <button class="decrease" onclick="handleCartItem('decrease', 899)">-</button>
-                            <input type="text" id='qty899' readonly value="1">
-                            <button class="increase" onclick="handleCartItem('increase', 899)">+</button>
+
+                            <button id="decrease-btn">-</button>
+                            <span id="quantity" class="quantity" readonly value="1">1</span>
+                            <button id="increase-btn">+</button>
                         </div>
                     </td>
                     <td id='total899'>
@@ -91,6 +104,25 @@
 </div>
 <!-- modals -->
 <?php echo $this->section('script'); ?>
+<script>
+    const decreaseBtn = document.getElementById("decrease-btn");
+    const increaseBtn = document.getElementById("increase-btn");
+    const quantityEl = document.getElementById("quantity");
+    console.log(increaseBtn);
+    let quantity = 1;
+
+    increaseBtn.addEventListener("click", () => {
+        quantity++;
+        quantityEl.textContent = quantity;
+    });
+
+    decreaseBtn.addEventListener("click", () => {
+        if (quantity > 1) {
+            quantity--;
+            quantityEl.textContent = quantity;
+        }
+    });
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var cart_nav = document.getElementById('cartOffcanvas');

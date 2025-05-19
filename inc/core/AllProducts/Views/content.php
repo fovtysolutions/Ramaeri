@@ -248,7 +248,7 @@
                                 </div>
                             </div>
                             <!-- Hidden input for rating value -->
-        <input type="hidden" name="rating" id="rating-value">
+                            <input type="hidden" name="rating" id="rating-value">
                             <div class="col-6 text-center">
                                 <div  id="selected-rating" ><?= isset($detailsdata->rating) ? $detailsdata->rating : 'Selected Rating: 0' ?></div>
                             </div>
@@ -579,17 +579,41 @@
   const output = document.getElementById("selected-rating");
   const ratingInput = document.getElementById("rating-value");
 
-  stars.forEach((star, idx) => {
-    star.addEventListener("click", () => {
-      const rating = idx + 1;
-      output.textContent = `Selected Rating: ${rating}`;
-      ratingInput.value = rating;
+  stars.forEach((star, index) => {
+    star.addEventListener("mousemove", (e) => {
+      const rect = star.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const isHalf = x < rect.width / 2;
+      updateStars(index, isHalf ? 0.5 : 1);
+    });
 
-      stars.forEach(s => s.classList.remove("selected"));
-      for (let i = 0; i <= idx; i++) {
-        stars[i].classList.add("selected");
-      }
+    star.addEventListener("click", (e) => {
+      const rect = star.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const isHalf = x < rect.width / 2;
+      const rating = index + (isHalf ? 0.5 : 1);
+
+      ratingInput.value = rating;
+      output.textContent = `Selected Rating: ${rating}`;
+      lockRating(index, isHalf);
     });
   });
+
+  function updateStars(index, value) {
+    stars.forEach((s, i) => {
+      s.classList.remove("full", "half");
+      if (i < index) s.classList.add("full");
+      else if (i === index) s.classList.add(value === 0.5 ? "half" : "full");
+    });
+  }
+
+  function lockRating(index, isHalf) {
+    stars.forEach((s, i) => {
+      s.classList.remove("full", "half");
+      if (i < index) s.classList.add("full");
+      else if (i === index) s.classList.add(isHalf ? "half" : "full");
+    });
+  }
 </script>
+
 <?php echo $this->endSection() ?>

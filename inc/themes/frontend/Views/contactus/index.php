@@ -1,6 +1,7 @@
 <?php echo $this->section('frontcss'); ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/public/css/custom2.css'); ?>">
 <?php echo $this->endSection(); ?>
+
 <section class="heading-section">
     <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center heading-col"
         >
@@ -108,7 +109,10 @@
             </div>
         </div>
     </div>
-    <!-- recaptcha -->
+  
+</div>
+<?php echo $this->section('script'); ?>
+  <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?hl=&render=6LdWivoqAAAAAG2NgW3tVefDleWodyRyCrTYn-Ya"></script>
     <!-- recaptcha -->
-</div>
+<?php echo $this->endSection(); ?>

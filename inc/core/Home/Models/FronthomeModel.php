@@ -9,32 +9,27 @@ class FronthomeModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['firstname', 'lastname', 'email', 'image', 'last_login', 'last_logout', 'ip_address', 'status', 'is_admin', 'usertype', 'password'];
 
-public function getProductsWithCategory() {
-    return $this->db->table('ramaeri_products')
-        ->select('ramaeri_products.*, ramaeri_categories.name as category_name')
-        ->join('ramaeri_categories', 'ramaeri_categories.id = ramaeri_products.category_id')
-        ->get()
-        ->getResult();
-}
 
     public function getproducts()
     {
         $query = $this->db->table('ramaeri_products')->get();
         return $query->getResult();
     }
-    public function gethomeBanner(){
-            $query = $this->db->table('ramaeri_banners')
-                      ->where('home_image IS NOT NULL')
-                      ->where('home_image !=', '')
-                      ->get();
-            return $query->getResult();
+    public function gethomeBanner()
+    {
+        $query = $this->db->table('ramaeri_banners')
+            ->where('home_image IS NOT NULL')
+            ->where('home_image !=', '')
+            ->get();
+        return $query->getResult();
     }
-    public function getproductBanner(){
-            $query = $this->db->table('ramaeri_banners')
-                      ->where('product_image IS NOT NULL')
-                      ->where('product_image !=', '')
-                      ->get();
-            return $query->getRow();
+    public function getproductBanner()
+    {
+        $query = $this->db->table('ramaeri_banners')
+            ->where('product_image IS NOT NULL')
+            ->where('product_image !=', '')
+            ->get();
+        return $query->getRow();
     }
 
     public function getVideo()
@@ -44,8 +39,11 @@ public function getProductsWithCategory() {
     }
     public function getAllCategory()
     {
-        $query = $this->db->table('ramaeri_categories')->get();
-        return $query->getResult();
+        return $this->db->table('ramaeri_categories')
+            ->orderBy('id', 'DESC')
+            ->limit(4)
+            ->get()
+            ->getResult();
     }
     public function getBlog()
     {
@@ -77,7 +75,7 @@ public function getProductsWithCategory() {
     }
 
 
-    public function getCategory()
+    public function ExitnotfirstCategoryId()
     {
         $query = $this->db->table('ramaeri_categories')
             ->where('id !=', 1) // ID 1 ko exclude kar raha hai
@@ -95,96 +93,94 @@ public function getProductsWithCategory() {
     }
     public function getProductById($id)
     {
-         return $this->db->table('ramaeri_products')
+        return $this->db->table('ramaeri_products')
             ->where('id', $id)
             ->get()
             ->getRow();
     }
-    public function getlastblog_1(){
-    return $this->db->table('ramaeri_blogs')
-        ->orderBy('id', 'DESC')
-        ->limit(1)
-        ->get()
-        ->getRow(); 
-    }
-    public function getSecondAndThirdRecentBlogs(){
-    return $this->db->table('ramaeri_blogs')
-        ->orderBy('id', 'DESC')
-        ->limit(2, 1)
-        ->get()
-        ->getResult(); 
-    }
- public function getlastBlogsecond()
-{
-    return $this->db->table('ramaeri_blogs')
-        ->select('ramaeri_blogs.*, ramaeri_categories.name as categoryname')
-        ->join('ramaeri_categories', 'ramaeri_categories.id = ramaeri_blogs.category_name')
-        ->orderBy('ramaeri_blogs.id', 'DESC')
-        ->limit(2)
-        ->get()
-        ->getResult(); 
-}
-
-      public function getBlogById($slug)
+    public function getlastblog_1()
     {
-         return $this->db->table('ramaeri_blogs')
+        return $this->db->table('ramaeri_blogs')
+            ->orderBy('id', 'DESC')
+            ->limit(1)
+            ->get()
+            ->getRow();
+    }
+    public function getSecondAndThirdRecentBlogs()
+    {
+        return $this->db->table('ramaeri_blogs')
+            ->orderBy('id', 'DESC')
+            ->limit(2, 1)
+            ->get()
+            ->getResult();
+    }
+    public function getlastBlogsecond()
+    {
+        return $this->db->table('ramaeri_blogs')
+            ->select('ramaeri_blogs.*, ramaeri_categories.name as categoryname')
+            ->join('ramaeri_categories', 'ramaeri_categories.id = ramaeri_blogs.category_name')
+            ->orderBy('ramaeri_blogs.id', 'DESC')
+            ->limit(2)
+            ->get()
+            ->getResult();
+    }
+
+    public function getBlogById($slug)
+    {
+        return $this->db->table('ramaeri_blogs')
             ->where('slug', $slug)
             ->get()
             ->getRow();
     }
-    // public function getSearchAll($searchMain = null)
-//     {
-//         $builder = $this->db->table('hotel_booking_clients')->where('admin_uid', $this->session->get('uid'));
 
-    //         if (is_array($searchMain)) {
-//             $builder->groupStart(); 
+      public function get_cart_product($pro_id, $uid) {
+            $this->db->select('p.*, c.pro_qty, c.pro_id');
+            $this->db->join('ramaeri_products'.' p', 'c.pro_id = p.id');
+            $this->db->where('c.pro_id', $pro_id);
+            $this->db->where('c.uid', $uid);
+            $query = $this->db->get('ramaeri_cart'.' c');
+            if($query->num_rows()) {
+                return $query->row();
+            }
+            return false;
+        }
+         public function add_to_cart($data) {
+            return $this->db->insert('ramaeri_cart', $data);
+        } 
 
-    //             foreach ($searchMain as $field => $value) {
-//                 if (!empty($value)) {
-//                     $builder->orLike($field, $value); 
-//                 }
-//             }
-//             $builder->groupEnd();
-//             $log = json_encode($builder);
-//             return $builder;
-//         }
+          public function update_cart($pro_id, $uid, $data) {
+            return $this->db->update('ramaeri_cart', $data, ['pro_id' => $pro_id, 'uid' => $uid]);
+        }   
 
-    //         if (!empty($searchMain)) {
-//             $builder->groupStart()
-//                 ->like('id', $searchMain)
-//                 ->orlike('c_name', $searchMain)
-//                 ->orlike('c_email', $searchMain)
-//                 ->orlike('c_phone', $searchMain)
-//                 ->orLike('c_email', $searchMain)
-//                 ->orLike('c_address', $searchMain)
-//                 ->orLike('c_country', $searchMain)
-//                 ->orLike('c_state', $searchMain)
-//                 ->orLike('c_city', $searchMain)
-//                 ->groupEnd();
-//         }
-//         return $builder;
-//     }
+          public function get_cart_data($uid) {
+            $this->db->select('p.*, c.pro_qty, c.pro_id');
+            $this->db->join('ramaeri_products'.' p', 'c.pro_id = p.id');
+            $this->db->where('c.uid', $uid);
+            $query = $this->db->get('ramaeri_cart'.' c');
+            if($query->num_rows()) {
+                return $query->result();
+            }
+            return false;
+        }
 
-    //     public function getById($id){
-//         $query = $this->db->table('hotel_booking_clients')->where('id', $id)->get();
-//         return $query->getRow(); 
-//     }
+         public function cart_deleted($pro_id, $uid) {
+            $this->db->where('pro_id',$pro_id);
+            $this->db->where('uid',$uid);
+            $q = $this->db->delete('ramaeri_cart');
+            if ($q) {
+                return true;
+            }
+            return false;
+        }
 
-    //     public function updateit($id, $data)
-//     {
-//         if (!is_numeric($id)) {
-//             return $id; 
-//         }
-//         return $this->db->table('hotel_booking_clients')->where('id', $id)->update($data);
-//     }
-
-    //     public function insertit($data)
-//     {
-//         return $this->db->table('hotel_booking_clients')->insert($data);
-//     }
-
-    //     public function deleteit($id)
-//     {
-//         return $this->db->table('hotel_booking_clients')->where('id', $id)->delete();
-//     }
-}
+           public function check_product($pro_id, $uid) {
+            $this->db->select('*');
+            $this->db->where('pro_id', $pro_id);
+            $this->db->where('uid', $uid);
+            $query = $this->db->get('ramaeri_cart');
+            if($query-> num_rows()) {
+                return $query->row();
+            }
+            return false;
+        }   
+  }

@@ -11,7 +11,7 @@
 <div class="product" style="margin-bottom:5rem;">
   <div class="container ls">
     <div class="product-row">
-      <?php $galleryImages = json_decode($productdetails['productId']->gellary_image);?>
+      <?php $galleryImages = json_decode($productdata['productId']->gellary_image);?>
       <!-- First column: Side images (10%) -->
       <div class="side-images">
         <?php if (!empty($galleryImages)): ?>
@@ -19,16 +19,16 @@
         <div class="image-box"><img src="<?= base_url($img->file) ?>" alt="<?= esc($img->original_name) ?>" ></div>
         <?php endforeach; endif;?>
 
-         <?php if (!empty($productdetails['productId']->video_youtube)): ?>
+         <?php if (!empty($productdata['productId']->video_youtube)): ?>
           <div class="play-btn">
-            <video id="video-28" width="50px" class="video-player autoPlayFirst" data-src="<?php echo $productdetails['productId']->video_youtube?>" autoplay="" muted="" loop="" preload="auto" src=<?php echo $productdetails['productId']->video_youtube?>></video>
+            <video id="video-28" width="50px" class="video-player autoPlayFirst" data-src="<?php echo $productdata['productId']->video_youtube?>" autoplay="" muted="" loop="" preload="auto" src=<?php echo $productdata['productId']->video_youtube?>></video>
           </div>
          <?php endif; ?>
       </div>
       
       <!-- Second column: Main product image (40%) -->
       <div class="main-image">
-        <img id="main-image" style="height:auto" src="<?php echo base_url('writable').'/'.$productdetails['productId']->image ?>"
+        <img id="main-image" style="height:auto" src="<?php echo base_url('writable').'/'.$productdata['productId']->image ?>"
           alt="Main Product Image">
         <div class="rating-overlay">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffbe00" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -49,11 +49,11 @@
         </div>
       </div>
       <div class="product-details">
-        <h1 class="product-title"><?php echo $productdetails['productId']->name ?></h1>
-        <p class="product-para"><?php echo $productdetails['productId']->short_description ?></p>
+        <h1 class="product-title"><?php echo $productdata['productId']->name ?></h1>
+        <p class="product-para"><?php echo $productdata['productId']->short_description ?></p>
         <div class="product-price">
           <span class="rupee-icon">₹</span>
-        <span class="priceings"><?php echo $productdetails['productId']->price ?></span>
+        <span class="priceings"><?php echo $productdata['productId']->price ?></span>
     
  <span
             class="discount-price"></span>
@@ -61,19 +61,15 @@
           <p style="color:black;font-weight:400;font-size:small">incusive of all taxes.</p>
         </div>
          
-        <form action="" method="POST" class="direct-add-to-cart-form" style="width:100%"></form>
-        <div class="quantity-selector" style="width:100% !important">
-          <div style="display: flex; gap: 8px;">
-            <button id="decrease-btn">-</button>
-            <span id="quantity" class="quantity">1</span>
-            <button id="increase-btn">+</button>
-          </div>
-          
-            <input type="hidden" name="_token" value="GbAh8jz0LNVUu4aodajcqyvyLw5tOEi5wtu87o1n">
-            <input type="hidden" name="product_variation_id" value="33">
-            <input type="hidden" value="1" id="hiddenInput" name="quantity">
-                          <button href="javascript:void(0);" type="submit" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"
+        <form action="<?php echo base_url('add-to-cart') ?>" method="POST" class="direct-add-to-cart-form" style="width:100%">
+          <div class="quantity-selector" style="width:100% !important">
+               <div style="display: flex; gap: 8px;">
+                 <button type="button" id="decrease-btn">-</button>
+                 <input class="quantity" readonly id="quantity" type="" name="pro_qty" value="0" min="0" style="text-align: center;">
+                 <button type="button" id="increase-btn">+</button>
+                </div>
+               <input class="qty-input" readonly id="" type="hidden" name="pro_id" value="<?php echo $productdata['productId']->id ?> " min="0">
+                          <button href="javascript:void(0);" type="submit" 
                 class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text btn-add-cart cartButton">Add to Cart
                 &nbsp;
               </button>
@@ -82,11 +78,11 @@
 
         <ul class="product-info">
           <li class=""><strong style="">SKINTYPE</strong> <br><br> <span style="width:100%; line-height:18px">
-              <?php echo $productdetails['productId']->skin_type ?></span></li>
+              <?php echo $productdata['productId']->skin_type ?></span></li>
           <li class=""><strong style="">BENEFITS</strong> <br><br> <span style="width:100%;line-height:18px">
-              <?php echo $productdetails['productId']->benefit ?></span></li>
+              <?php echo $productdata['productId']->benefit ?></span></li>
           <li class=""><strong style="">KEY INGREDIENT</strong> <br><br> <span style="width:100%;line-height:18px">
-              <?php echo $productdetails['productId']->key_ingredient ?></span></li>
+              <?php echo $productdata['productId']->key_ingredient ?></span></li>
         </ul>
 
         <div class="service-icons">
@@ -119,7 +115,32 @@
   <button class="tab-link" onclick="openTab(event, 'ingredients')">ALL INGREDIENTS</button>
   <button class="tab-link" onclick="openTab(event, 'howToUse')">HOW TO USE</button>
 </div>
+<style>
+  .custom-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Optional for responsive design */
+}
 
+.text-side {
+    flex: 1;
+    min-width: 300px;
+}
+
+.image-side {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+}
+
+.image-side img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+</style>
 <div class="tab-content">
   <!-- Details Tab Content -->
   <div style="margin: 0px auto;
@@ -127,9 +148,37 @@
     
     <div id="details" class="tab-content-item active-content">
       <div class="content-section" style="padding-top:58px;padding-bottom:58px;">
-         <div class="description">
-          <?php echo $productdetails['productId']->details ?>
-          </div>
+       <?php
+$details = $productdata['productId']->details;
+
+// Check for image(s)
+if (preg_match_all('/<img[^>]+>/i', $details, $matches)) {
+    // Combine all image tags
+    $allImages = implode('', $matches[0]);
+
+    // Remove all image tags from the content
+    $contentOnly = preg_replace('/<img[^>]+>/i', '', $details);
+    ?>
+    <div class="custom-layout">
+        <div class="text-side">
+            <?php echo $contentOnly; ?>
+        </div>
+        <div class="image-side">
+            <?php echo $allImages; ?>
+        </div>
+    </div>
+    <?php
+} else {
+    // If no images, just show the content as it is
+    ?>
+    <div class="description">
+        <?php echo $details; ?>
+    </div>
+    <?php
+}
+?>
+
+
       </div>
     </div>
 
@@ -137,7 +186,7 @@
     <div id="ingredients" class="tab-content-item">
       <div class="content-section" style="padding-top:58px;padding-bottom:58px;">
          <div class="description">
-          <?php echo $productdetails['productId']->ingredients ?>
+          <?php echo $productdata['productId']->ingredients ?>
           </div>
       
       </div>
@@ -149,7 +198,7 @@
       <div class="how-to-use-section" style="padding-top:58px;padding-bottom:58px;justify-content:center;">
         <div class="how-to-use-description">
            <div class="description">
-               <?php echo $productdetails['productId']->how ?>
+               <?php echo $productdata['productId']->how ?>
           </div>
           </div>
         </div>
@@ -167,34 +216,34 @@
     <div class="benefit-item">
       <img src="https://www.ramaeri.com/storage/app/public/images/cream-1.png" alt="Protects Icon">
       <h3>Protects</h3>
-      <p><?php echo $productdetails['productId']->protect ?></p>
+      <p><?php echo $productdata['productId']->protect ?></p>
     </div>
     <div class="benefit-item">
       <img src="https://www.ramaeri.com/storage/app/public/images/face-1.png" alt="Prevents Icon">
       <h3>Prevents</h3>
-      <p><?php echo $productdetails['productId']->prevent ?></p>
+      <p><?php echo $productdata['productId']->prevent ?></p>
     </div>
     <div class="benefit-item">
       <img src="https://www.ramaeri.com/storage/app/public/images/skincare-1.png" alt="Fades Icon">
       <h3>Fades</h3>
-      <p><?php echo $productdetails['productId']->fade ?></p>
+      <p><?php echo $productdata['productId']->fade ?></p>
     </div>
     <div class="benefit-item">
       <img src="https://www.ramaeri.com/storage/app/public/images/soothing-1.png" alt="Soothes Icon">
       <h3>Soothes</h3>
-      <p><?php echo $productdetails['productId']->soothe ?></p>
+      <p><?php echo $productdata['productId']->soothe ?></p>
     </div>
 
     <div class="benefit-item">
       <img src="https://www.ramaeri.com/storage/app/public/images/permeate-1.png" alt="Hydrates Icon">
       <h3>Hydrates</h3>
-      <p><?php echo $productdetails['productId']->hydrate ?></p>
+      <p><?php echo $productdata['productId']->hydrate ?></p>
     </div>
 
     <div class="benefit-item">
       <img src="https://www.ramaeri.com/storage/app/public/images/hydrate.png" alt="Strengthens Icon">
       <h3>Strengthens</h3>
-      <p><?php echo $productdetails['productId']->strengthen ?></p>
+      <p><?php echo $productdata['productId']->strengthen ?></p>
     </div>
   </div>
 </div>
@@ -276,7 +325,7 @@
             <div class="swiper testimonial-slider">
                     <div class="ml-5"><h4 class="review"><span class="poppins-regular">GUEST REVIEWS & RATINGS </span></h4></div>
             <div class="swiper-wrapper padding-wrapper">
-              <?php foreach ($productdetails['review']  as $key => $value) { ?>
+              <?php foreach ($productdata['review']  as $key => $value) { ?>
             <div onclick="" class="swiper-slide feedback-sweep" style="cursor:pointer;">
                 <div class="testimonial-row" style="padding-left: 23px;padding-right: 25px;">
                     <div class="testimonial-column">
@@ -303,71 +352,7 @@
 
 
 <?php echo $this->section('script'); ?>
-<!-- <script>
-    const contentSection = document.querySelectorAll('.tab-content-item');
-    const description = document.querySelectorAll('.content-section');
-    function addChildData(div, img){ 
-    description.innerHTML = `<div class="description"> 
-                      </div>
-                      <div class="Img">
-                        
-                      </div>`;
-    contentSection.style.display = 'flex';
-     contentSection.style.justify-content = 'space-between';
-      contentSection.style.gap = '20px'; -->
-    <!-- // const firstChild =  `<div class="description"> 
-    //                   </div>`;
-    // let secondChild = `<div class="Img">
-                        
-    //                   </div>`
-    contentSection.upendChild(description);
-    contentSection.upendChild(description);
-                      
-    }
 
-    addChildData(); -->
-    
-
-    
-<!-- </script> -->
-<script>
-  const totalQty = 9;
-  const decreaseBtn = document.getElementById('decrease-btn');
-  const increaseBtn = document.getElementById('increase-btn');
-  const quantitySpan = document.getElementById('quantity');
-  const hiddenInput = document.getElementById('hiddenInput');
-  let quantity = 1;
-
-  // Update Toastr options
-  toastr.options = {
-    "closeButton": true,
-    "progressBar": true,
-    "positionClass": "toast-top-right",
-    "timeOut": "3000",
-  };
-
-  // Decrease quantity functionality
-  decreaseBtn.addEventListener('click', () => {
-    if (quantity > 1) {
-      quantity--;
-      quantitySpan.innerText = quantity;
-      hiddenInput.value = quantity;
-    } else {
-      toastr.warning('Minimum quantity is 1');
-    }
-  });
-
-  // Increase quantity functionality
-  increaseBtn.addEventListener('click', () => {
-    if (quantity < totalQty) {
-      quantity++;
-      quantitySpan.innerText = quantity;
-      hiddenInput.value = quantity;
-    } else {
-      toastr.warning('No More Stock');
-    }
-  });
-</script>
 <script>
   function openTab(event, tabId) {
     // Remove 'active' class from all tabs
@@ -505,6 +490,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+<script>
+  const decreaseBtn = document.getElementById("decrease-btn");
+  const increaseBtn = document.getElementById("increase-btn");
+  const quantityEl = document.getElementById("quantity");
+
+  let quantity = parseInt(quantityEl.value); // Start from existing value
+
+  increaseBtn.addEventListener("click", () => {
+    quantity++;
+    quantityEl.value = quantity;
+  });
+
+  decreaseBtn.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityEl.value = quantity;
+    }
+  });
+</script>
+
+
+
  <script>
             if (!navigator.serviceWorker?.controller) {
                 navigator.serviceWorker?.register("./public/sw.js").then(function(reg) {
@@ -512,4 +519,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         </script>
+
+        
 <?php echo $this->endSection(); ?>

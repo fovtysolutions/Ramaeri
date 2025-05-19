@@ -61,7 +61,7 @@
                                     href="https://www.ramaeri.com/pages/track-your-order">Track Your Order</a>
                             </li>
                          -->
-                            <li><a class="footer-sub-heading click-effectssss" href="./Deshboard.html">Track your
+                            <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url() ?>">Track your
                                     order</a></li>
                             <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/about-us') ?>">About Us</a></li>
                             <li><a class="footer-sub-heading click-effectssss" href="<?php echo base_url('pages/contact-us') ?>">Contact Us</a></li>
@@ -80,18 +80,18 @@
                     <div class="footer-widget">
                         <h5 class="footer-heading mb-4">Shop</h5>
 
-                        < class="">
+                        <ul class="">
                                 <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
                                     autocomplete="off"> <input type="hidden" id="cat_i3" name="catId" value="3">
                                 <input type="hidden" id="slug3" name="slug" value="Face-Wash">
                                 <?php foreach ($productdata['category_details'] as $key => $value) { ?>
-                                     <li>
+                                    <li>
                                 <a class="footer-sub-heading click-effectssss" target="_blank"
-                                    href="<?php echo base_url('./category'). '/' ?>" onclick="onClickCategory3(event)"
+                                    href="<?php echo base_url('./category'). '/' .$value->id ?>" onclick="onClickCategory3(event)"
                                     style=" cursor:pointer;" data-category="3" data-slug="Face Wash"><?php echo $value->name ?></a>
                             </li>
-                               <?php  } ?>
-                           
+                               <?php } ?>
+                            
                         </ul>
                     </div>
                 </div>

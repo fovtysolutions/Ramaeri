@@ -5,7 +5,7 @@
                 <ul class="d-flex align-itmes-center">
 
                     <li><a class="underlinemenu home-menu" href="<?php echo base_url('/') ?>">Home</a></li>
-                    <li><a class=" home-menu" href="<?php echo base_url('all-products') ?>">Products</a></li>
+                    <li><a class=" home-menu" href="<?php echo base_url('products') ?>">Products</a></li>
                     <li><a class=" home-menu" href="<?php echo base_url('care') ?>">Care</a></li>
                     <li><a class=" home-menu" href="<?php echo base_url('pages/about-us') ?>">About Us</a></li>
                     <li><a class=" home-menu" href="<?php echo base_url('pages/contact-us') ?>">Contact Us</a></li>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-xxl-2 col-xl-2 col-md-2 col-4 order-2 order-lg-1 text-md-center text-lg-left">
-        <a href="./Home.html" class="logo"><img src="https://www.ramaeri.com/storage/app/public/images/logo.png"
+        <a href="<?php echo base_url() ?>" class="logo"><img src="https://www.ramaeri.com/storage/app/public/images/logo.png"
                 alt=" logo" class="logo-img img-fluid"></a>
     </div>
 
@@ -76,7 +76,7 @@
 
                                     <hr class="mb-10"
                                         style="border-top:2px solid #568138; margin-left:10%; margin-right:10%;">
-                                    <a href="<?php echo base_url('all-products') ?>">
+                                    <a href="<?php echo base_url('products') ?>">
                                         <button type="submit" class="hand-button">
                                             Add Products
                                             <img src="https://www.ramaeri.com/storage/app/public/images/Component1.png "
@@ -108,11 +108,9 @@
                                             <h6 class="mb-0 cart-heading-short">Grape Glow Facewash</h6>
                                         </a>
                                         <div class="d-flex pt-2" style="gap: 8px;">
-                                            <button class="decrease"
-                                                onclick="handleCartItem('decrease', 899)">-</button>
-                                            <input type="text" readonly value="1" class="cart-input">
-                                            <button class="decrease"
-                                                onclick="handleCartItem('increase', 899)">+</button>
+                                            <button class="decrease" id="decrease">-</button>
+                                            <input type="text" readonly value="1" class="cart-input" id="qnt">
+                                            <button class="decrease" id="increase">+</button>
                                         </div>
                                         <div class="products_meta pt-2 d-flex align-items-center"
                                             style="justify-content:space-between;">
@@ -136,7 +134,7 @@
                                 </div>
 
                                 <div class="col-12 pt-8">
-                                    <a href="./productCart.html">
+                                    <a href="<?php echo base_url('carts') ?>">
                                         <button type="submit" class="hand-button">
                                             Continue
                                             <img src="https://ramaeri.com/storage/app/public/images/Component1.png"
@@ -168,3 +166,7 @@
 
 
 </nav>
+
+<?php echo $this->section('script'); ?>
+
+<?php echo $this->endSection(); ?>
