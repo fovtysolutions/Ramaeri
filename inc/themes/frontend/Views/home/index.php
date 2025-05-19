@@ -695,72 +695,7 @@
 
 </script>
 
-<script>
-    $(document).ready(function(){
-        $('.addtocart').click(function(){
-            let proId = $(this).data('id');
-            $.ajax({
-                url: '<?=base_url('add-to-cart')?>',
-                type: 'POST',
-                data: {
-                    'pro_id': proId
-                },
-                success: function (response) {
-                    console.log(response);
-                    if(response.success) {
-                        joinaddtocart(response.data, '#addtocartdata');
-                        $('#offcanvasRightshowproduct').click();
-                    }else{
-                       console.warn(response.message);
-                    }
-                },
-                error: function (xhr) {
-                    toastr.error(xhr.responseText);
-                }
-            });
-        })
-    })
 
-    function joinaddtocart(arrayhere, divID) {
-        let base_url = '<?php echo base_url('/writable/'); ?>';
-            if (arrayhere.length > 0) {
-                let result = arrayhere.map((details, index) => {
-                    return `
-                            <li class="d-flex pb-3 ">
-                                    <div class="thumb-wrapper">
-                                        <a href="${base_url}/${details.id}"
-                                                alt="Product" class="cart-image-short">
-                                        </a>
-                                    </div>
-                                    <div class="items-content ms-3 w-100">
-                                        <a href="https://ramaeri.com/products/ramaeri-grapeglow-facewash">
-                                            <h6 class="mb-0 cart-heading-short">${details.name}</h6>
-                                        </a>
-                                        <div class="d-flex pt-2" style="gap: 8px;">
-                                            <button class="decrease" id="decrease">-</button>
-                                            <input type="text" readonly value="${details.pro_qty}" class="cart-input" id="qnt">
-                                            <button class="decrease" id="increase">+</button>
-                                        </div>
-                                        <div class="products_meta pt-2 d-flex align-items-center"
-                                            style="justify-content:space-between;">
-                                            <span class="price fw-semibold">₹ ${details.price}</span>
-
-                                            <button class="remove_cart_btn ms-2" id="cart-remove">
-                                                <img src="https://ramaeri.com/storage/app/public/images/trash1.png"
-                                                    class="img-fluid" style="width:16.77px; height:21.33px">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                        `;
-                });
-
-                $(divID).html(result.join(''));
-            } else {
-                $(divID).html('');
-            }
-        }
-</script>
 
 <script>
   const decreaseBtn = document.getElementById("decrease");

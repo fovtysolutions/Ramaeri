@@ -150,7 +150,7 @@ class FronthomeModel extends Model
     $query = $this->db->table('ramaeri_cart')
         ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image') 
         ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id') 
-        ->where('ramaeri_cart.pro_id', $pro_id)
+        ->where('ramaeri_cart.uid', $pro_id)
         ->get();
 
     return $query->getResult();

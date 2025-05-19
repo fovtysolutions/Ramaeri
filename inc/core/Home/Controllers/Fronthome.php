@@ -60,6 +60,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function productView()
     {
         $banners = $this->model->getproductBanner();
@@ -81,7 +82,6 @@ class Fronthome extends \CodeIgniter\Controller
         echo view("Frontend\\Views\\index", $data);
     }
 
-
     public function categoryView($id)
     {
         $categoryId = $this->model->Exitscategoryproduct($id);
@@ -100,6 +100,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function productCartView()
     {
         $category = $this->model->getAllCategory();
@@ -114,6 +115,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function recentView($slug)
     {
         $blog = $this->model->getBlogById($slug);
@@ -138,6 +140,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function blogView()
     {
         $blogs = $this->model->getBlog();
@@ -155,6 +158,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function contactView()
     {
         $category = $this->model->getAllCategory();
@@ -169,6 +173,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function productDetailsView($id)
     { $session = session();
          $sessionuid = $session->get('uid');
@@ -190,6 +195,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function informationView()
     {
         $category = $this->model->getAllCategory();
@@ -233,6 +239,7 @@ class Fronthome extends \CodeIgniter\Controller
          
 
     }
+
     public function deshboardView()
     {
          $sessionuid = $this->session->get('uid');
@@ -250,6 +257,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function orderView()
     {
         $category = $this->model->getAllCategory();
@@ -264,6 +272,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function offerView()
     {
         $category = $this->model->getAllCategory();
@@ -278,6 +287,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function privacyView()
     {
         $category = $this->model->getAllCategory();
@@ -292,6 +302,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function refundView()
     {
         $category = $this->model->getAllCategory();
@@ -306,6 +317,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function termView()
     {
         $category = $this->model->getAllCategory();
@@ -320,6 +332,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function thankView()
     {
         $category = $this->model->getAllCategory();
@@ -334,6 +347,7 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function nofoundpageView()
     {
         $category = $this->model->getAllCategory();
@@ -348,9 +362,10 @@ class Fronthome extends \CodeIgniter\Controller
 
         echo view("Frontend\\Views\\index", $data);
     }
+
     public function add_to_cart()
     {  
-         $session = session();
+        $session = session();
         $uid = $session->get('uid');
         if (!$uid) {
             return $this->response->setJSON([
@@ -378,7 +393,7 @@ class Fronthome extends \CodeIgniter\Controller
                 // print_r($pro_id);
                 $add = $this->model->add_to_cart($data);
             }
-            $details = $this->model->showalldata( $pro_id);
+            $details = $this->model->showalldata( $uid);
             return $this->response->setJSON([
                 'status' => 'success',
                 'message' => 'Add to cart',
@@ -394,7 +409,7 @@ class Fronthome extends \CodeIgniter\Controller
         }
     }
 
-     public function submitregister()
+    public function submitregister()
     {
         $validation = \Config\Services::validation();
         $validation->setRules([
