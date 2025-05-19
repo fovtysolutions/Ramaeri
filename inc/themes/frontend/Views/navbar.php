@@ -16,8 +16,9 @@
     </div>
 
     <div class="col-xxl-2 col-xl-2 col-md-2 col-4 order-2 order-lg-1 text-md-center text-lg-left">
-        <a href="<?php echo base_url() ?>" class="logo"><img src="https://www.ramaeri.com/storage/app/public/images/logo.png"
-                alt=" logo" class="logo-img img-fluid"></a>
+        <a href="<?php echo base_url() ?>" class="logo"><img
+                src="https://www.ramaeri.com/storage/app/public/images/logo.png" alt=" logo"
+                class="logo-img img-fluid"></a>
     </div>
 
     <div class="col-xxl-2 col-xl-2 col-md-1 col-3 order-3 order-sm-3 order-md-3 order-lg-3 ">
@@ -30,29 +31,42 @@
                     </button>
                     <div class="user-menu-wrapper">
                         <ul class="user-menu">
-                            <li>
-                                <a href="javascript:void(0);" target="loginFrame" id="loginFrame"
-                                    onclick="loginmodel()">
-                                    <i class="fas fa-sign-out-alt"></i> Sign In
+                            <?php 
+                                $session = session();
+                                $sessionuid = $session->get('uid');
+
+                                if(!$sessionuid) {
+                            ?>
+                            <!-- Shown only when NOT logged in -->
+                            <li id="signInMenu">
+                                <a href="javascript:void(0);" onclick="loginmodel()">
+                                    <i class="fas fa-sign-in-alt"></i> Sign In
                                 </a>
                             </li>
+                            <?php }else{ ?>
+                            <!-- Shown only when logged in -->
+                            <li id="profileMenu">
+                                <a href="<?= base_url('profile') ?>">
+                                    <i class="fas fa-user"></i> My Profile
+                                </a>
+                            </li>
+                            <li id="profileMenu">
+                                <a href="<?= base_url('logout') ?>">
+                                    <i class="fas fa-user"></i> logout
+                                </a>
+                            </li>
+                            <?php } ?>
                         </ul>
+
                         <div id="iframeBackdrop"></div>
                         <iframe id="loginFrame" name="loginFrame"></iframe>
 
                     </div>
                 </div>
                 <button class="header-icon cartButton" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> <img
+                        data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"> <img
                         src="https://www.ramaeri.com/storage/app/public/images/cart.png" alt=" logo" class="icon-size"
                         style="width:30px"></button>
-
-                <?php if (!empty($product)) { ?>
-                    <button class="header-icon cartButton" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"> <img
-                            src="https://www.ramaeri.com/storage/app/public/images/cart.png" alt=" logo" class="icon-size"
-                            style="width:30px"></button>
-                <?php } ?>
             </div>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                 aria-labelledby="offcanvasRightLabel">
@@ -92,45 +106,75 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightshowproduct"
                 aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-body">
-                    <div class="cart-offcanvas-content">
+                    <?php if (empty($productdata['cart'])) { ?>
+                        <div class="cart-offcanvas-content">
+                            <div style="padding-top:15px">
+                                <span class="off-canva-heading pt-5 pb-5">Add to cart (0)</span>
+                                <div class="position-absolute fixed-bottom mb-10 col-lg-12">
+                                    <p class="d-flex justify-content-center align-items-center"
+                                        style="color:#5681388a;">
+                                        <span class="m-2">
+                                            <img style="width: 30px; height: 30px;"
+                                                src="https://www.ramaeri.com/public/images/ramaeri_cart.png"
+                                                alt="Image Error">
+                                        </span>
+                                        <span class="mt-2">
+                                            Your Cart is Empty
+                                        </span>
+                                    </p>
+
+                                    <hr class="mb-10"
+                                        style="border-top:2px solid #568138; margin-left:10%; margin-right:10%;">
+                                    <a href="<?php echo base_url('products') ?>">
+                                        <button type="submit" class="hand-button">
+                                            Add Products
+                                            <img src="https://www.ramaeri.com/storage/app/public/images/Component1.png "
+                                                alt="Arrow Icon" class="btn-arrow" style="width:20px; height:20px;">
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else{  ?>
+                       <div class="cart-offcanvas-content">
                         <div style="padding-top:15px">
                             <span class="off-canva-heading pt-5 pb-5">Add to cart (1)</span>
-                            <ul class="pt-12 scroll-checkout">
-                                <li class="d-flex pb-3 ">
+                            <ul class="pt-12 scroll-checkout" id="addtocartdata">
+                                <?php foreach ($productdata['cart']as $key => $value) { ?>
+                                 <li class="d-flex pb-3 ">
                                     <div class="thumb-wrapper">
-                                        <a href="https://ramaeri.com/products/ramaeri-grapeglow-facewash">
-                                            <img src="https://ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
+                                        <a href="<?php echo base_url('/writable/'.$value->image); ?>"
                                                 alt="Product" class="cart-image-short">
                                         </a>
                                     </div>
                                     <div class="items-content ms-3 w-100">
                                         <a href="https://ramaeri.com/products/ramaeri-grapeglow-facewash">
-                                            <h6 class="mb-0 cart-heading-short">Grape Glow Facewash</h6>
+                                            <h6 class="mb-0 cart-heading-short"><?php echo $value->name ?></h6>
                                         </a>
                                         <div class="d-flex pt-2" style="gap: 8px;">
                                             <button class="decrease" id="decrease">-</button>
-                                            <input type="text" readonly value="1" class="cart-input" id="qnt">
+                                            <input type="text" readonly value="<?php echo $value->pro_qty ?>" class="cart-input" id="qnt">
                                             <button class="decrease" id="increase">+</button>
                                         </div>
                                         <div class="products_meta pt-2 d-flex align-items-center"
                                             style="justify-content:space-between;">
-                                            <span class="price fw-semibold">₹1,300.00</span>
+                                            <span class="price fw-semibold">₹<?php echo $value->price ?></span>
 
-                                            <button class="remove_cart_btn ms-2"
-                                                onclick="handleCartItem('delete', 899)">
+                                            <button class="remove_cart_btn ms-2" id="cart-remove">
                                                 <img src="https://ramaeri.com/storage/app/public/images/trash1.png"
                                                     class="img-fluid" style="width:16.77px; height:21.33px">
                                             </button>
                                         </div>
                                     </div>
                                 </li>
+                              <?php  } ?>
                             </ul>
 
                             <div class="row align-items-center justify-content-between"
                                 style="border-top:1px solid #4A643780;">
                                 <div class="d-flex align-items-center justify-content-between pt-5">
                                     <h6 class="mb-0 price-total">Total:</h6>
-                                    <span class="sub-total-price">₹1,300.00</span>
+                                    <span class="sub-total-price">₹</span>
                                 </div>
 
                                 <div class="col-12 pt-8">
@@ -151,6 +195,9 @@
                             </div>
                         </div>
                     </div>
+                   <?php } ?>
+                    
+                    
                 </div>
             </div>
 

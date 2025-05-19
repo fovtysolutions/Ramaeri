@@ -34,9 +34,10 @@
                                     style="margin-top:1.5rem;margin-left:1.5rem;justify-content: space-between;padding-right: 30px;">
                                     <div class="col-9 col-md-8 col-xl-8">
                                         <div class="txt-cnt-main">
-                                            <p>Shekhar</p>
-                                            <p>example@demo.com</p>
-                                            <p>*********</p>
+                                            <p><?php echo $productdata['user']->username ?>
+                                            </p>
+                                            <p><?php echo $productdata['user']->email ?></p>
+                                            <p><?php echo $productdata['user']->number ?></p>
                                         </div>
                                     </div>
                                     <div class="col-2 col-md-2 col-xl-2 d-flex float-end"
@@ -112,44 +113,47 @@
 </div>
 
 <!-- updateProfile model -->
- <div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog"
-                aria-labelledby="updateProfileModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
-                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/" method="POST">
-                                <input type="hidden" name="_token" value="GbAh8jz0LNVUu4aodajcqyvyLw5tOEi5wtu87o1n"
-                                    autocomplete="off">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="update_name" value="Shekhar"
-                                        placeholder="Enter your name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" email='email'
-                                        value="example@demo.com" placeholder="Enter your email" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" value="8959281584"
-                                        placeholder="Enter your Phone" pattern="\d{10}" maxlength="10" minlength="10"
-                                        required title="Phone number must be exactly 10 digits">
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn"
-                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;background:#4A6437;color: #fff"
-                                id="saveProfileBtn">Save</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="updateProfileModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+                <form id="update-profile" method="POST">
+                    <input type="hidden" name="_token" value="GbAh8jz0LNVUu4aodajcqyvyLw5tOEi5wtu87o1n"
+                        autocomplete="off">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="username" value="<?= isset($productdata['user']->username)
+                            ? $productdata['user']->username
+                            : '' ?>" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" email='email' name="email"
+                            value="<?php echo isset($productdata['user']->email) ? $productdata['user']->email : ''; ?>"
+                            placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="number"
+                            value="<?php echo isset($productdata['user']->number) ? $productdata['user']->number : ''; ?>"
+                            placeholder="Enter your Phone" pattern="\d{10}" maxlength="10" minlength="10" required
+                            title="Phone number must be exactly 10 digits">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;background:#4A6437;color: #fff"
+                    id="saveProfileBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- model code ends -->
 <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="newaddressaddLabel"
@@ -344,5 +348,42 @@
         document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
         document.getElementById(sectionId).classList.remove('hidden');
     }
+</script>
+<script>
+    $(document).ready(function(){
+        $("#update-profile").submit(function(e){            
+            e.preventDefault();
+            const form = document.getElementById("update-profile");
+            let formData = new FormData(form);
+            $.ajax({
+                type: "POST",
+                url: "<?= base_URL('update-profile')?>",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $("#update-profile").val("Please Wait...");
+                },
+                success: function (response) {
+                    if (response.status === 'success') {
+                        toastr.success(response.message || "next step!");
+                        if(response.locationChange){
+                            setTimeout(() => {
+                                location.href = '<?=base_url('/profile')?>';
+                            }, 2000);
+                        }else{
+                            toastr.success(response.message || "next step!");
+                        }
+                    } else if (response.status === 'error') {
+                        toastr.error(response.message || "An error occurred!");
+                    }
+                },
+                error: function () {
+                    toastr.error("An unexpected error occurred!");
+                    $("#update-profile").val("Save & Close");
+                }
+            });
+        })
+    })
 </script>
 <?php echo $this->endSection(); ?>

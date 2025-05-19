@@ -3,17 +3,15 @@
   data-bs-backdrop="static">
   <div class="modal-dialog modal-dialog-centered login_model">
     <div class="modal-content">
-      <form class="tt-login-form-wrap text-center forms" action="https://www.ramaeri.com/login" method="POST"
+      <form class="tt-login-form-wrap text-center forms" method="POST"
         id="login-form">
-        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off"> <input
-          type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-681e3ac064226">
         <h2 class="head">
           Log In to Continue &nbsp; <img src="https://www.ramaeri.com/storage/app/public/images/Component2.png"
             alt="Arrow Icon" class="btn-arrow">
         </h2>
 
         <div class="mb-3">
-          <input type="email" id="email" name="email" placeholder="Enter user name or phone number" class="theme-input "
+          <input type="email" id="email" name="email" placeholder="Enter user email" class="theme-input "
             required>
         </div>
 
@@ -21,10 +19,6 @@
           <div class="position-relative">
             <input type="password" name="password" id="password" placeholder="Password" class="theme-input form-control"
               required>
-            <span class="position-absolute end-0 top-50 translate-middle-y me-3" style="cursor: pointer;"
-              onclick="togglePassword('password')">
-              <img src="https://www.ramaeri.com/storage/app/public/images/Vector.png" alt="Show Password">
-            </span>
           </div>
         </div>
 
@@ -108,28 +102,23 @@
 <!--For Register Form-->
 <!-- Modal Structure -->
 <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <form class="tt-login-form-wrap text-center forms" action="https://www.ramaeri.com/nested/register" method="POST"
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content ">
+      <form class="tt-login-form-wrap text-center forms" id="register-form" method="POST"
         id="register-form">
-        <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off"> <input
-          type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-681e3ac064f29">
-        <!--Scipr for form-->
-
-
         <h2 class="head">
           Register Now for Exclusive offers &nbsp; <img
             src="https://www.ramaeri.com/storage/app/public/images/Component2.png" alt="Arrow Icon" class="btn-arrow">
         </h2>
 
         <div class="mb-3">
-          <input type="text" id="fullname" name="name" placeholder="Enter your name" class="theme-input" required>
+          <input type="text" id="fullname" name="username" placeholder="Enter your username" class="theme-input" required>
         </div>
         <div class="mb-3">
           <input type="email" id="email" name="email" placeholder="Enter Email" class="theme-input" required>
         </div>
         <div class="mb-3">
-          <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number" class="theme-input"
+          <input type="tel" id="phone" name="number" placeholder="Enter Phone Number" class="theme-input"
             pattern="\d{10}" minlength="10" maxlength="10"
             oninput="this.value=this.value.slice(0,10).replace(/[^0-9]/g, '')" required>
         </div>
@@ -137,22 +126,14 @@
         <div class="mb-3">
           <div class="position-relative">
             <input type="password" name="password" id="password" placeholder="Password" class="theme-input form-control"
-              required>
-            <span class="position-absolute end-0 top-50 translate-middle-y me-3" style="cursor: pointer;"
-              onclick="togglePassword('password')">
-              <img src="https://www.ramaeri.com/storage/app/public/images/Vector.png" alt="Show Password">
-            </span>
+              required>>
           </div>
         </div>
 
         <div class="mb-3">
           <div class="position-relative">
-            <input type="password" name="password_confirmation" id="password_confirmation"
+            <input type="password"  id="password_confirmation"
               placeholder="Confirm Password" class="theme-input form-control" required>
-            <span class="position-absolute end-0 top-50 translate-middle-y me-3" style="cursor: pointer;"
-              onclick="togglePassword('password_confirmation')">
-              <img src="https://www.ramaeri.com/storage/app/public/images/Vector.png" alt="Show Password">
-            </span>
           </div>
         </div>
 
@@ -217,9 +198,9 @@
 <!-- Forgot Password Modal -->
 <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered login_model">
     <div class="modal-content">
-      <form class="tt-login-form-wrap text-center forms" action="https://www.ramaeri.com/sent/forgot/otp/mail"
+      <form class="tt-login-form-wrap text-center forms"  action="https://www.ramaeri.com/sent/forgot/otp/mail"
         method="POST" id="forgotP-form">
         <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off"> <input
           type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-681e3ac065ecf">
@@ -247,7 +228,7 @@
 
         </div>
         <br>
-        <button type="button" id='reset_f_button' class="submitAuth-button">Reset Password &nbsp; </button>
+        <button type="submit" id='reset_f_button' class="submitAuth-button">Reset Password &nbsp; </button>
         <br>
         <br>
         <a class="">
@@ -308,20 +289,6 @@
   }
 </script>
 <script>
-  grecaptcha.ready(function () {
-    grecaptcha.execute('6LdWivoqAAAAAG2NgW3tVefDleWodyRyCrTYn-Ya', { action: 'recaptcha_token' }).then(function (token) {
-      document.getElementById('g-recaptcha-response-681e3ac064f29').value = token;
-    });
-  });
-</script>
-<script>
-  grecaptcha.ready(function () {
-    grecaptcha.execute('6LdWivoqAAAAAG2NgW3tVefDleWodyRyCrTYn-Ya', { action: 'recaptcha_token' }).then(function (token) {
-      document.getElementById('g-recaptcha-response-681e3ac065ecf').value = token;
-    });
-  });
-</script>
-<script>
   function togglePassword(inputId) {
     var passwordInput = document.getElementById(inputId);
 
@@ -351,25 +318,6 @@
 
     thankYouModal.show();
   }
-</script>
-<script>
-  var cartButton = document.querySelector('.cartButton');
-  var cartOffcanvas = document.getElementById('cartOffcanvas');
-
-  // Open cart when button is clicked
-  cartButton.addEventListener('click', function (event) {
-    event.stopPropagation();  // Prevent closing the cart when the button itself is clicked
-    cartOffcanvas.classList.add('open');
-  });
-
-  // Close the cart if clicked outside of the cart
-  window.addEventListener('click', function (event) {
-    // Check if the click was outside the cartOffcanvas
-    if (!cartOffcanvas.contains(event.target) && cartOffcanvas.classList.contains('open')) {
-      cartOffcanvas.classList.remove('open');
-    }
-  });
-
 </script>
 <script>
   function togglePassword(inputId) {

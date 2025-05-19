@@ -15,6 +15,15 @@ class FronthomeModel extends Model
         $query = $this->db->table('ramaeri_products')->get();
         return $query->getResult();
     }
+ public function getcarts($uid){
+    $query = $this->db->table('ramaeri_cart')
+        ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image') 
+        ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id') 
+        ->where('ramaeri_cart.uid', $uid)
+        ->get();
+
+    return $query->getResult();
+}
     public function gethomeBanner()
     {
         $query = $this->db->table('ramaeri_banners')
@@ -98,6 +107,19 @@ class FronthomeModel extends Model
             ->get()
             ->getRow();
     }
+    public function userupdate($uid,$data)
+    {
+        return $this->db->table('user')
+            ->where('uid', $uid)
+            ->update($data);
+    }
+    public function userdata($uid)
+    {
+        return $this->db->table('user')
+            ->where('uid', $uid)
+            ->get()
+            ->getRow();
+    }
     public function getlastblog_1()
     {
         return $this->db->table('ramaeri_blogs')
@@ -124,7 +146,15 @@ class FronthomeModel extends Model
             ->get()
             ->getResult();
     }
+ public function showalldata($pro_id){
+    $query = $this->db->table('ramaeri_cart')
+        ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image') 
+        ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id') 
+        ->where('ramaeri_cart.pro_id', $pro_id)
+        ->get();
 
+    return $query->getResult();
+}
     public function getBlogById($slug)
     {
         return $this->db->table('ramaeri_blogs')
@@ -133,54 +163,53 @@ class FronthomeModel extends Model
             ->getRow();
     }
 
-      public function get_cart_product($pro_id, $uid) {
-            $this->db->select('p.*, c.pro_qty, c.pro_id');
-            $this->db->join('ramaeri_products'.' p', 'c.pro_id = p.id');
-            $this->db->where('c.pro_id', $pro_id);
-            $this->db->where('c.uid', $uid);
-            $query = $this->db->get('ramaeri_cart'.' c');
-            if($query->num_rows()) {
-                return $query->row();
-            }
-            return false;
+    public function add_to_cart($data)
+    {
+        return $this->db->table('ramaeri_cart')->insert($data); 
+    }
+    public function updateit($pro_id, $uid, $updated_data)
+    {
+        return $this->db->table('ramaeri_Banners')->where('pro_id', $pro_id)->where('uid', $uid)->update($updated_data);
+    }
+    public function update_cart($pro_id, $uid, $updated_data)
+    {
+        return $this->db->table('ramaeri_cart')->where('pro_id', $pro_id)->where('uid', $uid)->where('pro_id', $pro_id)->update($updated_data);
+    }
+    public function check_cart($pro_id, $uid)
+    {
+        $query = $this->db->table('ramaeri_cart')->where('pro_id', $pro_id)->where('uid', $uid)->get();
+        if ($query->getRow()) {
+            return $query->getRow();
         }
-         public function add_to_cart($data) {
-            return $this->db->insert('ramaeri_cart', $data);
-        } 
+        return false;
+    }
 
-          public function update_cart($pro_id, $uid, $data) {
-            return $this->db->update('ramaeri_cart', $data, ['pro_id' => $pro_id, 'uid' => $uid]);
-        }   
+     public function last_login($id)
+    {
+        return $this->db->table('user')
+            ->set('last_login', date('Y-m-d H:i:s'))
+            ->set('ip_address', $_SERVER['REMOTE_ADDR'])
+            ->where('id', $id)
+            ->update();
+    }
 
-          public function get_cart_data($uid) {
-            $this->db->select('p.*, c.pro_qty, c.pro_id');
-            $this->db->join('ramaeri_products'.' p', 'c.pro_id = p.id');
-            $this->db->where('c.uid', $uid);
-            $query = $this->db->get('ramaeri_cart'.' c');
-            if($query->num_rows()) {
-                return $query->result();
+     public function checkUser($email, $password)
+    {
+        $user = $this->db->table('user')
+            ->where('email', $email)
+            ->get()
+            ->getRow();
+
+            if ($user && password_verify($password, $user->password)) {
+                return $user;
             }
-            return false;
-        }
+        return null;
+    }
 
-         public function cart_deleted($pro_id, $uid) {
-            $this->db->where('pro_id',$pro_id);
-            $this->db->where('uid',$uid);
-            $q = $this->db->delete('ramaeri_cart');
-            if ($q) {
-                return true;
-            }
-            return false;
-        }
+     public function setRegister(array $data)
+    {
+        $builder = $this->db->table('user');
+        return $builder->insert($data);
+    }
 
-           public function check_product($pro_id, $uid) {
-            $this->db->select('*');
-            $this->db->where('pro_id', $pro_id);
-            $this->db->where('uid', $uid);
-            $query = $this->db->get('ramaeri_cart');
-            if($query-> num_rows()) {
-                return $query->row();
-            }
-            return false;
-        }   
-  }
+}

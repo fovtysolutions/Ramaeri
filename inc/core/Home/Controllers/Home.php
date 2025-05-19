@@ -84,8 +84,8 @@ class Home extends \CodeIgniter\Controller
         
             if($user->is_admin == 2){
                 $userisadmin = 2;
-            } elseif($user->is_admin == 1){
-                $userisadmin = 1;
+            } elseif($user->is_admin == 3){
+                $userisadmin = 3;
             } else {
                 return $this->response->setJSON([
                     'status' => 'error',
@@ -110,11 +110,11 @@ class Home extends \CodeIgniter\Controller
             $session->set($sessionData);
             $this->model->last_login($user->id);
 
-            if($user->is_admin == 2){
+            if($user->is_admin == 3){
                 return $this->response->setJSON([
                     'status' => 'success',
                     'message' => 'Login successfull!!',
-                    'locationChange' => base_url('customer'),
+                    'locationChange' => base_url('/'),
                 ]);
             }
 
@@ -230,8 +230,14 @@ class Home extends \CodeIgniter\Controller
     { 
         $session = session();
         $this->model->last_logout($session->id);
-        session()->destroy();
-        return redirect()->to('login');
+        if($session->get('isAdmin') == 3) {
+            session()->destroy();
+            return redirect()->to('/');
+        }else{
+            session()->destroy();
+            return redirect()->to('login');
+        }
+        
     }
    
     public function show404() {

@@ -54,6 +54,7 @@
     <script src="<?php echo base_url('assets/public/js/sw.js') ?>"></script>
     <script src="<?php echo base_url('assets/public/js/toastr.min.js') ?>"></script>
     <?php _ec($this->renderSection('script'), false) ?>
+    <?php _ec($this->include('Frontend\Views\submitit'), false) ?>
 </body>
 
 </html>
