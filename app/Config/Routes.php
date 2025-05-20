@@ -52,6 +52,7 @@ $routes->get('pages/about-us', 'Fronthome::aboutus');
 $routes->get('products', 'Fronthome::productView');
 $routes->get('carts', 'Fronthome::productCartView');
 $routes->post('add-to-cart', 'Fronthome::add_to_cart');
+$routes->post('deleteitem', 'Fronthome::deleteitemcart');
 
 $routes->get('care', 'Fronthome::blogView');
 $routes->get('care/(:any)', 'Fronthome::recentView/$1');

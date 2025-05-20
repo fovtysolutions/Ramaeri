@@ -212,4 +212,9 @@ class FronthomeModel extends Model
         return $builder->insert($data);
     }
 
+    public function deletecartitem($id)
+    {
+        return $this->db->table('ramaeri_cart')->where('id', $id)->delete();
+    }
+
 }

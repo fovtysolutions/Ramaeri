@@ -375,22 +375,30 @@ class Fronthome extends \CodeIgniter\Controller
             ]);
         }
         $pro_id = $this->request->getPost('pro_id');
-        // $pro_qty = $this->request->getPost('pro_qty');
+        $pro_qty = $this->request->getPost('pro_qty');
         if ($pro_id > 0) {
             $data = [
                 'pro_id' => $pro_id,
-                // 'pro_qty' => $pro_qty,
+                'pro_qty' => $pro_qty,
                 'uid' => $uid,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
             $checkcart = $this->model->check_cart($pro_id, $uid);
             if ($checkcart) {
-                // $updated_data['pro_qty'] = $checkcart->pro_qty;
-                $updated_data['uid'] = $checkcart->uid;
-                $updated_data['updated_at'] = date('Y-m-d H:i:s');
-                $add = $this->model->update_cart($pro_id, $uid, $updated_data);
+                $data = [
+                    'pro_qty' => $pro_qty,
+                    'uid' => $uid,
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+                $add = $this->model->update_cart($pro_id, $uid, $data);
+                $details = $this->model->showalldata( $uid);
+                return $this->response->setJSON([
+                    'status' => 'update',
+                    'message' => 'Cart Updated!!',
+                    'locationChange' => false,
+                    'data' =>  $details
+                ]);
             } else {
-                // print_r($pro_id);
                 $add = $this->model->add_to_cart($data);
             }
             $details = $this->model->showalldata( $uid);
@@ -406,6 +414,28 @@ class Fronthome extends \CodeIgniter\Controller
                 'message' => 'id not found',
                 'locationChange' => false,
             ]);
+        }
+    }
+
+    public function deleteitemcart()
+    {
+        $session = session();
+        $uid = $session->get('uid');
+        if ($this->request->getPost( "delete")) {
+            $id = $this->request->getPost( "delete");
+            if ($this->model->deletecartitem($id)) {
+                $details = $this->model->showalldata( $uid);
+                return $this->response->setJSON([
+                    'status' => 'success',
+                    'message' => 'Item deleted!!',
+                    'data' =>  $details
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Something went wrong!!'
+                ]);
+            }
         }
     }
 

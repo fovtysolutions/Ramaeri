@@ -200,8 +200,8 @@ class Reviews extends \CodeIgniter\Controller
 
     public function deleteit()
     {
-        if ($this->request->getPost(index: "delete")) {
-            $id = $this->request->getPost(index: "delete");
+        if ($this->request->getPost( "delete")) {
+            $id = $this->request->getPost( "delete");
             if ($this->model->deleteit($id)) {
                 return $this->response->setJSON([
                     'status' => 'success',
