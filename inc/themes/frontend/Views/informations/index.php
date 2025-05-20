@@ -14,12 +14,8 @@
                         <li><a href="#" class="cart">Payment</a></li>
                     </ul>
                 </div>
-                <form action="https://ramaeri.com/new-address" method="POST">
-                    <input type="hidden" name="_token" value="dqrFvYC1CWBBD1KW03WMo2pxYGZXqIyD6Z7AcP83"
-                        autocomplete="off">
+                <form id="order-information" method="POST">
                     <div class="row">
-
-
                         <h3 class="checkout-heading">Contact</h3>
                         <div class="form-group col-lg-12">
                             <input type="email" id="email" name="email" placeholder="Enter email ID or phone number"
@@ -41,7 +37,7 @@
                         </div>
 
                         <div class="form-group col-lg-12">
-                            <input type="text" name="mobile" id="mobile" placeholder="Mobile" autocomplete="off"
+                            <input type="text" name="number" id="mobile" placeholder="Mobile" autocomplete="off"
                                 class="float-input mb-5" required pattern="^[0-9]{10}$" maxlength="10" value="">
                             <label for="mobile" class="float-label">Mobile</label>
                             <small class="error-message" style="display: none; color: red;">Please enter a valid
@@ -74,61 +70,16 @@
                         </div>
 
                         <div class="form-group col-lg-4 ">
-                            <select name="state_id" id="state-dropdown" class="mb-5" required>
-                                <option value="1">Andaman and Nicobar Islands</option>
-                                <option value="2">Andhra Pradesh</option>
-                                <option value="3">Arunachal Pradesh</option>
-                                <option value="4">Assam</option>
-                                <option value="5">Bihar</option>
-                                <option value="6">Chandigarh</option>
-                                <option value="7">Chhattisgarh</option>
-                                <option value="8">Dadra and Nagar Haveli</option>
-                                <option value="9">Daman and Diu</option>
-                                <option value="10">Delhi</option>
-                                <option value="11">Goa</option>
-                                <option value="12">Gujarat</option>
-                                <option value="13">Haryana</option>
-                                <option value="14">Himachal Pradesh</option>
-                                <option value="15">Jammu and Kashmir</option>
-                                <option value="16">Jharkhand</option>
-                                <option value="17">Karnataka</option>
-                                <option value="18">Kenmore</option>
-                                <option value="19">Kerala</option>
-                                <option value="20">Lakshadweep</option>
-                                <option value="21">Madhya Pradesh</option>
-                                <option value="22">Maharashtra</option>
-                                <option value="23">Manipur</option>
-                                <option value="24">Meghalaya</option>
-                                <option value="25">Mizoram</option>
-                                <option value="26">Nagaland</option>
-                                <option value="27">Narora</option>
-                                <option value="28">Natwar</option>
-                                <option value="29">Odisha</option>
-                                <option value="30">Paschim Medinipur</option>
-                                <option value="31">Pondicherry</option>
-                                <option value="32">Punjab</option>
-                                <option value="33">Rajasthan</option>
-                                <option value="34">Sikkim</option>
-                                <option value="35">Tamil Nadu</option>
-                                <option value="36">Telangana</option>
-                                <option value="37">Tripura</option>
-                                <option value="38">Uttar Pradesh</option>
-                                <option value="39">Uttarakhand</option>
-                                <option value="40">Vaishali</option>
-                                <option value="41">West Bengal</option>
+                            <select name="state" id="state-dropdown" class="mb-5" required>
+                                <option value="" selected>Select State </option>
                             </select>
                             <label for="state_id" class="float-label">State</label>
                         </div>
-                        <div class="form-group col-lg-4">
-                            <select name="city_id" id="city-dropdown" class="mb-5" required>
-                                <option value="1" selected>indore</option>
-                                <option value="1" selected>Bhoapl</option>
-                                <option value="1" selected>Pune</option>
-                                <option value="1" selected>Noida</option>
-                                <option value="1" selected>Ratlam</option>
-
+                         <div class="form-group col-lg-4 ">
+                            <select name="city" id="city-dropdown" class="mb-5" required>
+                                <option value="" selected >Select City</option>
                             </select>
-                            <label for="city_idn" class="float-label">City</label>
+                            <label for="state_id" class="float-label">City</label>
                         </div>
                         <div style="display:flex; gap:8px; align-items:center;">
                             <input type="checkbox" id="saveInfo" style="width:17px; height:17px;"
@@ -141,12 +92,6 @@
                                 class="custom-checkbox" required>
                             <label for="saveInfo" class="form-check-label">I've read the privacy policy</label>
                         </div>
-
-                        <!-- <div class="form-check mb-3 mt-3" style="display:flex;gap:8px;align-items: center;">
-                      <input type="checkbox" class="form-check-input" id="privacyPolicy" style="width: 19px;
-                height: 19px;" required>
-                      <label class="form-check-label" for="privacyPolicy">I've read the privacy policy</label>
-            </div> -->
                         <div class="d-flex justify-content-between align-items-center up-and-down"
                             style="padding:80px 12px 90px 12px" id="showdisplayagain">
                             <div class="down-and-up" style="display: flex;gap: 16px;">
@@ -157,7 +102,7 @@
                             </div>
 
                             <button type="submit" class="hand-button">
-                                <a href="order" style="text-decoration: none; color: #fff;">Continue</a>
+                                Continue
                                 <img src="https://ramaeri.com/storage/app/public/images/Component1.png" alt="Arrow Icon"
                                     class="btn-arrow">
                             </button>
@@ -175,52 +120,6 @@
             <!-- Right Cart Section -->
             <div class="col-lg-5 col-md-12 cart-section cart-checkout"
                 style="background-color: #e9efe4; border-top-left-radius: 4rem;padding: 4rem;">
-                <style>
-                    .scroll-checkout {
-                        height: 50vh;
-                        overflow-y: auto
-                    }
-
-                    .scroll-checkout::-webkit-scrollbar {
-                        width: 3px;
-                        /* Default scrollbar width */
-                    }
-
-                    .scroll-checkout::-webkit-scrollbar-track {
-                        background-color: #DAE5D34D;
-                        /* Scroll track background */
-                        border-radius: 10px;
-                        /* Round scroll track edges */
-                    }
-
-                    .scroll-checkout::-webkit-scrollbar-thumb {
-                        background-color: #4A6437;
-                        /* Scrollbar handle color */
-                        border-radius: 10px;
-                        /* Round scrollbar edges */
-                        border: 2px solid #DAE5D34D;
-                        /* Space between handle and track */
-                    }
-
-                    .Discount {
-                        display: none;
-                    }
-
-                    .scroll-checkout::-webkit-scrollbar-thumb:hover {
-                        background-color: #5a7650;
-                        /* Darken handle on hover */
-                    }
-
-                    @media(max-width:500px) {
-                        .down-and-up {
-                            text-align: center !important;
-                        }
-                    }
-                </style>
-
-
-
-
                 <span class="cart-heading">Add to cart (1)</span>
 
                 <div class="cart-item mb-3 pt-8 scroll-checkout">
@@ -299,5 +198,45 @@
 <!-- Checkout Form End -->
 
 <?php echo $this->section('script'); ?>
+ <?php echo view('common_script/countryStateCity', ['stateid' => 'state-dropdown', 'cityid' => 'city-dropdown', 'selectedstate' => 'selectedstate', 'selectedcity' => 'selectedcity']); ?>
+
+ <script>
+            $(document).ready(function () {
+            $("#order-information").submit(function (e) {
+                e.preventDefault();
+                const form = document.getElementById("order-information");
+                let formData = new FormData(form);
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_URL('address-add') ?>",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                        $("#order-information").val("Please Wait...");
+                    },
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            // console.log(response.data.user);
+                            toastr.success(response.message || "Profile updated successfully!");
+                            if(response.locationChange){
+                                 setTimeout(() => {
+                                location.href = '<?=base_url('order')?>';
+                            }, 2000);
+                            }
+
+                        } else if (response.status === 'error') {
+                            toastr.error(response.message || "An error occurred!");
+                        }
+                    },
+                    error: function () {
+                        toastr.error("An unexpected error occurred!");
+                        $("#order-information").val("Save & Close");
+                    }
+                });
+            })
+        })
+ </script>
+
 <script src="<?php echo base_url('assets/public/js/checkout.js') ?>"></script>
 <?php echo $this->endSection(); ?>

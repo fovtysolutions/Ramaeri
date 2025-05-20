@@ -58,9 +58,10 @@ $routes->get('care', 'Fronthome::blogView');
 $routes->get('care/(:any)', 'Fronthome::recentView/$1');
 $routes->get('pages/contact-us', 'Fronthome::contactView');
 $routes->get('products/(:any)', 'Fronthome::productDetailsView/$1');
-$routes->get('personal-info', 'Fronthome::informationView');
+$routes->get('info', 'Fronthome::informationView');
 $routes->get('profile', 'Fronthome::deshboardView');
 $routes->get('order', 'Fronthome::orderView');
+$routes->get('order-histery', 'Fronthome::orderhistery');
 $routes->get('offer', 'Fronthome::offerView');
 $routes->get('pages/privacy-policy', 'Fronthome::privacyView');
 $routes->get('pages/return-policy', 'Fronthome::refundView');
@@ -70,10 +71,14 @@ $routes->get('category/(:any)', 'Fronthome::categoryView/$1');
 $routes->post('submit-register', 'Fronthome::submitregister');
 $routes->post('check-login-status', 'Fronthome::check_login_status');
 $routes->post('update-profile', 'Fronthome::update_profile');
+$routes->post('address-update', 'Fronthome::update_address');
+$routes->post('address-delete', 'Fronthome::address_delete');
+$routes->post('address-add', 'Fronthome::addressAdd');
 
 // $routes->get('recent', 'Fronthome::recentView');
 $routes->get('notfound', 'Fronthome::nofoundpageView');
 $routes->get('thank', 'Fronthome::thankView');
+$routes->post('contact-us-form', 'Fronthome::contactUsForm');
 
 
 

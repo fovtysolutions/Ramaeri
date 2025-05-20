@@ -60,21 +60,22 @@
           <span class="text-success"></span>
           <p style="color:black;font-weight:400;font-size:small">incusive of all taxes.</p>
         </div>
-         <form id="add_to_cart_form">
-          <div class="quantity-selector" style="width:100% !important" >
-               <div style="display: flex; gap: 8px;">
-                 <button type="button" id="decrease-btn">-</button>
-                 <input class="quantity" readonly id="quantity" type="" name="pro_qty" value="0" min="0" style="text-align: center;">
-                 <button type="button" id="increase-btn">+</button>
-                </div>
-               <input class="qty-input" readonly id="" type="hidden" name="pro_id" value="<?php echo $productdata['productId']->id ?> " min="0">
-                          <button  type="submit" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"
-                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text btn-add-cart cartButton" id="">Add to Cart
-                &nbsp;
+        <div class="quantity-selector" style="width:100% !important" >
+              <div style="display: flex; gap: 8px;">
+                <button type="button" id="decrease-btn">-</button>
+                <input class="quantity" readonly id="quantity" type="" name="pro_qty" value="0" min="0" style="text-align: center;">
+                <button type="button" id="increase-btn">+</button>
+              </div>
+              <input class="qty-input" readonly id="" type="hidden" name="pro_id" value="<?php echo $productdata['productId']->id ?> " min="0">
+              <button  
+                type="button" 
+                data-id = <?php echo $productdata['productId']->id ?>
+                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text btn-add-cart cartButton addtocart" 
+                id=""
+              >Add to Cart
+              &nbsp;
               </button>
-          </div>
-</form>
+        </div>
         <ul class="product-info">
           <li class=""><strong style="">SKINTYPE</strong> <br><br> <span style="width:100%; line-height:18px">
               <?php echo $productdata['productId']->skin_type ?></span></li>

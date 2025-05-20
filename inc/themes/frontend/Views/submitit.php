@@ -143,5 +143,40 @@
         })
     })
 
- 
+  $(document).ready(function(){
+        $("#subscribeForm").submit(function(e){            
+            e.preventDefault();
+            const form = document.getElementById("subscribeForm");
+            let formData = new FormData(form);
+            $.ajax({
+                type: "POST",
+                url: "<?= base_URL('forgot')?>",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $("#subscribeForm").val("Please Wait...");
+                },
+                success: function (response) {
+                    if (response.status === 'success') {
+                        toastr.success(response.message || "next step!");
+                        if(response.locationChange){
+                            setTimeout(() => {
+                                location.href = '<?=base_url('/')?>';
+                            }, 2000);
+                        }else{
+                            toastr.success(response.message || "next step!");
+                        }
+                    } else if (response.status === 'error') {
+                        toastr.error(response.message || "An error occurred!");
+                    }
+                },
+                error: function () {
+                    toastr.error("An unexpected error occurred!");
+                    $("#subscribeForm").val("Save & Close");
+                }
+            });
+        })
+    })
+
 </script>

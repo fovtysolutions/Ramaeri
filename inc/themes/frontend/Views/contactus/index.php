@@ -51,10 +51,8 @@
                         transform="matrix(.900991 0 0 0.750001 42.216588 354.171838)" fill="#bfd2b4" stroke-width="0" />
                 </svg>
             </div>
-            <form action="https://www.ramaeri.com/contact-us" method="POST" class="octaa" id="contact-form"
+            <form class="octaa" id="contact-form"
                 style="padding-top:40px">
-                <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed" autocomplete="off">
-                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-681e3bae5fafa">
                <input type="text" id="name" class="fnamee" name="name"
                     placeholder="Your Name as it appears in your corporate ID" required>
                 <input type="email" class="fnamee" name="email" placeholder="Work or Personal Email"
@@ -70,13 +68,13 @@
 
 
                 </div>
-                <button type="submit" class="btn btn-primary btn-md rounded-1 mt-6" style="display: none;"
-                    id="submit_button">
+                <button type="submit" class="btn btn-primary btn-md rounded-1 mt-6" style="display: none;">
                     Send Message
                 </button>
             </form>
         </div>
         <div class="contact-info contact-banner">
+            <form  method="post">
             <h3 class="second-heading">Contact Information</h3>
             <ul class="second-list">
                 <li style="padding-top: 50px;"><img
@@ -107,11 +105,48 @@
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
+            </form>
         </div>
     </div>
   
 </div>
 <?php echo $this->section('script'); ?>
+
+<script>
+     $(document).ready(function() {
+        $("#submit-image").click(function() {
+        $("#contact-form").submit();
+    });
+    $("#contact-form").submit(function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+
+        $.ajax({
+            url: "<?= base_url('contact-us-form') ?>",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+                // loader or disable button
+            },
+            success: function(response) {
+                if(response.status === 'success') {
+                    toastr.success(response.message,'' , { closeButton: true });
+                    // toastr.success(response.message || "Message Sent Successfully!");
+                    $('#contact-form')[0].reset();
+                } else {
+                    toastr.error(response.message,);
+                    // toastr.error(response.message || "Something went wrong!", '' , { closeButton: true });
+                }
+            },
+            error: function() {
+                toastr.error("request failed!");
+            }
+        });
+    });
+});
+</script>
   <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?hl=&render=6LdWivoqAAAAAG2NgW3tVefDleWodyRyCrTYn-Ya"></script>
     <!-- recaptcha -->

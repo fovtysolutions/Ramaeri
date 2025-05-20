@@ -362,7 +362,7 @@
     color: #4A6437;
     border: solid 1px #4A6437;
     width: 30px;
-    height: 30px;
+    /* height: 30px; */
     font-size: 16.17px;
     display: flex
 ;
@@ -558,7 +558,7 @@
     color: #4A6437;
     border: solid 1px #4A6437;
     width: 30px;
-    height: 30px;
+    /* height: 30px; */
     font-size: 16.17px;
     display: flex;
     justify-content: center;
@@ -569,7 +569,7 @@
 
   .quantity {
     width: 65.23px;
-    height: 30px;
+    /* height: 30px; */
     background-color: transparent;
     color: #4A6437;
     border: solid 1px #4A6437;
@@ -1750,7 +1750,7 @@
     color: #4A6437;
     border: solid 1px #4A6437;
     width: 30px;
-    height: 30px;
+    /* height: 30px; */
     font-size: 16.17px;
     display: flex
 ;

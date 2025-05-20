@@ -232,7 +232,7 @@ class Home extends \CodeIgniter\Controller
         $this->model->last_logout($session->id);
         if($session->get('isAdmin') == 3) {
             session()->destroy();
-            return redirect()->to('/');
+            return redirect()->to('');
         }else{
             session()->destroy();
             return redirect()->to('login');

@@ -6,14 +6,14 @@
                     <div class="footer-widget">
                         <h5 class="footer-heading mb-4">Subscribe</h5>
                         <form style="display: flex; flex-direction: column; align-items: stretch;"
-                            action="https://www.ramaeri.com/subscribers" class="subscribeForm" method="POST">
+                            id="subscribeForm" class="subscribeForm" method="POST">
                             <input type="hidden" name="_token" value="k1lV7OgWOXxXX70OaWB0XpoyfhfnI1UeHFjaZ8Ed"
                                 autocomplete="off"> <input type="hidden" name="g-recaptcha-response"
                                 id="g-recaptcha-response-681e3b8c024d3">
                                 <div class="form-group col-lg-6">
                                 <input type="email" name="email" placeholder="Email ID" autocomplete="off"
                                     style="color:#fff" class="email-input float-inputt mb-5" required>
-                                <label for="email" class="float-labell">Email ID</label>
+                                <label for="email" class="float-labell" name="email">Email ID</label>
                             </div>
                             <button class="submit-button" id="submit-btn" type="submit">
                                 <span class="submit-txt submittext" id="submit-text">Submit</span>
@@ -176,3 +176,4 @@
         </div>
     </div>
 </footer>
+

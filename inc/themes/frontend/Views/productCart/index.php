@@ -3,19 +3,6 @@
 <?php echo $this->endSection(); ?>
 <!--cart List Items and total payment-->
 <section class="categories-section">
-
-   <?php if ($this->session->flashdata('succMsg')) { ?>
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <?php echo $this->session->flashdata('succMsg') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php } ?>
-    <?php if ($this->session->flashdata('errMsg')) { ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?php echo $this->session->flashdata('errMsg') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php } ?>  
     <div class="cart-section">
         <div aria-label="breadcrumbss">
             <ul class="breadcrumbss">
@@ -37,31 +24,8 @@
                     <!-- <th>Delete</th> -->
                 </tr>
             </thead>
-            <tbody class="cart-listing">
-                <tr style="border-top: 1px solid #C2D0B7;">
-                    <td class="product">
-
-                        <img src="https://ramaeri.com/public/uploads/media/bef2fKSqpiJk8FdXkM9qNxLhSsJfqcfZwjdv1p0I.png"
-                            alt="Grape Glow Facewash" class="img-fluid">
-                        <span class="cart-heading">Grape Glow Facewash</span>
-                    </td>
-                    <td id='price899' style="font-weight:500">
-
-                        ₹1,300.00
-                    </td>
-                    <td class="quantity-control">
-                        <div class="d-flex justify-content-center" style="gap: 8px;">
-
-                            <button id="decrease-btn">-</button>
-                            <span id="quantity" class="quantity" readonly value="1">1</span>
-                            <button id="increase-btn">+</button>
-                        </div>
-                    </td>
-                    <td id='total899'>
-
-                        ₹1,300.00
-                    </td>
-                </tr>
+            <tbody class="cart-listing" id="cartadd">
+                
             </tbody>
         </table>
 
@@ -72,7 +36,7 @@
                 <span>100% Purchase Protection</span>
             </div>
             <div>
-                <a href="./Info.html">
+                <a href="<?php echo base_url('info') ?>">
                     <button type="submit" class="continues-button">Continue
                         <img src="https://www.ramaeri.com/storage/app/public/images/Component1.png" alt="Arrow Icon"
                             class="btn-arrow">
@@ -104,6 +68,45 @@
 </div>
 <!-- modals -->
 <?php echo $this->section('script'); ?>
+<script>
+
+function joinaddtocarts(arrayhere, divID, baseurl) {
+    if (arrayhere.length > 0) {
+        let cartcount = arrayhere.length;
+
+        let result = arrayhere.map((details, index) => {
+            return `
+                    <tr style="border-top: 1px solid #C2D0B7;" class="datacart">
+                    <td class="product">
+                        <img src="${baseurl}/writable/${details.image}" alt="Grape Glow Facewash"
+                            class="img-fluid">
+                        <span class="cart-heading">${details.name}</span>
+                    </td>
+                    <td id='price899' style="font-weight:500">
+                        ₹ ${details.price}
+                    </td>
+                    <td class="quantity-control">
+                        <div class="d-flex justify-content-center" style="gap: 8px;">
+                            <button data-decid="${details.id}" class="change-btn dec" data-type="decrease">-</button>
+                            <input type="hidden" readonly value="${details.pro_id}" class="proids" name="pro_id ">
+                            <input type="text" readonly value="${details.pro_qty}" class="cart-input quantity" id="qnt_${index}">
+                            <button data-incid="${details.id}" class="change-btn inc">+</button>
+                        </div>
+                    </td>
+                    <td>
+                        ₹ ${details.pro_qty * details.price}
+                    </td>
+                </tr>
+            `;
+        });
+        const itemshtml = result.join('');
+        $(divID).html(itemshtml);
+    } else {
+        $(divID).html('');
+    }
+}
+
+</script>
 <script>
     const decreaseBtn = document.getElementById("decrease-btn");
     const increaseBtn = document.getElementById("increase-btn");

@@ -1,3 +1,10 @@
+<?php 
+    $session = session();
+    $uid = $session->get('uid');
+    $cartcontroller = new  \Core\Home\Models\FronthomeModel;
+    $cartdata = $cartcontroller->getcarts($uid);
+
+?>
 <nav class="navbar navbar_top">
     <div class="col-xxl-8 col-xl-8 col-md-8 col-4 order-lg-2 d-none d-sm-none d-md-none d-lg-block">
         <div class="gshop-navbar-left d-flex align-items-center position-relative justify-content-center">
@@ -54,10 +61,10 @@
                         <iframe id="loginFrame" name="loginFrame"></iframe>
                     </div>
                 </div>
-                <button class="header-icon cartButton" type="button" data-bs-toggle="offcanvas"
+                <button class="header-icon cartButton"  type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"> <img
                         src="https://www.ramaeri.com/storage/app/public/images/cart.png" alt=" logo" class="icon-size"
-                        style="width:30px" id="opencart">
+                        style="width:30px" id="opencart"><span  class="cart-counter badge rounded-circle p-0 " style="background-color:#4a6437;" id="iconcount"></span>
                 </button>
             </div>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightshowproduct"
@@ -85,10 +92,13 @@
 <script>
     $(document).ready(function(){
         let base_url = '<?php echo base_url(); ?>';
-        let mainCartData = <?php echo json_encode(isset($productdata['cart']) ? $productdata['cart'] : []); ?>;
+        let mainCartData = <?php echo json_encode(isset($cartdata) ? $cartdata : []); ?>;
         const paramsElement = $('#addtocartdata');
         console.log(mainCartData);
         joinaddtocart(mainCartData, paramsElement);
+        if (typeof joinaddtocarts === 'function') {
+            joinaddtocarts(mainCartData, '#cartadd', base_url);
+        }
         $('.addtocart').click(function(){
             const proId = $(this).data('id');
             addToCartPro(proId, 1);
@@ -123,6 +133,9 @@
                 success: function (response) {
                     if(response.status == 'success') {
                         joinaddtocart(response.data, paramsElement);
+                        if (typeof joinaddtocarts === 'function') {
+                            joinaddtocarts(response.data, '#cartadd', base_url);
+                        }
                         toastr.success(response.message);
                     }else{
                         toastr.error(response.message);
@@ -147,9 +160,15 @@
                     if(response.status == 'success') {
                         $('#opencart').click();
                         joinaddtocart(response.data, paramsElement);
-                        toastr.success(response.message);
+                        if (typeof joinaddtocarts === 'function') {
+                            joinaddtocarts(response.data, '#cartadd', base_url);
+                        }
+                        toastr.success(response.message,'', { closeButton: true });
                     }else if(response.status == 'update') {
                         joinaddtocart(response.data, paramsElement);
+                        if (typeof joinaddtocarts === 'function') {
+                            joinaddtocarts(response.data, '#cartadd', base_url);
+                        }
                     }else{
                         toastr.error(response.message);
                         console.warn(response.message);
@@ -172,7 +191,7 @@
                     return `
                         <li class="d-flex pb-3 datacart">
                             <div class="thumb-wrapper">
-                                <img src="${base_url}/${details.image}" alt="Product" class="cart-image-short">
+                                <img src="${base_url}/writable/${details.image}" alt="Product" class="cart-image-short">
                             </div>
                             <div class="items-content ms-3 w-100">
                                 <a href="https://ramaeri.com/products/ramaeri-grapeglow-facewash">
@@ -196,11 +215,13 @@
                 });
                 const itemshtml = result.join('');
                 notemptycart(itemshtml, cartcount);
+                $('#iconcount').text(cartcount);
                 $('#carttotal').text(totalprice);
             } else {
                 emptycart()
                 $('#cartcount').text(0);
                 $('#carttotal').text(0);
+                $('#iconcount').text(0);
             }
         }
 

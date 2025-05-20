@@ -90,10 +90,13 @@
                             <input type="hidden" name="product_variation_id" value="33">
                             <input type="hidden" value="1" name="quantity">
 
-                            <button href="javascript:void(0);" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRightshowproduct" aria-controls="offcanvasRight"
-                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text cartButton">
-                                Add to Cart &nbsp;
+                            <button  
+                                type="button" 
+                                data-id = <?php echo $value->id ?>
+                                class="add-to-cart-button direct-add-to-cart-btn add-to-cart-text btn-add-cart cartButton addtocart" 
+                                id=""
+                            >Add to Cart
+                                &nbsp;
                             </button>
                         </form>
                     </div>

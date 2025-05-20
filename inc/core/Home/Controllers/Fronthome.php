@@ -13,7 +13,8 @@ class Fronthome extends \CodeIgniter\Controller
     }
 
     public function index()
-    {    $session = session();
+    {
+        $session = session();
         $sessionuid = $session->get('uid');
         $products = $this->model->getproducts();
         $category = $this->model->ExitnotfirstCategoryId();
@@ -35,7 +36,7 @@ class Fronthome extends \CodeIgniter\Controller
             'video' => $video,
             'banner' => $banners,
             'cart' => $cartdata,
-            'user' =>  $userdata,
+            'user' => $userdata,
         ];
         $data = [
             "title" => $this->config['name'],
@@ -103,9 +104,13 @@ class Fronthome extends \CodeIgniter\Controller
 
     public function productCartView()
     {
+         $session = session();
+        $uid = $session->get('uid');
         $category = $this->model->getAllCategory();
+        $cartdata = $this->model->getcarts($uid);
         $productdetails = [
             'category_details' => $category,
+            'cart' => $cartdata,
         ];
         $data = [
             "title" => $this->config['name'],
@@ -175,8 +180,9 @@ class Fronthome extends \CodeIgniter\Controller
     }
 
     public function productDetailsView($id)
-    { $session = session();
-         $sessionuid = $session->get('uid');
+    {
+        $session = session();
+        $sessionuid = $session->get('uid');
         $product = $this->model->getProductById($id);
         $reviews = $this->model->getReview();
         $category = $this->model->getAllCategory();
@@ -211,48 +217,204 @@ class Fronthome extends \CodeIgniter\Controller
         echo view("Frontend\\Views\\index", $data);
     }
 
-    public function update_profile() {
+    public function update_profile()
+    {
         $uid = $this->session->get('uid');
         $username = $this->request->getPost('username');
         $email = $this->request->getPost('email');
         $number = $this->request->getPost('number');
         $data = [
-         'username' => $username,
-         'email' => $email,
-         'number' => $number,
+            'username' => $username,
+            'email' => $email,
+            'number' => $number,
         ];
-         $updated = $this->model->userupdate($uid,$data);
-         if ($updated) {
+        $updated = $this->model->userupdate($uid, $data);
+        if ($updated) {
             return $this->response->setJSON([
                 'status' => 'success',
                 'message' => 'update user profile',
                 'locationChange' => false,
                 'data' => $data
             ]);
-         } else {
+        } else {
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'update failed',
                 'locationChange' => false,
             ]);
-         }
-         
+        }
+    }
 
+    public function addressAdd() {
+        $session = session();
+        $uid = $session->get('uid');
+        if (!$uid) {
+            return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'user uid not found',
+                    'locationChange' => false,
+                ]);
+        }
+        $first_name = $this->request->getPost('first_name');
+        $last_name = $this->request->getPost('last_name');
+        $number = $this->request->getPost('number');
+        $email = $this->request->getPost('email');
+        $city = $this->request->getPost('city');
+        $state = $this->request->getPost('state');
+        $pincode = $this->request->getPost('pincode');
+        $building = $this->request->getPost('building');
+        $street = $this->request->getPost('street');
+        $landmark = $this->request->getPost('landmark');
+        $address = $this->request->getPost('address');
+
+        $data = [
+            'uid' => $uid,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'number' => $number,
+            'email' => $email,
+            'city' => $city,
+            'state' => $state,
+            'pincode' => $pincode,
+            'building' => $building,
+            'street' => $street,
+            'landmark' => $landmark,
+            'address' => $address,
+        ];
+
+        if ($this->model->addressinsert($data)) {
+             return $this->response->setJSON([
+                    'status' => 'succsses',
+                    'message' => 'address inserted',
+                    'locationChange' => base_url('order'),
+                ]);
+        } else {
+             return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'address not inserted ',
+                    'locationChange' => false,
+                ]);
+        }
+        
+    }
+    public function update_address()
+    {
+        $session = session();
+        $uid = $session->get('uid');
+        $address = $this->request->getPost('address');
+        $state = $this->request->getPost('state');
+        $city = $this->request->getPost('city');
+        $pincode = $this->request->getPost('pincode');
+        $landmark = $this->request->getPost('landmark');
+        $firstname = $this->request->getPost('firstname');
+        $lastname = $this->request->getPost('lastname');
+        $number = $this->request->getPost('number');
+        $email = $this->request->getPost('email');
+        $address_id = $this->request->getPost('address_id');
+        $data1 = [
+            'landmark' => $landmark,
+            'pincode' => $pincode,
+            'city' => $city,
+            'state' => $state,
+            'address' => $address,
+        ];
+        $data2 = [
+            'lastname' => $lastname,
+            'firstname' => $firstname,
+            'email' => $email,
+            'number' => $number,
+        ];
+        $updatedaddress = $this->model->addressupdate($data1,$uid,  $address_id, );
+        if ($updatedaddress) {
+            $updateduser = $this->model->addressuserupdate($data2,$uid, );
+            if ($updateduser) {
+                return $this->response->setJSON([
+                    'status' => 'success',
+                    'message' => 'update user address',
+                    'locationChange' => false,
+                    'data' => [
+                'user' => $data2,
+                'address' => $data1
+            ]
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'update failed',
+                    'locationChange' => false,
+                ]);
+            }
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'update failed',
+                'locationChange' => false,
+            ]);
+        }
+
+
+    }
+
+    public function address_delete() {
+         $session = session();
+        $uid = $session->get('uid');
+        $address_id = $this->request->getPost('address_id');
+        if (!$address_id) {
+               return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'id Not found',
+                'locationChange' => false,
+            ]);
+        }
+        $data = $this->model->addressdelete($uid, $address_id);
+        if ($data) {
+               return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Address data delete',
+                'locationChange' => false,
+            ]);
+        } else {
+               return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'deleted failed',
+                'locationChange' => false,
+            ]);
+        }
+        
     }
 
     public function deshboardView()
     {
-         $sessionuid = $this->session->get('uid');
+        $uid = $this->session->get('uid');
         $category = $this->model->getAllCategory();
-        $userdata = $this->model->userdata($sessionuid);
+        $userdata = $this->model->userdata($uid);
+        $address = $this->model->getuseraddress($uid);
         $productdetails = [
             'category_details' => $category,
-            'user' =>  $userdata,
+            'user' => $userdata,
+            'address' => $address,
         ];
         $data = [
             "title" => $this->config['name'],
             "desc" => $this->config['desc'],
             "content" => view("Frontend\\Views\\deshboards\\index", ['productdata' => $productdetails])
+        ];
+
+        echo view("Frontend\\Views\\index", $data);
+    }
+    public function orderhistery()
+    {
+        $sessionuid = $this->session->get('uid');
+        $category = $this->model->getAllCategory();
+        $userdata = $this->model->userdata($sessionuid);
+        $productdetails = [
+            'category_details' => $category,
+            'user' => $userdata,
+        ];
+        $data = [
+            "title" => $this->config['name'],
+            "desc" => $this->config['desc'],
+            "content" => view("Frontend\\Views\\deshboards\\order-histery", ['productdata' => $productdetails])
         ];
 
         echo view("Frontend\\Views\\index", $data);
@@ -364,7 +526,7 @@ class Fronthome extends \CodeIgniter\Controller
     }
 
     public function add_to_cart()
-    {  
+    {
         $session = session();
         $uid = $session->get('uid');
         if (!$uid) {
@@ -391,25 +553,25 @@ class Fronthome extends \CodeIgniter\Controller
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];
                 $add = $this->model->update_cart($pro_id, $uid, $data);
-                $details = $this->model->showalldata( $uid);
+                $details = $this->model->showalldata($uid);
                 return $this->response->setJSON([
                     'status' => 'update',
                     'message' => 'Cart Updated!!',
                     'locationChange' => false,
-                    'data' =>  $details
+                    'data' => $details
                 ]);
             } else {
                 $add = $this->model->add_to_cart($data);
             }
-            $details = $this->model->showalldata( $uid);
+            $details = $this->model->showalldata($uid);
             return $this->response->setJSON([
                 'status' => 'success',
                 'message' => 'Add to cart',
                 'locationChange' => false,
-                'data' =>  $details
+                'data' => $details
             ]);
-        }else{
-                return $this->response->setJSON([
+        } else {
+            return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'id not found',
                 'locationChange' => false,
@@ -421,14 +583,14 @@ class Fronthome extends \CodeIgniter\Controller
     {
         $session = session();
         $uid = $session->get('uid');
-        if ($this->request->getPost( "delete")) {
-            $id = $this->request->getPost( "delete");
+        if ($this->request->getPost("delete")) {
+            $id = $this->request->getPost("delete");
             if ($this->model->deletecartitem($id)) {
-                $details = $this->model->showalldata( $uid);
+                $details = $this->model->showalldata($uid);
                 return $this->response->setJSON([
                     'status' => 'success',
                     'message' => 'Item deleted!!',
-                    'data' =>  $details
+                    'data' => $details
                 ]);
             } else {
                 return $this->response->setJSON([
@@ -459,15 +621,15 @@ class Fronthome extends \CodeIgniter\Controller
         $email = $this->request->getPost('email');
         $number = $this->request->getPost('number');
         $username = $this->request->getPost('username');
-        $password = password_hash($this->request->getPost('password'), PASSWORD_BCRYPT); 
-        $uid = uniqid(); 
+        $password = password_hash($this->request->getPost('password'), PASSWORD_BCRYPT);
+        $uid = uniqid();
         $is_admin = 3;
         $usertype = 3;
         $status = 0;
 
         $data = [
             "email" => $email,
-            "password" => $password, 
+            "password" => $password,
             "number" => $number,
             "username" => $username,
             "uid" => $uid,
@@ -489,5 +651,61 @@ class Fronthome extends \CodeIgniter\Controller
             ]);
         }
     }
+
+    public function contactUsForm()
+    {
+        $session = session();
+        $uid = $session->get('uid');
+        $name = $this->request->getPost('name');
+        $email = $this->request->getPost('email');
+        $message = $this->request->getPost('message');
+        $phone = $this->request->getPost('phone');
+
+        $contactData = [
+            'uid' => $uid,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'message' => $message,
+        ];
+        $check = $this->model->contact_Insert($contactData);
+        if ($check) {
+            // Send Email to Admin
+            // $adminEmail = 'priyankakoshta2001@gmail.com';
+            // $emailSubject = 'New Contact Message Received';
+            // $emailBody = "You have a new contact message:\n\nName: $name\nEmail: $email\nMessage: $message";
+
+            // $emailService = \Config\Services::email();
+            // $emailService->setTo($email);
+            // $emailService->setFrom('testing@fovtysolutions.com', 'Your Website');
+            // $emailService->setSubject($emailSubject);
+            // $emailService->setMessage($emailBody);
+            // if ($emailService->send()) {
+            //     return $this->response->setJSON([
+            //         'status' => 'success',
+            //         'message' => 'Message sent successfully.',
+            //     ]);
+            // } else {
+            //     return $this->response->setJSON([
+            //         'status' => 'error',
+            //         'message' => 'Failed to send email.',
+            //         'debug' => $emailService->printDebugger(['headers']),
+            //     ]);
+            // }
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'add data',
+                'locationChange' => false,
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'failed data',
+                'locationChange' => false,
+            ]);
+        }
+    }
+
+
 
 }

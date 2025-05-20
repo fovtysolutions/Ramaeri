@@ -83,6 +83,9 @@ class FronthomeModel extends Model
             ->getRow();
     }
 
+    public function addressinsert($data) {
+        return $this->db->table('address')->insert($data);
+    }
 
     public function ExitnotfirstCategoryId()
     {
@@ -167,6 +170,10 @@ class FronthomeModel extends Model
     {
         return $this->db->table('ramaeri_cart')->insert($data); 
     }
+    public function contact_Insert($contactData)
+    {
+        return $this->db->table('ramaeri_queries')->insert($contactData); 
+    }
     public function updateit($pro_id, $uid, $updated_data)
     {
         return $this->db->table('ramaeri_Banners')->where('pro_id', $pro_id)->where('uid', $uid)->update($updated_data);
@@ -193,6 +200,15 @@ class FronthomeModel extends Model
             ->update();
     }
 
+    public function getuseraddress($uid) {
+    $builder = $this->db->table('address a');              
+    $builder->select('a.*, u.username, u.email, u.number, u.lastname, u.firstname');  
+    $builder->join('user u', 'u.uid = a.uid');                
+    $builder->where('a.uid', $uid);                           
+    $query = $builder->get();
+    return $query->getResult();
+    }
+
      public function checkUser($email, $password)
     {
         $user = $this->db->table('user')
@@ -210,6 +226,20 @@ class FronthomeModel extends Model
     {
         $builder = $this->db->table('user');
         return $builder->insert($data);
+    }
+     public function addressupdate(array $data,$uid,$address_id)
+    {
+        $builder = $this->db->table('address')->where('uid' ,$uid)->where('id' ,$address_id);
+        return $builder->update($data);
+    }
+
+    public function addressdelete($uid , $address_id){
+        return $this->db->table('address')->where('uid', $uid)->where('id', $address_id)->delete();
+    }
+     public function addressuserupdate(array $data,$uid)
+    {
+        $builder = $this->db->table('user')->where('uid' ,$uid);
+        return $builder->update($data);
     }
 
     public function deletecartitem($id)

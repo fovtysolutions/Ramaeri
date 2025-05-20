@@ -1186,3 +1186,12 @@ button#submit-btn:hover .icon-gap {
 .head-sec {
     border-radius: 10px;
 }
+.cart-counter {
+    position: absolute !important;
+    top: -9px !important;
+    right: -15px !important;
+    width: 20px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    font-size: 12px !important;
+}

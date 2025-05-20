@@ -419,3 +419,325 @@
        padding: 10px 15px !important;
        margin-bottom: 10px !important;
    }
+
+    .continue-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #556b2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 8px; /* Space between the text and the image */
+    width: 169px;
+    height: 46px;
+    line-height: 34px;
+    font-weight: 400;
+}
+
+.btn-arrow {
+    width: 16px; /* Adjust the size of the arrow icon */
+    height: 16px;
+}
+
+    .protection-icon {
+        width: 24px;  /* Adjust the size */
+        height: 24px;
+        margin-right: 8px;  /* Space between icon and text */
+        vertical-align: middle;  /* Align icon with the text */
+    }
+
+    .cart-table td {
+        border-bottom: none !important;
+    }
+
+    .cart-table tr th {
+        background-color: transparent;
+        color: rgba(74, 100, 55, 1);
+        font-size: 17.28px;
+        font-weight: 400;
+        line-height:25.92px;
+
+    }
+
+    .cart-section {
+        background-color: #f8fff3;
+        padding: 160px 53px 90px 53px;
+        color: #556b2f;
+    }
+   
+ 
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+    .cart-table th, .cart-table td {
+        padding: 15px;
+        text-align: left;
+       
+    }
+
+    .cart-table th {
+        color: #6b8e23;
+        font-size: 14px;
+    }
+
+    .cart-table .product {
+        display: flex;
+        align-items: center;
+    }
+
+    .cart-table .product img {
+        width: 100px;
+        height: 100px;
+        margin-right: 22px;
+    }
+
+    .cart-table .quantity-control button {
+           width: 18px;
+    height: 19px;
+    border: 1px solid rgba(74, 100, 55, 1);
+    text-align: center;
+    font-size: 15px;
+    line-height: 18px;
+    cursor: pointer;
+    padding: 0;
+    color: rgba(74, 100, 55, 1);
+    }
+
+    .cart-table .quantity-control input {
+       width: 42px;
+    height: 19px;
+    display: inline-block;
+    border: 1px solid rgba(74, 100, 55, 1);
+    text-align: center;
+    line-height: 18.44px;
+    font-size: 15px;
+    color: rgba(74, 100, 55, 1);
+		    background-color: transparent;
+    }
+
+    .footer-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+    .protection {
+        display: flex;
+        align-items: center;
+        color: #7b886c;
+    }
+
+    .cart-table tbody tr+tr {
+    border-top: 1px solid #C2D0B7;
+}
+	.breadcrumbss {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    margin: 0;
+}
+	.breadcrumbss .cart {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13.33px;
+    line-height: 20px;
+    font-weight: 300;
+}
+	.breadcrumbss li+li:before {
+    content: "";
+    display: inline-block;
+    width: 7.78px;
+    height: 7.78px;
+    background-image: url(https://137.sofmatics.com/storage/app/public/images/next-button.png);
+    background-size: cover;
+    margin-right: 15px;
+}
+	.breadcrumbss a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    font-size: 13.33px;
+    line-height: 20px;
+    font-weight: 300;
+}
+	.breadcrumbss li {
+    margin-right: 10px;
+}
+@media (max-width: 590px) {
+    .nothing {
+        display: block;
+    }
+    .nothing1{
+	display: block;
+    }
+    .footer-section{
+	gap: 3px;
+	flex-direction: column;
+	align-items: end;
+    }
+    .continues-button{
+    	width: 82vw;
+    }
+}
+
+@media (max-width: 991.98px){
+	.cart-table .product{
+	   flex-wrap: wrap;
+       flex-direction: column;
+	}
+    .cart-table .product img{
+        min-width: 90px;
+        min-height: auto;
+    }
+    .cart-table tbody tr {
+        display: inherit;
+    
+    }
+    .cart-table thead {
+        display: inherit;
+    }
+}
+
+@media (max-width: 768.98px) {
+    .cart-table tbody tr {
+        display: inherit;
+    
+    }
+    .cart-table thead {
+        display: inherit;
+    }
+}
+@media (max-width: 768.98px) {
+    .cart-table tbody tr {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        /* -webkit-box-direction:In webkit applications; */
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+}
+@media (max-width: 426px){
+    .footer-section{
+        gap: 5px;
+    }
+    .continues-button{
+    	width: 75vw;
+    }
+}
+
+@media (max-width: 321px){
+    .footer-section{
+        gap: 5px;
+    }
+}
+#home{
+    display: block;
+}
+#profile,#messages{
+        display: none;
+      }
+         td {
+        background-color: #f8fff3 !important;
+      }
+      th {
+        background-color: #f8fff3 !important;
+      }
+      .main-wrapper {
+        background-color: #f8fff3 !important;
+      }
+      .fs-xs {
+        color: #4d6639;
+      }
+      .achievement-box {
+        margin: 4px 10px;
+      }
+      .achievement-box .icon {
+        padding: 8px 12px;
+      }
+      .bg-color-1 {
+        background-color: #e3fff0;
+      }
+      .bg-color-2 {
+        background-color: #e6f6fc;
+      }
+      .bg-color-3 {
+        background-color: #fff3dd;
+      }
+      .bg-color-4 {
+        background-color: #f1e9ff;
+      }
+      .nav-tabs li a {
+        text-decoration: none;
+      }
+      a {
+        text-decoration: none !important;
+        color: #4d6639;
+      }
+      .account-info {
+        gap: 28px;
+      }
+      .profile-inf-right {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      @media (max-width: 768px) {
+        .table-responsive {
+          overflow: scroll;
+        }
+      }
+      #history-order {
+        display: block;
+      }
+      #order-tracking {
+        display: none;
+      }
+      #progress-bar {
+        display: table;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        table-layout: fixed;
+        padding: 0;
+        counter-reset: step;
+      }
+      #progress-bar li.tt-step {
+        list-style-type: decimal;
+        display: table-cell;
+        width: 25%;
+        float: left;
+        position: relative;
+        text-align: center;
+      }
+      #progress-bar li.tt-step:before {
+        width: 30px;
+        height: 30px;
+        color: #5d6374;
+        content: counter(step);
+        counter-increment: step;
+        line-height: 30px;
+        font-size: 14px;
+        border: 1px solid #f4f4f4;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px auto;
+        border-radius: 50%;
+        background-color: #fff;
+      }

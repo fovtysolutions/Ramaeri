@@ -184,6 +184,8 @@ class Email extends BaseConfig
         $this->SMTPCrypto   = getenv('email.SMTPCrypto');
         $this->mailType     = getenv('email.mailType');
         $this->charset      = getenv('email.charset');
+
+		
     }
 
 }
