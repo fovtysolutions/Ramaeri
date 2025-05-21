@@ -15,15 +15,16 @@ class FronthomeModel extends Model
         $query = $this->db->table('ramaeri_products')->get();
         return $query->getResult();
     }
- public function getcarts($uid){
-    $query = $this->db->table('ramaeri_cart')
-        ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image') 
-        ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id') 
-        ->where('ramaeri_cart.uid', $uid)
-        ->get();
+    public function getcarts($uid)
+    {
+        $query = $this->db->table('ramaeri_cart')
+            ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image')
+            ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id')
+            ->where('ramaeri_cart.uid', $uid)
+            ->get();
 
-    return $query->getResult();
-}
+        return $query->getResult();
+    }
     public function gethomeBanner()
     {
         $query = $this->db->table('ramaeri_banners')
@@ -83,7 +84,8 @@ class FronthomeModel extends Model
             ->getRow();
     }
 
-    public function addressinsert($data) {
+    public function addressinsert($data)
+    {
         return $this->db->table('address')->insert($data);
     }
 
@@ -110,7 +112,7 @@ class FronthomeModel extends Model
             ->get()
             ->getRow();
     }
-    public function userupdate($uid,$data)
+    public function userupdate($uid, $data)
     {
         return $this->db->table('user')
             ->where('uid', $uid)
@@ -149,15 +151,16 @@ class FronthomeModel extends Model
             ->get()
             ->getResult();
     }
- public function showalldata($pro_id){
-    $query = $this->db->table('ramaeri_cart')
-        ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image') 
-        ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id') 
-        ->where('ramaeri_cart.uid', $pro_id)
-        ->get();
+    public function showalldata($pro_id)
+    {
+        $query = $this->db->table('ramaeri_cart')
+            ->select('ramaeri_cart.*, ramaeri_products.name, ramaeri_products.price, ramaeri_products.image')
+            ->join('ramaeri_products', 'ramaeri_products.id = ramaeri_cart.pro_id')
+            ->where('ramaeri_cart.uid', $pro_id)
+            ->get();
 
-    return $query->getResult();
-}
+        return $query->getResult();
+    }
     public function getBlogById($slug)
     {
         return $this->db->table('ramaeri_blogs')
@@ -168,11 +171,15 @@ class FronthomeModel extends Model
 
     public function add_to_cart($data)
     {
-        return $this->db->table('ramaeri_cart')->insert($data); 
+        return $this->db->table('ramaeri_cart')->insert($data);
     }
     public function contact_Insert($contactData)
     {
-        return $this->db->table('ramaeri_queries')->insert($contactData); 
+        return $this->db->table('ramaeri_queries')->insert($contactData);
+    }
+    public function orderInsert($data)
+    {
+        return $this->db->table('ramaeri_orders')->insert($data);
     }
     public function updateit($pro_id, $uid, $updated_data)
     {
@@ -191,7 +198,7 @@ class FronthomeModel extends Model
         return false;
     }
 
-     public function last_login($id)
+    public function last_login($id)
     {
         return $this->db->table('user')
             ->set('last_login', date('Y-m-d H:i:s'))
@@ -200,46 +207,48 @@ class FronthomeModel extends Model
             ->update();
     }
 
-    public function getuseraddress($uid) {
-    $builder = $this->db->table('address a');              
-    $builder->select('a.*, u.username, u.email, u.number, u.lastname, u.firstname');  
-    $builder->join('user u', 'u.uid = a.uid');                
-    $builder->where('a.uid', $uid);                           
-    $query = $builder->get();
-    return $query->getResult();
+
+    public function getaddress($uid)
+    {
+        return $this->db->table('address')->where('uid', $uid)->get()->getResult();
+    }
+    public function getLatestAddress($uid)
+    {
+        return $this->db->table('address')
+            ->where('uid', $uid)
+            ->orderBy('id', 'DESC') // assuming 'id' is auto-increment primary key
+            ->limit(1)
+            ->get()
+            ->getRow(); // get only one row
     }
 
-     public function checkUser($email, $password)
+    public function checkUser($email, $password)
     {
         $user = $this->db->table('user')
             ->where('email', $email)
             ->get()
             ->getRow();
 
-            if ($user && password_verify($password, $user->password)) {
-                return $user;
-            }
+        if ($user && password_verify($password, $user->password)) {
+            return $user;
+        }
         return null;
     }
 
-     public function setRegister(array $data)
+    public function setRegister(array $data)
     {
         $builder = $this->db->table('user');
         return $builder->insert($data);
     }
-     public function addressupdate(array $data,$uid,$address_id)
+    public function addressupdate(array $data, $uid, $id)
     {
-        $builder = $this->db->table('address')->where('uid' ,$uid)->where('id' ,$address_id);
+        $builder = $this->db->table('address')->where('uid', $uid)->where('id', $id);
         return $builder->update($data);
     }
 
-    public function addressdelete($uid , $address_id){
-        return $this->db->table('address')->where('uid', $uid)->where('id', $address_id)->delete();
-    }
-     public function addressuserupdate(array $data,$uid)
+    public function addressdelete($uid, $address_id)
     {
-        $builder = $this->db->table('user')->where('uid' ,$uid);
-        return $builder->update($data);
+        return $this->db->table('address')->where('uid', $uid)->where('id', $address_id)->delete();
     }
 
     public function deletecartitem($id)

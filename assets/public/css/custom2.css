@@ -1073,7 +1073,7 @@ video {
 .content-column::after {
     content: "";
     position: absolute;
-    width: 218px;
+    width: 200px;
     /* Adjust the size as needed */
     height: 204px;
     /* Adjust the size as needed */

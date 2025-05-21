@@ -204,9 +204,13 @@ class Fronthome extends \CodeIgniter\Controller
 
     public function informationView()
     {
+         $session = session();
+        $uid = $session->get('uid');
         $category = $this->model->getAllCategory();
+        $address = $this->model->getLatestAddress($uid);
         $productdetails = [
             'category_details' => $category,
+            'address' => $address,
         ];
         $data = [
             "title" => $this->config['name'],
@@ -281,20 +285,13 @@ class Fronthome extends \CodeIgniter\Controller
             'landmark' => $landmark,
             'address' => $address,
         ];
+        $datails = $session->set('order_address', $data);
 
-        if ($this->model->addressinsert($data)) {
-             return $this->response->setJSON([
-                    'status' => 'succsses',
-                    'message' => 'address inserted',
-                    'locationChange' => base_url('order'),
+        return $this->response->setJSON([
+                    'status' => 'success',
+                    'message' => 'store session data',
+                    'locationChange' => true,
                 ]);
-        } else {
-             return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'address not inserted ',
-                    'locationChange' => false,
-                ]);
-        }
         
     }
     public function update_address()
@@ -310,40 +307,26 @@ class Fronthome extends \CodeIgniter\Controller
         $lastname = $this->request->getPost('lastname');
         $number = $this->request->getPost('number');
         $email = $this->request->getPost('email');
-        $address_id = $this->request->getPost('address_id');
-        $data1 = [
+        $id = $this->request->getPost('address_id');
+        $data = [
             'landmark' => $landmark,
             'pincode' => $pincode,
             'city' => $city,
             'state' => $state,
             'address' => $address,
-        ];
-        $data2 = [
-            'lastname' => $lastname,
-            'firstname' => $firstname,
+             'last_name' => $lastname,
+            'first_name' => $firstname,
             'email' => $email,
             'number' => $number,
         ];
-        $updatedaddress = $this->model->addressupdate($data1,$uid,  $address_id, );
+
+        $updatedaddress = $this->model->addressupdate($data,$uid,  $id, );
         if ($updatedaddress) {
-            $updateduser = $this->model->addressuserupdate($data2,$uid, );
-            if ($updateduser) {
-                return $this->response->setJSON([
-                    'status' => 'success',
-                    'message' => 'update user address',
-                    'locationChange' => false,
-                    'data' => [
-                'user' => $data2,
-                'address' => $data1
-            ]
-                ]);
-            } else {
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'update failed',
-                    'locationChange' => false,
-                ]);
-            }
+               return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'address update',
+                'locationChange' => false,
+            ]);
         } else {
             return $this->response->setJSON([
                 'status' => 'error',
@@ -351,9 +334,95 @@ class Fronthome extends \CodeIgniter\Controller
                 'locationChange' => false,
             ]);
         }
-
-
-    }
+     }
+    public function update_order_address()
+    {
+        $session = session();
+        $uid = $session->get('uid');
+        $address = $this->request->getPost('address');
+        $state = $this->request->getPost('state');
+        $city = $this->request->getPost('city');
+        $pincode = $this->request->getPost('pincode');
+        $country = $this->request->getPost('country');
+        $id = $this->request->getPost('address_id');
+        $email = $this->request->getPost('email');
+        $country = $this->request->getPost('country');
+        $landmark = $this->request->getPost('landmark');
+        $first_name = $this->request->getPost('first_name');
+        $last_name = $this->request->getPost('last_name');
+        $building = $this->request->getPost('building');
+        $street = $this->request->getPost('street');
+        $number = $this->request->getPost('number');
+        $data = [
+            'uid' => $uid,
+            'pincode' => $pincode,
+            'city' => $city,
+            'state' => $state,
+            'country' => $country,
+            'address' => $address,
+            'email' => $email,
+            'landmark' => $landmark,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'street' => $street,
+            'building' => $building,
+            'number' => $number,
+        ];
+        $address = $this->model->addressinsert($data);
+        if ($address) {
+               return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'address insert',
+                'locationChange' => true,
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'inserted failed',
+                'locationChange' => false,
+            ]);
+        }
+     }
+    // public function change_Number_Address()
+    // {
+    //     $session = session();
+    //     $uid = $session->get('uid');
+    //       $address = $this->request->getPost('address');
+    //     $state = $this->request->getPost('state');
+    //     $city = $this->request->getPost('city');
+    //     $pincode = $this->request->getPost('pincode');
+    //     $landmark = $this->request->getPost('landmark');
+    //     $firstname = $this->request->getPost('firstname');
+    //     $lastname = $this->request->getPost('lastname');
+    //     $number = $this->request->getPost('number');
+    //     $email = $this->request->getPost('email');
+    //     $address_id = $this->request->getPost('address_id');
+    //     $data = [
+    //         'landmark' => $landmark,
+    //         'pincode' => $pincode,
+    //         'city' => $city,
+    //         'state' => $state,
+    //         'address' => $address,
+    //          'last_name' => $lastname,
+    //         'first_name' => $firstname,
+    //         'email' => $email,
+    //         'number' => $number,
+    //     ];
+    //     $updatedaddress = $this->model->addressupdate($data,$uid,  $address_id, );
+    //     if ($updatedaddress) {
+    //            return $this->response->setJSON([
+    //             'status' => 'success',
+    //             'message' => 'address update',
+    //             'locationChange' => true,
+    //         ]);
+    //     } else {
+    //         return $this->response->setJSON([
+    //             'status' => 'error',
+    //             'message' => 'update failed',
+    //             'locationChange' => false,
+    //         ]);
+    //     }
+    //  }
 
     public function address_delete() {
          $session = session();
@@ -383,12 +452,50 @@ class Fronthome extends \CodeIgniter\Controller
         
     }
 
+    public function final_order() {
+        $session = session();
+        $uid = $session->get('uid');
+        $address = $session->get('order_address');
+        if ($this->request->getPost('shipping_address')) {
+            $shiping_address = $address;
+            $data = [
+            'uid' => $uid,
+            'order_id' => mt_rand(1000000000, 9999999999),
+            'payment_method' => $this->request->getPost('payment_method'),
+            'address_id' => $shiping_address,
+        ];
+        }else{
+          $data = [
+            'uid' => $uid,
+            'order_id' => mt_rand(1000000000, 9999999999),
+            'payment_method' => $this->request->getPost('payment_method'),
+            'address_id' => $this->request->getPost('selected_address_id'),
+        ];
+        }
+        
+        
+        $orderdata = $this->model->orderInsert($data);
+        if ($orderdata) {
+              return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Oder Successfull inserted !!',
+                'locationChange' => false,
+            ]);
+        } else {
+             return $this->response->setJSON([
+                'status' => 'failed',
+                'message' => 'Order Failed!!',
+                'locationChange' => false,
+            ]);
+        }
+        
+    }
     public function deshboardView()
     {
         $uid = $this->session->get('uid');
         $category = $this->model->getAllCategory();
         $userdata = $this->model->userdata($uid);
-        $address = $this->model->getuseraddress($uid);
+        $address = $this->model->getaddress($uid);
         $productdetails = [
             'category_details' => $category,
             'user' => $userdata,
@@ -422,9 +529,17 @@ class Fronthome extends \CodeIgniter\Controller
 
     public function orderView()
     {
+        $session = session();
+        $uid = $session->get('uid');
+        $session_data = $session->get('order_address');
         $category = $this->model->getAllCategory();
+        $address = $this->model->getlatestAddress($uid);
+        $alladdress = $this->model->getAddress($uid);
         $productdetails = [
             'category_details' => $category,
+            'address' => $address,
+            'session_data' => $session_data,
+            'alladdress' => $alladdress,
         ];
         $data = [
             "title" => $this->config['name'],

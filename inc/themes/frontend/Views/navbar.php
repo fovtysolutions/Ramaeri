@@ -99,6 +99,9 @@
         if (typeof joinaddtocarts === 'function') {
             joinaddtocarts(mainCartData, '#cartadd', base_url);
         }
+        if (typeof joinaddtocartss === 'function') {
+            joinaddtocartss(mainCartData, '#cartcheckout', base_url);
+        }
         $('.addtocart').click(function(){
             const proId = $(this).data('id');
             addToCartPro(proId, 1);
@@ -136,6 +139,9 @@
                         if (typeof joinaddtocarts === 'function') {
                             joinaddtocarts(response.data, '#cartadd', base_url);
                         }
+                        if (typeof joinaddtocartss === 'function') {
+                            joinaddtocartss(response.data, '#cartcheckout', base_url);
+                        }
                         toastr.success(response.message);
                     }else{
                         toastr.error(response.message);
@@ -163,11 +169,17 @@
                         if (typeof joinaddtocarts === 'function') {
                             joinaddtocarts(response.data, '#cartadd', base_url);
                         }
+                        if (typeof joinaddtocartss === 'function') {
+                            joinaddtocartss(response.data, '#cartcheckout', base_url);
+                        }
                         toastr.success(response.message,'', { closeButton: true });
                     }else if(response.status == 'update') {
                         joinaddtocart(response.data, paramsElement);
                         if (typeof joinaddtocarts === 'function') {
                             joinaddtocarts(response.data, '#cartadd', base_url);
+                        }
+                        if (typeof joinaddtocartss === 'function') {
+                            joinaddtocartss(response.data, '#cartcheckout', base_url);
                         }
                     }else{
                         toastr.error(response.message);

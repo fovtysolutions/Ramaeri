@@ -43,10 +43,11 @@
    }
 
    .profile-sec .nav {
-       height: 99vh;
+       /* height: 5vh; */
        gap: 40px;
        justify-content: center;
        flex-wrap: nowrap;
+       margin-bottom: 15px !important;
        /*float: inline-end;*/
    }
 

@@ -72,8 +72,11 @@ $routes->post('submit-register', 'Fronthome::submitregister');
 $routes->post('check-login-status', 'Fronthome::check_login_status');
 $routes->post('update-profile', 'Fronthome::update_profile');
 $routes->post('address-update', 'Fronthome::update_address');
+$routes->post('update-order-address', 'Fronthome::update_order_address');
 $routes->post('address-delete', 'Fronthome::address_delete');
 $routes->post('address-add', 'Fronthome::addressAdd');
+$routes->post('final-order', 'Fronthome::final_order');
+// $routes->post('change-address-number', 'Fronthome::change_Number_Address');
 
 // $routes->get('recent', 'Fronthome::recentView');
 $routes->get('notfound', 'Fronthome::nofoundpageView');

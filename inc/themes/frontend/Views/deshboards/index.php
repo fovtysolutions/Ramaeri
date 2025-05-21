@@ -61,8 +61,8 @@
                                                     <span class="dotin dotin0"
                                                         style="font-size:2rem;padding-top: 3.5rem;color:#858a82">&#x2022;</span>
                                                     <div class="txt-cnt-main address-l">
-                                                        <p><span id="firstname"><?php echo $value->firstname ?></span>
-                                                        <span id="lastname"><?php echo $value->lastname ?></span>,
+                                                        <p><span id="firstname"><?php echo $value->first_name ?></span>
+                                                        <span id="lastname"><?php echo $value->last_name ?></span>,
                                                             <span id="landmark"><?php echo $value->landmark ?></span>
                                                         </p>
                                                         <p id="email"><?php echo $value->email ?></p>
@@ -203,37 +203,31 @@
                         <input type="hidden" value="<?php echo $value->id?>" name="address_id">
                         <div class="form-group">
                             <label for="first_name">First Name</label>
-                            <input type="text" class="form-control"  name="firstname" required
-                                value="<?php echo isset($value->firstname) ? $value->firstname : ''; ?>">
+                            <input type="text" class="form-control"  name="firstname" required >
                         </div>
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control"  name="lastname" required
-                                value="<?php echo isset($value->lastname) ? $value->lastname : ''; ?>">
+                            <input type="text" class="form-control"  name="lastname" required >
                         </div>
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
                             <input type="integer" class="form-control"  name="number" required maxlength="10"
-                                pattern="\d{10}" title="Please enter a valid 10-digit mobile number"
-                                value="<?php echo isset($value->number) ? $value->number : ''; ?>">
+                                pattern="\d{10}" title="Please enter a valid 10-digit mobile number">
                             <small id="mobile-error" style="color: red; display: none;">Please enter a valid 10-digit mobile
                                 number.</small>
                         </div>
                         <div class="form-group">
                             <label for="building">Address</label>
-                            <input type="text" class="form-control"  name="address" required
-                                value="<?php echo isset($value->address) ? $value->address : ''; ?>">
+                            <input type="text" class="form-control"  name="address" required >
                         </div>
                         <div class="form-group">
                             <label for="landmark">Landmark</label>
-                            <input type="text" class="form-control" name="landmark" required
-                                value="<?php echo isset($value->landmark) ? $value->landmark : ''; ?>">
+                            <input type="text" class="form-control" name="landmark" required>
                         </div>
                         <div class="form-group">
                             <label for="city">Pincode</label>
                             <input type="text" oninput="enforcePincodeLength(event)" class="form-control" id="pincode"
-                                name="pincode" required
-                                value="<?php echo isset($value->pincode) ? $value->pincode : ''; ?>">
+                                name="pincode" required>
                         </div>
                         <div class="form-group">
                             <label for="State_update">State</label>

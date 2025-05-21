@@ -214,7 +214,7 @@
 
         <div class="mb-3">
 
-          <input type="email" id="emailf" name="email" placeholder="Enter your email" class="theme-input " value=""
+          <input type="email" name="email" placeholder="Enter your email" class="theme-input " value=""
             required>
           <input type="hidden" name="reset_with" value="email">
         </div>

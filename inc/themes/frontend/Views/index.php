@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body>
+<body style="overflow-x:hidden">
     <div class="main-wrapper" style="overflow:hidden">
         <?php _ec($this->include('Frontend\Views\navbar'), false) ?>
         <?php _ec($this->include('Frontend\Views\mobilenav'), false) ?>

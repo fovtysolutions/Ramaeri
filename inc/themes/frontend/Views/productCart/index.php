@@ -6,9 +6,9 @@
     <div class="cart-section">
         <div aria-label="breadcrumbss">
             <ul class="breadcrumbss">
-                <li><a href="#">Cart</a></li>
-                <li><a href="#" class="cart">Information</a></li>
-                <li><a href="#" class="cart">Payment</a></li>
+                <li><a href="<?php echo base_url('carts') ?>">Cart</a></li>
+                <li><a href="<?php echo base_url('info') ?>" class="cart">Information</a></li>
+                <li><a href="<?php echo base_url('order') ?>" class="cart">Payment</a></li>
             </ul>
         </div>
 

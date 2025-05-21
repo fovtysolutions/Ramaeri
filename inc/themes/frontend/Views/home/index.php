@@ -26,7 +26,7 @@
 <?php // } ?>
 
 
-<section class="categories-section pt-5 pb-lg-5 pb-5" id="featured-products-customs">
+<section class="categories-section pt-5 pb-lg-5 pb-5 overflow-hidden" id="featured-products-customs">
     <div class="tab-section1">
         <img src="https://www.ramaeri.com/storage/app/public/images/newleaf.png" alt="fire icon"
             style="width:58px;height:47px">
