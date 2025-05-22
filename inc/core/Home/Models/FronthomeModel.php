@@ -83,10 +83,24 @@ class FronthomeModel extends Model
             ->get()
             ->getRow();
     }
+    public function insertOrderId($cart_id, $uid, $orderId){
+    return $this->db->table('ramaeri_cart')
+        ->where('id', $cart_id)
+        ->where('uid', $uid)
+        ->update(['order_id' => $orderId]);
+    }
 
-    public function addressinsert($data)
-    {
-        return $this->db->table('address')->insert($data);
+    public function getOderId($uid, $orderId){
+        return $this->db->table('ramaeri_orders')
+            ->where('id', $orderId)
+            ->where('uid', $uid)
+            ->get()
+            ->getRow();
+    }
+
+    public function addressinsert($data){
+          $this->db->table('address')->insert($data);
+    return $this->db->insertID();
     }
 
     public function ExitnotfirstCategoryId()
@@ -177,9 +191,9 @@ class FronthomeModel extends Model
     {
         return $this->db->table('ramaeri_queries')->insert($contactData);
     }
-    public function orderInsert($data)
-    {
-        return $this->db->table('ramaeri_orders')->insert($data);
+    public function orderInsert($data){
+        $this->db->table('ramaeri_orders')->insert($data);
+    return $this->db->insertID();
     }
     public function updateit($pro_id, $uid, $updated_data)
     {

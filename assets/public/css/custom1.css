@@ -1167,7 +1167,7 @@ button#submit-btn:hover .icon-gap {
 @media (max-width: 991.98px) {
     .gshop-header-icons {
         gap: 0px !important ;
-        margin-right: -14px;
+        margin-right: 1px !important;
     }
     .content-wrapper{
         padding-top: 120px !important;

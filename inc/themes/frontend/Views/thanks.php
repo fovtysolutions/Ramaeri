@@ -14,7 +14,7 @@
         <img src="https://ramaeri.com/storage/app/public/images/logo.png" class="img-fluid" alt="Ramaeri Logo" style="width: 128px; height: 40px;">
       </div>
       <div class="text-center continue-link mt-4" style="font-weight: 500;">
-        <a href="./Products.html" style="color: #4A6437;"><span>Click Here To Continue</span></a>
+        <a href="<?php echo base_url('products') ?>" style="color: #4A6437;"><span>Click Here To Continue</span></a>
       </div>
     </div>
   </div>

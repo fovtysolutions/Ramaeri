@@ -75,7 +75,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-5 col-xl-4 col-md-2 col-3 d-block d-sm-block d-md-block d-lg-none d-xl-none order-1"
+        </div>
+    </div>
+     <div class="col-xxl-5 col-xl-4 col-md-2 col-3 d-block d-sm-block d-md-block d-lg-none d-xl-none order-1"
                 style="margin-left:-1rem">
                 <button class="offcanvas-toggle ms-3">
                     <svg fill="#4A6437" class="img-bar" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
@@ -84,9 +86,9 @@
                     </svg>
                 </button>
             </div>
-        </div>
-    </div>
 </nav>
+
+
 
 <?php echo $this->section('script'); ?>
 <script>
@@ -101,6 +103,9 @@
         }
         if (typeof joinaddtocartss === 'function') {
             joinaddtocartss(mainCartData, '#cartcheckout', base_url);
+        }
+        if (typeof joinaddtocartsss === 'function') {
+            joinaddtocartsss(mainCartData, '#cartresponsive', base_url);
         }
         $('.addtocart').click(function(){
             const proId = $(this).data('id');
@@ -142,6 +147,9 @@
                         if (typeof joinaddtocartss === 'function') {
                             joinaddtocartss(response.data, '#cartcheckout', base_url);
                         }
+                        if (typeof joinaddtocartsss === 'function') {
+                            joinaddtocartsss(response.data, '#cartresponsive', base_url);
+                        }
                         toastr.success(response.message);
                     }else{
                         toastr.error(response.message);
@@ -172,6 +180,9 @@
                         if (typeof joinaddtocartss === 'function') {
                             joinaddtocartss(response.data, '#cartcheckout', base_url);
                         }
+                        if (typeof joinaddtocartsss === 'function') {
+                            joinaddtocartsss(response.data, '#cartresponsive', base_url);
+                        }
                         toastr.success(response.message,'', { closeButton: true });
                     }else if(response.status == 'update') {
                         joinaddtocart(response.data, paramsElement);
@@ -180,6 +191,9 @@
                         }
                         if (typeof joinaddtocartss === 'function') {
                             joinaddtocartss(response.data, '#cartcheckout', base_url);
+                        }
+                        if (typeof joinaddtocartsss === 'function') {
+                            joinaddtocartsss(response.data, '#cartresponsive', base_url);
                         }
                     }else{
                         toastr.error(response.message);
@@ -209,7 +223,7 @@
                                 <a href="https://ramaeri.com/products/ramaeri-grapeglow-facewash">
                                     <h6 class="mb-0 cart-heading-short">${details.name}</h6>
                                 </a>
-                                <div class="d-flex pt-2" style="gap: 8px;">
+                                <div class="d-flex pt-2" style="gap: 8px;align-items: center;">
                                     <button data-incid="${details.id}" class="decrease dec">-</button>
                                     <input type="hidden" readonly value="${details.pro_id}" class="proids">
                                     <input type="text" readonly value="${details.pro_qty}" class="cart-input quantity" id="qnt_${index}">

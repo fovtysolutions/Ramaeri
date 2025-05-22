@@ -13,7 +13,7 @@
         </div>
 
 
-        <table class="cart-table nothing">
+        <table class="cart-table nothing d-sm-none d-md-block d-lg-block">
             <thead>
                 <tr>
                     <th style="text-align:left;" class="col-lg-4">Product</th>
@@ -25,9 +25,17 @@
                 </tr>
             </thead>
             <tbody class="cart-listing" id="cartadd">
-                
+
             </tbody>
         </table>
+        <div class="dataTableMobile d-md-none d-sm-block d-lg-none">
+            <!-- Product Item Start -->
+            <ul class="pt-12 scroll-checkout" id="cartresponsive">
+
+                <!-- Duplicate above block for more products -->
+            </ul>
+            <!-- Product Item End -->
+        </div>
 
         <div class="footer-section">
             <div class="protection">
@@ -70,12 +78,12 @@
 <?php echo $this->section('script'); ?>
 <script>
 
-function joinaddtocarts(arrayhere, divID, baseurl) {
-    if (arrayhere.length > 0) {
-        let cartcount = arrayhere.length;
+    function joinaddtocarts(arrayhere, divID, baseurl) {
+        if (arrayhere.length > 0) {
+            let cartcount = arrayhere.length;
 
-        let result = arrayhere.map((details, index) => {
-            return `
+            let result = arrayhere.map((details, index) => {
+                return `
                     <tr style="border-top: 1px solid #C2D0B7;" class="datacart">
                     <td class="product">
                         <img src="${baseurl}/writable/${details.image}" alt="Grape Glow Facewash"
@@ -98,13 +106,48 @@ function joinaddtocarts(arrayhere, divID, baseurl) {
                     </td>
                 </tr>
             `;
-        });
-        const itemshtml = result.join('');
-        $(divID).html(itemshtml);
-    } else {
-        $(divID).html('');
+            });
+            const itemshtml = result.join('');
+            $(divID).html(itemshtml);
+        } else {
+            $(divID).html('');
+        }
     }
-}
+    function joinaddtocartsss(arrayhere, divID, baseurl) {
+        if (arrayhere.length > 0) {
+            let cartcount = arrayhere.length;
+
+            let result = arrayhere.map((details, index) => {
+                return `
+                <li class="d-flex pb-3 flex-row align-items-center border rounded p-1 datacart">
+                    <div class="me-md-4 mb-1 mb-md-0 text-center d-flex align-items-center">
+                        <a href="<?php echo base_url('products') ?>">
+                            <img src="${baseurl}/writable/${details.image}" class="img-fluid rounded" alt="Product Image" />
+                        </a>
+                    </div>
+                    <!-- Description Column -->
+                    <div class="items-content ms-4">
+                        <a href="<?php echo base_url('products') ?>" class="items-content-02">
+                            <h5 class="mb-0 cart-heading-short">${details.name}</h5>
+                        </a>
+                        <p class="mb-1">₹ ${details.price}</p>
+                        <div class="d-flex pt-2 quantity-control" style="gap: 8px">
+                             <button data-decid="${details.id}" class="decrease change-btn dec" data-type="decrease">-</button>
+                            <input type="hidden" readonly value="${details.pro_id}" class="proids" name="pro_id ">
+                            <input type="text" readonly value="${details.pro_qty}" class="cart-input quantity" id="qnt_${index}">
+                            <button data-incid="${details.id}" class="decrease change-btn inc">+</button>
+                        </div>
+                        <p class="price fw-semibold">₹ ${details.price}</p>
+                    </div>
+                </li>
+            `;
+            });
+            const itemshtml = result.join('');
+            $(divID).html(itemshtml);
+        } else {
+            $(divID).html('');
+        }
+    }
 
 </script>
 <script>

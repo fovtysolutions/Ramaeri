@@ -76,6 +76,7 @@ $routes->post('update-order-address', 'Fronthome::update_order_address');
 $routes->post('address-delete', 'Fronthome::address_delete');
 $routes->post('address-add', 'Fronthome::addressAdd');
 $routes->post('final-order', 'Fronthome::final_order');
+$routes->post('payment-success', 'Fronthome::payment_Success');
 // $routes->post('change-address-number', 'Fronthome::change_Number_Address');
 
 // $routes->get('recent', 'Fronthome::recentView');
