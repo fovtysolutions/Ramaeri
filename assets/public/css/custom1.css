@@ -34,7 +34,7 @@
     width: 100%;
     padding-top: 33px !important;
     padding-bottom: 20px !important;
-    position: fixed ;
+    position: fixed !important;
     z-index: 100 !important;
 }
 
